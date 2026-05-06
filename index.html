@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Naming — Sombrero Rosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0e1f30;
+  --navy2:#193149;
+  --navy3:#1e3a54;
+  --cream:#f2f2f0;
+  --rose:#D5848E;
+  --rose2:#E39CAE;
+  --gold:#c9a84c;
+  --text-muted:rgba(242,242,240,0.55);
+  --text-dim:rgba(242,242,240,0.32);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--navy);color:var(--cream);margin:0}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(14,31,48,0.97);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:14px 48px;border-bottom:1px solid rgba(201,168,76,0.2)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:auto}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-text .w1{font-size:13px;font-weight:300;letter-spacing:0.04em;color:var(--cream)}
+.nav-logo-text .w2{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--rose)}
+.nav-dots{display:flex;gap:8px;align-items:center}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:rgba(242,242,240,0.2);border:none;cursor:pointer;transition:all 0.3s}
+.nav-dot.active{background:var(--gold);transform:scale(1.4)}
+.nav-label{font-size:10px;font-weight:500;letter-spacing:0.18em;color:var(--text-muted);text-transform:uppercase}
+
+/* SLIDE BASE */
+.slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px 80px 64px;position:relative}
+
+/* ATOMS */
+.tag{font-size:9px;font-weight:600;letter-spacing:0.26em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.tag.rose{color:var(--rose)}
+.tag.center{text-align:center}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:500;letter-spacing:0.22em;color:var(--text-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s}
+.scroll-hint:hover{color:var(--gold)}
+.full{width:100%}
+
+/* S0: COVER */
+.s-cover{background:radial-gradient(ellipse at 30% 40%, #1e3550 0%, var(--navy) 65%)}
+.cover-supertag{font-size:10px;font-weight:500;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:40px;text-align:center}
+.cover-title{font-size:80px;font-weight:800;color:var(--cream);line-height:1;text-align:center;letter-spacing:-0.025em;margin-bottom:4px}
+.cover-title em{font-style:italic;font-weight:300;color:var(--rose2)}
+.cover-rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:28px 0;color:var(--gold);font-size:10px}
+.cover-rule span{width:70px;height:1px;background:rgba(201,168,76,0.3)}
+.cover-sub{font-size:12px;font-weight:400;letter-spacing:0.16em;color:var(--text-muted);text-transform:uppercase;text-align:center;margin-bottom:60px}
+.cover-stats{display:flex;gap:80px;justify-content:center}
+.stat-label{font-size:9px;font-weight:600;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:7px;text-align:center}
+.stat-value{font-size:12px;font-weight:400;color:var(--cream);text-align:center}
+
+/* S1: METODOLOGÍA */
+.s-light{background:#f2f2f0;color:#1a1a1a}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:960px;margin-top:40px}
+.method-card{background:#fff;border:1px solid rgba(25,49,73,0.09);border-radius:14px;padding:32px 28px;position:relative;overflow:hidden}
+.method-bg-num{font-size:72px;font-weight:900;color:rgba(25,49,73,0.04);position:absolute;top:8px;right:16px;line-height:1;letter-spacing:-0.03em}
+.method-cat{font-size:9px;font-weight:600;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.method-name{font-size:14px;font-weight:600;color:#193149;margin-bottom:12px}
+.method-desc{font-size:12px;font-weight:400;line-height:1.65;color:#5a5a5a}
+
+/* S2: CLASIFICACIÓN */
+.s-origin{background:var(--navy2);padding:0;justify-content:flex-start}
+.origin-top{padding:80px 80px 32px;width:100%}
+.origin-grid{display:grid;grid-template-columns:repeat(3,1fr);width:100%}
+.origin-col{padding:32px 48px 52px;border-top:1px solid rgba(242,242,240,0.08)}
+.origin-col:nth-child(2){border-left:1px solid rgba(242,242,240,0.08);border-right:1px solid rgba(242,242,240,0.08)}
+.origin-cat{font-size:9px;font-weight:600;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(201,168,76,0.22)}
+.origin-name{font-size:22px;font-weight:700;color:var(--cream);letter-spacing:-0.01em;margin-bottom:6px;line-height:1.2}
+
+/* S3: PERFIL */
+.s-dark{background:#111e2a}
+.perfil-hl{font-size:50px;font-weight:800;color:var(--cream);letter-spacing:-0.015em;margin-bottom:32px;text-align:center}
+.perfil-hl em{color:var(--rose);font-style:normal;font-weight:300}
+.perfil-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;width:100%;max-width:820px}
+.perfil-card{border:1px solid rgba(242,242,240,0.1);border-radius:10px;padding:22px 28px}
+.perfil-cat{font-size:9px;font-weight:600;letter-spacing:0.17em;color:var(--rose);text-transform:uppercase;margin-bottom:10px}
+.perfil-names{font-size:16px;font-weight:600;color:var(--cream);letter-spacing:0.01em}
+
+/* S4: LOS ELEGIDOS */
+.s-elegidos{background:var(--navy2)}
+.elegidos-hl{font-size:66px;font-weight:800;color:var(--cream);text-align:center;line-height:1;letter-spacing:-0.025em;margin-bottom:6px}
+.elegidos-hl em{color:var(--rose);font-style:normal;font-weight:300}
+.elegidos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:960px;margin-top:36px}
+.elegido-card{border:1px solid rgba(242,242,240,0.1);border-radius:12px;padding:26px 20px;text-align:center}
+.elegido-card.lead{border-color:rgba(201,168,76,0.45);background:rgba(201,168,76,0.04)}
+.elegido-num{font-size:9px;font-weight:700;letter-spacing:0.2em;color:rgba(201,168,76,0.35);text-transform:uppercase;margin-bottom:10px}
+.elegido-name{font-size:20px;font-weight:700;color:var(--cream);margin-bottom:6px;letter-spacing:-0.01em}
+.elegido-cat{font-size:9px;font-weight:600;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px}
+.elegido-desc{font-size:11px;font-weight:400;line-height:1.6;color:var(--text-muted)}
+
+/* S5: COMPARATIVA */
+.s-comp{background:#0c1a26}
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:1080px;margin-top:32px}
+.cand-card{border:1px solid rgba(242,242,240,0.08);border-radius:14px;padding:22px 18px;background:rgba(255,255,255,0.02)}
+.cand-card.lead{border-color:rgba(201,168,76,0.45);background:rgba(201,168,76,0.05)}
+.cand-ordinal{font-size:9px;font-weight:700;letter-spacing:0.2em;color:rgba(201,168,76,0.28);text-transform:uppercase;margin-bottom:8px}
+.cand-name{font-size:24px;font-weight:700;color:var(--cream);margin-bottom:4px;letter-spacing:-0.015em}
+.cand-badge{font-size:8px;font-weight:600;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:block}
+.cand-desc{font-size:10.5px;font-weight:400;line-height:1.6;color:var(--text-muted);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(242,242,240,0.06)}
+.bar-row{margin-bottom:8px}
+.bar-lbl{display:flex;justify-content:space-between;font-size:9px;font-weight:500;color:var(--text-muted);margin-bottom:3px}
+.bar-track{height:3px;background:rgba(242,242,240,0.07);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;background:var(--rose)}
+
+/* S6: MAPA COVER */
+.s-black{background:#080808}
+.mapa-hl{font-size:80px;font-weight:800;color:var(--cream);line-height:1;text-align:center;letter-spacing:-0.025em;margin-bottom:4px}
+.mapa-hl em{color:var(--rose2);font-style:italic;font-weight:300}
+.mapa-sub{font-size:13px;font-weight:400;color:rgba(255,255,255,0.32);text-align:center;margin-top:20px;max-width:520px;line-height:1.65}
+
+/* S7-S9: TABLAS */
+.s-table{background:#0e0e0e;justify-content:flex-start;align-items:flex-start;padding:90px 60px 48px}
+.tbl-cat{font-size:9px;font-weight:600;letter-spacing:0.22em;color:var(--rose);text-transform:uppercase;margin-bottom:6px}
+.tbl-title{font-size:24px;font-weight:800;color:var(--cream);text-transform:uppercase;letter-spacing:0.01em;margin-bottom:22px}
+.tbl-count{font-size:11px;font-weight:400;color:rgba(255,255,255,0.22);float:right;margin-top:6px;text-transform:none;letter-spacing:0}
+.map-table{width:100%;border-collapse:collapse}
+.map-table th{font-size:8.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--rose);padding:8px 10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.07)}
+.map-table th.nc{color:var(--cream);font-size:11px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase}
+.map-table td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.04);color:rgba(255,255,255,0.58);line-height:1.45;vertical-align:top;font-size:11px;font-weight:400}
+.map-table td.rl{color:rgba(255,255,255,0.28);font-size:8.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;width:88px}
+.esencia-bar{margin-top:20px;padding:14px 18px;background:rgba(255,255,255,0.03);border-left:2px solid var(--rose);font-size:11px;font-weight:400;color:rgba(255,255,255,0.36);width:100%}
+.esencia-bar strong{font-size:8.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:5px}
+.keywords{display:flex;gap:14px;margin-top:8px}
+.kw{font-size:8.5px;font-weight:600;letter-spacing:0.18em;color:rgba(255,255,255,0.18);text-transform:uppercase}
+
+/* S10: INSIGHT */
+.s-insight{background:var(--navy3)}
+.insight-hl{font-size:56px;font-weight:700;color:var(--cream);text-align:center;line-height:1.05;max-width:700px;margin-bottom:22px;letter-spacing:-0.02em}
+.insight-hl em{color:var(--rose);font-style:italic;font-weight:300}
+.insight-sub{font-size:14px;font-weight:400;line-height:1.75;color:var(--text-muted);text-align:center;max-width:580px;margin-bottom:36px}
+.next-step{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.26);border-radius:10px;padding:18px 28px;font-size:12px;font-weight:400;color:var(--gold);text-align:center;max-width:520px}
+.agency-sig{margin-top:36px;font-size:11px;font-weight:400;letter-spacing:0.08em;color:var(--text-dim)}
+.agency-sig em{color:var(--rose);font-style:italic}
+
+/* ANÁLISIS DIMENSIONAL FINALISTAS */
+.s-dim{background:#f2f2f0;justify-content:flex-start;padding:90px 80px 60px}
+.dim-supertag{font-size:9px;font-weight:600;letter-spacing:0.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;width:100%}
+.dim-name{font-size:52px;font-weight:800;color:#193149;letter-spacing:-0.02em;line-height:1;margin-bottom:4px;width:100%}
+.dim-name em{font-style:italic;font-weight:300;color:var(--rose)}
+.dim-tagline{font-size:13px;font-weight:400;color:#999;letter-spacing:0.01em;margin-bottom:28px;width:100%}
+.dim-preview{width:100%;background:#193149;border-radius:14px;padding:36px 60px;text-align:center;margin-bottom:24px}
+.dim-preview-label{font-size:8.5px;font-weight:600;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.dim-preview-name{font-size:52px;font-weight:800;color:var(--cream);letter-spacing:-0.02em;line-height:1}
+.dim-preview-name em{font-style:italic;font-weight:300;color:var(--rose2)}
+.dim-preview-sl{font-size:11px;font-weight:300;font-style:italic;color:rgba(242,242,240,0.4);margin-top:8px;letter-spacing:0.08em}
+.dim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;margin-bottom:20px}
+.dim-card{background:#fff;border:1px solid rgba(25,49,73,0.08);border-radius:12px;padding:22px 20px}
+.dim-card-cat{font-size:8.5px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.dim-card-body{font-size:11.5px;font-weight:400;line-height:1.65;color:#555}
+.dim-scores{display:flex;gap:10px;width:100%;margin-bottom:18px}
+.dim-score-box{flex:1;background:#193149;border-radius:10px;padding:14px 10px;text-align:center}
+.dim-score-num{font-size:26px;font-weight:800;color:var(--cream);letter-spacing:-0.02em;line-height:1}
+.dim-score-lbl{font-size:8px;font-weight:500;letter-spacing:0.1em;color:rgba(242,242,240,0.38);text-transform:uppercase;margin-top:4px}
+.dim-insight{background:#fff;border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:14px 20px;width:100%;margin-bottom:16px}
+.dim-insight-cat{font-size:8.5px;font-weight:600;letter-spacing:0.2em;color:var(--rose);text-transform:uppercase;margin-bottom:5px}
+.dim-insight-body{font-size:11.5px;font-weight:400;line-height:1.65;color:#444}
+.dim-tags{display:flex;flex-wrap:wrap;gap:8px;width:100%}
+.dim-tag{font-size:9px;font-weight:600;letter-spacing:0.08em;color:#193149;background:rgba(25,49,73,0.07);border-radius:20px;padding:5px 13px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa">
+    <div class="nav-logo-text">
+      <span class="w1">sombrero</span>
+      <span class="w2">rosa</span>
+    </div>
+  </div>
+  <div class="nav-dots" id="dots"></div>
+  <div class="nav-label">Propuesta de naming</div>
+</nav>
+
+<!-- S0: COVER -->
+<section class="slide s-cover" id="s0">
+  <div class="cover-supertag">Agencia Sombrero Rosa · Fase 1</div>
+  <div class="cover-title">Propuesta de<br><em>naming</em></div>
+  <div class="cover-rule"><span></span>◆<span></span></div>
+  <div class="cover-sub">Distribuidora de agua · Zona Sur GBA</div>
+  <div class="cover-stats">
+    <div><div class="stat-label">Nombres</div><div class="stat-value">13 candidatos</div></div>
+    <div><div class="stat-label">Metodología</div><div class="stat-value">Semiótica · Psicología · Neurociencia</div></div>
+    <div><div class="stat-label">Fase</div><div class="stat-value">Naming &amp; Estrategia</div></div>
+  </div>
+  <a class="scroll-hint" href="#s1">↓ continuar</a>
+</section>
+
+<!-- S1: METODOLOGÍA -->
+<section class="slide s-light" id="s1">
+  <div class="tag" style="color:var(--gold)">Metodología</div>
+  <div style="font-size:44px;font-weight:700;color:#193149;letter-spacing:-0.015em;text-align:center;margin-bottom:10px">Tres dimensiones de <span style="font-weight:300;font-style:italic">análisis</span></div>
+  <div style="font-size:13px;font-weight:400;line-height:1.7;color:#666;text-align:center;max-width:580px">Cada nombre fue evaluado bajo un marco científico que combina semiótica, psicología del consumidor y neurociencia aplicada al branding.</div>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-bg-num">01</div>
+      <div class="method-cat">Semiótica</div>
+      <div class="method-name">Análisis del signo</div>
+      <div class="method-desc">Qué significa el nombre, qué universo semántico activa y qué promesa de marca construye de forma espontánea en el imaginario colectivo.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-bg-num">02</div>
+      <div class="method-cat">Psicología del consumidor</div>
+      <div class="method-name">Cómo lo procesa el público</div>
+      <div class="method-desc">Qué emociones activa. Si genera confianza, aspiración, cercanía o desconfianza. Evaluado por separado para el target familiar y corporativo.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-bg-num">03</div>
+      <div class="method-cat">Neurociencia del branding</div>
+      <div class="method-name">Eficiencia cognitiva</div>
+      <div class="method-desc">Cuánto esfuerzo necesita el cerebro para procesar, retener y recuperar el nombre. Basado en el principio de fluency effect y estudios de memoria semántica.</div>
+    </div>
+  </div>
+  <a class="scroll-hint" style="color:rgba(25,49,73,0.22)" href="#s2">↓ continuar</a>
+</section>
+
+<!-- S2: CLASIFICACIÓN POR ORIGEN -->
+<section class="slide s-origin" id="s2">
+  <div class="origin-top">
+    <div class="tag">Clasificación</div>
+    <div style="font-size:44px;font-weight:700;color:var(--cream);letter-spacing:-0.015em">Universo de <span style="font-weight:300;font-style:italic">nombres</span></div>
+  </div>
+  <div class="origin-grid full">
+    <div class="origin-col">
+      <div class="origin-cat">Origen familiar</div>
+      <div class="origin-name">Ayell</div>
+      <div class="origin-name">Alve</div>
+      <div class="origin-name">Aielva</div>
+    </div>
+    <div class="origin-col">
+      <div class="origin-cat">Origen italiano</div>
+      <div class="origin-name">Azra</div>
+      <div class="origin-name">Arenza</div>
+      <div class="origin-name">Aqua Fonte</div>
+      <div class="origin-name">Botiglia</div>
+      <div class="origin-name">Bere Puro</div>
+    </div>
+    <div class="origin-col">
+      <div class="origin-cat">Asociado al producto</div>
+      <div class="origin-name">Fontia</div>
+      <div class="origin-name">Acequia</div>
+      <div class="origin-name">Aflu</div>
+      <div class="origin-name">Luvia</div>
+      <div class="origin-name">Zano</div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#s3">↓ continuar</a>
+</section>
+
+<!-- S3: PERFIL ESTRATÉGICO -->
+<section class="slide s-dark" id="s3">
+  <div class="tag center">Posicionamiento de marca</div>
+  <div class="perfil-hl">Perfil <em>estratégico</em></div>
+  <div class="perfil-grid">
+    <div class="perfil-card">
+      <div class="perfil-cat">Tradicional y robusta</div>
+      <div class="perfil-names">Azra · Bere Puro · Acequia · Aqua Fonte</div>
+    </div>
+    <div class="perfil-card">
+      <div class="perfil-cat">Moderna y tecnológica</div>
+      <div class="perfil-names">Arenza · Zano · Botiglia</div>
+    </div>
+    <div class="perfil-card">
+      <div class="perfil-cat">Minimalista y premium</div>
+      <div class="perfil-names">Ayell · Fontia · Alve · Luvia</div>
+    </div>
+    <div class="perfil-card">
+      <div class="perfil-cat">Ágil y joven</div>
+      <div class="perfil-names">Aflu</div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#s4">↓ continuar</a>
+</section>
+
+<!-- S4: LOS ELEGIDOS -->
+<section class="slide s-elegidos" id="s4">
+  <div class="tag center">Selección estratégica · Nuestra recomendación</div>
+  <div class="elegidos-hl">Los <em>elegidos.</em></div>
+  <div class="elegidos-grid">
+    <div class="elegido-card lead">
+      <div class="elegido-num">01</div>
+      <div class="elegido-name">Fontia</div>
+      <div class="elegido-cat">Minimalista · Natural</div>
+      <div class="elegido-desc">Su origen lo dice todo sin decirlo. Suena a fuente, a origen, a algo que nunca tuvo que demostrar nada.</div>
+    </div>
+    <div class="elegido-card">
+      <div class="elegido-num">02</div>
+      <div class="elegido-name">Ayell</div>
+      <div class="elegido-cat">Minimalista · Premium</div>
+      <div class="elegido-desc">No necesita explicarse. Entra por el oído y se instala. Un nombre así no se construye — se descubre.</div>
+    </div>
+    <div class="elegido-card">
+      <div class="elegido-num">03</div>
+      <div class="elegido-name">Bere Puro</div>
+      <div class="elegido-cat">Tradicional · Robusto</div>
+      <div class="elegido-desc">Claridad desde la primera sílaba. Su promesa es explícita y permanente: beber puro. Un nombre que trabaja solo en cada punto de contacto.</div>
+    </div>
+    <div class="elegido-card">
+      <div class="elegido-num">04</div>
+      <div class="elegido-name">Aflu</div>
+      <div class="elegido-cat">Ágil · Expansivo</div>
+      <div class="elegido-desc">Nace del movimiento. Corto, abierto y sin techo. El tipo de nombre que crece junto con la marca que lo lleva.</div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#s5">↓ continuar</a>
+</section>
+
+<!-- S5: COMPARATIVA FINAL -->
+<section class="slide s-comp" id="s5">
+  <div class="tag center">Decisión</div>
+  <div style="font-size:40px;font-weight:700;color:var(--cream);letter-spacing:-0.015em;text-align:center;margin-bottom:8px">Comparativa <span style="font-weight:300;font-style:italic">final</span></div>
+  <div style="font-size:13px;font-weight:400;line-height:1.7;color:var(--text-muted);text-align:center;max-width:600px;margin-bottom:0">Cuatro filosofías de marca distintas. La elección define la identidad estratégica de la empresa para los próximos 10 años.</div>
+  <div class="comp-grid">
+
+    <div class="cand-card lead">
+      <div class="cand-ordinal">01</div>
+      <div class="cand-name">Fontia</div>
+      <span class="cand-badge">Score 91/100 · Recomendación principal</span>
+      <div class="cand-desc">El nombre más completo del proceso. Cumple simultáneamente todos los criterios: semiótica de origen, psicología de confianza y eficiencia cognitiva óptima.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Versatilidad</span><span>10/10</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+    </div>
+
+    <div class="cand-card">
+      <div class="cand-ordinal">02</div>
+      <div class="cand-name">Ayell</div>
+      <span class="cand-badge">Score 82/100 · Alternativa moderna</span>
+      <div class="cand-desc">Mayor potencial de brand equity a largo plazo. Ideal si el cliente prioriza independencia total y construcción de marca desde cero sin límites semánticos.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>7/10</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Versatilidad</span><span>8.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+    </div>
+
+    <div class="cand-card">
+      <div class="cand-ordinal">03</div>
+      <div class="cand-name">Bere Puro</div>
+      <span class="cand-badge">Score 79/100 · Alternativa tradicional</span>
+      <div class="cand-desc">Máxima claridad semántica: su promesa está en el nombre. Ideal si el cliente prioriza credibilidad inmediata y comunicación directa sobre el atributo central.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>10/10</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>7/10</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Versatilidad</span><span>6.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div></div>
+    </div>
+
+    <div class="cand-card">
+      <div class="cand-ordinal">04</div>
+      <div class="cand-name">Aflu</div>
+      <span class="cand-badge">Score 76/100 · Alternativa expansiva</span>
+      <div class="cand-desc">El nombre con mayor proyección a futuro. Nace del concepto de afluente — crecer nutriendo a otros. Ideal si la visión de marca trasciende la distribución de agua.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>7.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>7/10</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Versatilidad</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+    </div>
+
+  </div>
+  <a class="scroll-hint" href="#s6">↓ continuar</a>
+</section>
+
+<!-- S6: MAPA COVER -->
+<section class="slide s-black" id="s6">
+  <div class="cover-supertag" style="color:var(--rose)">Documentación de soporte · Anexo</div>
+  <div class="mapa-hl">Mapa de<br><em>nombres</em></div>
+  <div class="mapa-sub">Profundizando en cada opción — significado, esencia, personalidad y beneficio clave de los 13 nombres analizados.</div>
+  <a class="scroll-hint" href="#s7">↓ continuar</a>
+</section>
+
+<!-- S7: MAPA FAMILIAR -->
+<section class="slide s-table" id="s7">
+  <div class="tbl-cat">Mapa de nombres · Origen familiar</div>
+  <div class="tbl-title">Ayell · Alve · Aielva <span class="tbl-count">07/09 · 3 nombres</span></div>
+  <table class="map-table full">
+    <thead><tr><th></th><th class="nc">Ayell</th><th class="nc">Alve</th><th class="nc">Aielva</th></tr></thead>
+    <tbody>
+      <tr><td class="rl">Significado</td><td>Nombre familiar, único y moderno de sonido suave y elegante.</td><td>Nace de álveo, el cauce natural por donde fluye el agua.</td><td>Raíz familiar con sonido distintivo, cálido y memorable.</td></tr>
+      <tr><td class="rl">Esencia</td><td>Distinción, identidad propia y simplicidad premium.</td><td>Origen, movimiento y crecimiento natural.</td><td>Cercanía, calidez y diferencial con historia familiar.</td></tr>
+      <tr><td class="rl">Personalidad</td><td>Minimalista, premium y fácil de recordar.</td><td>Natural, moderno, joven y profundo.</td><td>Cercano, cálido y con identidad propia.</td></tr>
+      <tr><td class="rl">Beneficio clave</td><td>Posiciona en el segmento premium. Fácil de pronunciar en cualquier mercado.</td><td>Corto, con significado real y fuerte identidad de marca.</td><td>Genera vínculo emocional. Su diferencial es el origen familiar.</td></tr>
+      <tr><td class="rl">Por qué elegirlo</td><td>Porque transmite exclusividad sin esfuerzo. Se instala en la memoria.</td><td>Porque comunica origen y flujo en su forma más pura.</td><td>Porque combina raíz familiar con carácter único e irrepetible.</td></tr>
+    </tbody>
+  </table>
+  <div class="esencia-bar">
+    <strong>Nuestra esencia</strong>
+    Agua que fluye con propósito. Movimiento, calidad y confianza para llegar más lejos, todos los días.
+    <div class="keywords"><span class="kw">Agua</span><span class="kw">Hielo</span><span class="kw">Pureza</span><span class="kw">Confianza</span><span class="kw">Flujo</span><span class="kw">Futuro</span></div>
+  </div>
+  <a class="scroll-hint" href="#s8">↓ continuar</a>
+</section>
+
+<!-- S8: MAPA ITALIANO (Bere Puro) -->
+<section class="slide s-table" id="s8">
+  <div class="tbl-cat">Mapa de nombres · Origen italiano</div>
+  <div class="tbl-title" style="font-size:19px">Azra · Arenza · Aqua Fonte · Botiglia · Bere Puro <span class="tbl-count">08/09 · 5 nombres</span></div>
+  <table class="map-table full" style="font-size:10.5px">
+    <thead><tr><th></th><th class="nc">Azra</th><th class="nc">Arenza</th><th class="nc">Aqua Fonte</th><th class="nc">Botiglia</th><th class="nc">Bere Puro</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="rl">Significado</td>
+        <td>Nombre corto y moderno de sonoridad poderosa.</td>
+        <td>Inspiración italiana. Transmite nivel y visión.</td>
+        <td>Fuente de agua pura. Origen natural y auténtico.</td>
+        <td>Botella en italiano. Vínculo directo con el producto.</td>
+        <td>"Beber puro" en italiano. Promesa de pureza absoluta en dos palabras.</td>
+      </tr>
+      <tr>
+        <td class="rl">Esencia</td>
+        <td>Energía, frescura y personalidad.</td>
+        <td>Confianza, nivel y visión empresarial.</td>
+        <td>Pureza, autenticidad y origen.</td>
+        <td>Concreción, producto y transparencia.</td>
+        <td>Claridad, tradición y credibilidad de origen italiano.</td>
+      </tr>
+      <tr>
+        <td class="rl">Personalidad</td>
+        <td>Impactante, audaz e innovador.</td>
+        <td>Elegante, sólida y premium.</td>
+        <td>Auténtica, pura y confiable.</td>
+        <td>Directa, honesta y funcional.</td>
+        <td>Robusta, confiable y sin ambigüedades.</td>
+      </tr>
+      <tr>
+        <td class="rl">Beneficio clave</td>
+        <td>Llama la atención. Marca con carácter propio.</td>
+        <td>Diferencia y posiciona en nivel superior.</td>
+        <td>Comunica pureza sin explicación.</td>
+        <td>Sin ambigüedad. El nombre explica el producto.</td>
+        <td>Máxima claridad en el punto de venta. El nombre es la promesa.</td>
+      </tr>
+      <tr>
+        <td class="rl">Por qué elegirlo</td>
+        <td>Porque rompe moldes y deja huella.</td>
+        <td>Porque transmite nivel, confianza y ambición.</td>
+        <td>Porque su origen natural es su mayor argumento.</td>
+        <td>Porque convierte el envase en identidad de marca.</td>
+        <td>Porque comunica el atributo central del producto desde el primer contacto, sin respaldo adicional.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="esencia-bar">
+    <strong>Nuestra esencia</strong>
+    Agua que fluye con propósito. Movimiento, calidad y confianza para llegar más lejos, todos los días.
+    <div class="keywords"><span class="kw">Agua</span><span class="kw">Hielo</span><span class="kw">Pureza</span><span class="kw">Confianza</span><span class="kw">Flujo</span><span class="kw">Futuro</span></div>
+  </div>
+  <a class="scroll-hint" href="#s9">↓ continuar</a>
+</section>
+
+<!-- S9: MAPA PRODUCTO -->
+<section class="slide s-table" id="s9">
+  <div class="tbl-cat">Mapa de nombres · Asociado al producto</div>
+  <div class="tbl-title">Fontia · Acequia · Aflu · Luvia · Zano <span class="tbl-count">09/09 · 5 nombres</span></div>
+  <table class="map-table full" style="font-size:10.5px">
+    <thead><tr><th></th><th class="nc">Fontia</th><th class="nc">Acequia</th><th class="nc">Aflu</th><th class="nc">Luvia</th><th class="nc">Zano</th></tr></thead>
+    <tbody>
+      <tr><td class="rl">Significado</td><td>Derivado de fuente. Claridad, origen y frescura natural.</td><td>Canal que lleva el agua donde hace falta.</td><td>Nace de afluente, curso de agua que alimenta y hace crecer.</td><td>Evoca lluvia. Poético, natural y profundamente evocador.</td><td>Nombre de creación, corto e impactante. Sin referencia directa.</td></tr>
+      <tr><td class="rl">Esencia</td><td>Frescura, flujo y origen natural.</td><td>Distribución, servicio, trabajo y legado.</td><td>Abastecimiento, movimiento y expansión.</td><td>Naturaleza, emoción y fluidez.</td><td>Modernidad, impacto y versatilidad.</td></tr>
+      <tr><td class="rl">Personalidad</td><td>Limpia, fresca y accesible.</td><td>Tradicional, confiable y con propósito claro.</td><td>Dinámica, joven, cercana y evolutiva.</td><td>Poética, femenina y sensible.</td><td>Moderno, ágil y sin ataduras.</td></tr>
+      <tr><td class="rl">Beneficio clave</td><td>Simple, fluido y fácil de pronunciar.</td><td>Conecta con la historia y el trabajo real detrás del producto.</td><td>Representa crecimiento y proyección a futuro.</td><td>Evocador y emocional. Destaca en mercados sensibles.</td><td>Corto, moderno y versátil. Escala con la marca.</td></tr>
+      <tr><td class="rl">Por qué elegirlo</td><td>Porque su nombre describe el origen del producto.</td><td>Porque refleja el propósito de llevar valor donde importa.</td><td>Porque simboliza aporte, crecimiento y expansión continua.</td><td>Porque genera una imagen mental inmediata y positiva.</td><td>Porque es adaptable, global y fácil de registrar.</td></tr>
+    </tbody>
+  </table>
+  <div class="esencia-bar">
+    <strong>Nuestra esencia</strong>
+    Agua que fluye con propósito. Movimiento, calidad y confianza para llegar más lejos, todos los días.
+    <div class="keywords"><span class="kw">Agua</span><span class="kw">Hielo</span><span class="kw">Pureza</span><span class="kw">Confianza</span><span class="kw">Flujo</span><span class="kw">Futuro</span></div>
+  </div>
+  <a class="scroll-hint" href="#s10">↓ continuar</a>
+</section>
+
+<!-- S10: ANÁLISIS DIMENSIONAL — FONTIA -->
+<section class="slide s-dim" id="s10">
+  <div class="dim-supertag">Tres dimensiones de análisis · Candidato 01</div>
+  <div class="dim-name">Fontia <em>·</em> Recomendación principal</div>
+  <div class="dim-tagline">Del italiano fonte — fuente, manantial. La promesa de origen en una sola palabra.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Fontia</div>
+    <div class="dim-preview-sl">Dall'origine alla tua tavola</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card">
+      <div class="dim-card-cat">Semiótica</div>
+      <div class="dim-card-body">Del italiano <em>fonte</em> — fuente, manantial. Signo que apunta directamente al origen del agua. La terminación -ia añade abstracción que eleva el concepto de genérico a nombre propio. No describe el producto: describe su origen, que es la promesa de marca más poderosa en la categoría.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Psicología del consumidor</div>
+      <div class="dim-card-body">Las raíces italiano-latinas activan esquemas mentales de calidad, tradición y refinamiento. La F inicial proyecta firmeza. La o central evoca apertura y calidez. Genera confianza en el target familiar y credibilidad institucional en el corporativo simultáneamente.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Neurociencia</div>
+      <div class="dim-card-body">Fonética de consonantes continuas (F, N) y vocales abiertas — baja carga cognitiva. Estructura de 3 sílabas: el cerebro procesa y retiene palabras en ese rango con un 40% más de eficiencia. Activa el <em>fluency effect</em>: cuando algo es fácil de procesar, se percibe como más verdadero y confiable.</div>
+    </div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">9.1</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Memoria &amp; retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">10</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Legibilidad vehicular</div></div>
+  </div>
+  <div class="dim-insight">
+    <div class="dim-insight-cat">Insight clave</div>
+    <div class="dim-insight-body">Fontia activa lo que la neurociencia llama <em>fluency effect</em>: cuando un nombre es fácil de procesar, el cerebro lo evalúa como más verdadero y confiable. La facilidad de pronunciación reduce la fricción cognitiva y aumenta la intención de compra en el punto de contacto. Es el nombre más completo del proceso.</div>
+  </div>
+  <div class="dim-tags">
+    <span class="dim-tag">Bajo esfuerzo cognitivo</span>
+    <span class="dim-tag">Alta confianza proyectada</span>
+    <span class="dim-tag">Origen italiano</span>
+    <span class="dim-tag">Paraguas multiproducto</span>
+    <span class="dim-tag">Sin ruido semántico</span>
+    <span class="dim-tag">Disponible en Argentina</span>
+  </div>
+  <a class="scroll-hint" style="color:rgba(25,49,73,0.25)" href="#s11">↓ continuar</a>
+</section>
+
+<!-- S11: ANÁLISIS DIMENSIONAL — AYELL -->
+<section class="slide s-dim" id="s11">
+  <div class="dim-supertag">Tres dimensiones de análisis · Candidato 02</div>
+  <div class="dim-name">Ayell <em>·</em> Alternativa moderna</div>
+  <div class="dim-tagline">Nombre arbitrario de alta eficiencia — construye su propio significado sin límites.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Aye<em>ll</em></div>
+    <div class="dim-preview-sl">Acqua di qualità superiore</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card">
+      <div class="dim-card-cat">Semiótica</div>
+      <div class="dim-card-body">Signo arbitrario — no tiene significado lexical propio. Esto es una ventaja estratégica: la marca construye su propio significado sin ataduras previas. Contiene el código sonoro del apellido fundador sin reproducirlo literalmente. Es un signo en blanco que se llena de valor con el tiempo.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Psicología del consumidor</div>
+      <div class="dim-card-body">La A inicial activa apertura y comienzo. La doble LL final genera equilibrio visual — el cerebro percibe simetría como estabilidad y confianza. Su brevedad proyecta seguridad y modernidad. Para el target corporativo conecta con marcas globales de perfil tecnológico y premium.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Neurociencia</div>
+      <div class="dim-card-body">Nombre inventado con fonética familiar — la combinación más eficiente para branding según estudios de neuromarketing (Alter &amp; Oppenheimer, 2006). El cerebro no busca significado: lo construye, generando mayor adhesión emocional a largo plazo. Google, Apple y Nike operan bajo esta misma arquitectura.</div>
+    </div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">8.2</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Memoria &amp; retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">6</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.5</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9.5</div><div class="dim-score-lbl">Legibilidad vehicular</div></div>
+  </div>
+  <div class="dim-insight">
+    <div class="dim-insight-cat">Insight clave</div>
+    <div class="dim-insight-body">Los nombres arbitrarios tienen mayor potencial de brand equity a largo plazo porque no están limitados por el significado original. Ayell tiene la misma arquitectura de construcción de marca desde cero que las marcas globales más valiosas del mundo. Requiere mayor inversión inicial en construcción de significado, pero el retorno es ilimitado.</div>
+  </div>
+  <div class="dim-tags">
+    <span class="dim-tag">Nombre arbitrario</span>
+    <span class="dim-tag">Máxima legibilidad vehicular</span>
+    <span class="dim-tag">Sin límite semántico</span>
+    <span class="dim-tag">Guiño familiar sutil</span>
+    <span class="dim-tag">Brand equity ilimitado</span>
+  </div>
+  <a class="scroll-hint" style="color:rgba(25,49,73,0.25)" href="#s12">↓ continuar</a>
+</section>
+
+<!-- S12: ANÁLISIS DIMENSIONAL — BERE PURO -->
+<section class="slide s-dim" id="s12">
+  <div class="dim-supertag">Tres dimensiones de análisis · Candidato 03</div>
+  <div class="dim-name">Bere Puro <em>·</em> Alternativa tradicional</div>
+  <div class="dim-tagline">"Beber puro" en italiano. La promesa explícita más directa de la categoría.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Bere Puro</div>
+    <div class="dim-preview-sl">L'acqua che parla da sola</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card">
+      <div class="dim-card-cat">Semiótica</div>
+      <div class="dim-card-body">Nombre descriptivo de máxima densidad semántica: comunica acción (beber) y atributo (puro) en dos palabras. La raíz italiana le otorga sofisticación y diferencial de categoría. No deja espacio para la ambigüedad: el nombre es la promesa, y la promesa es el negocio.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Psicología del consumidor</div>
+      <div class="dim-card-body">Activa directamente el atributo de pureza — el valor más buscado en agua. La combinación de consonantes suaves (B, R, P) y vocales abiertas genera una sonoridad limpia y confiable. En el target familiar produce reconocimiento inmediato; en el corporativo proyecta seriedad y transparencia.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Neurociencia</div>
+      <div class="dim-card-body">Al describir explícitamente el beneficio, reduce el esfuerzo cognitivo de interpretación. Sin embargo, los nombres descriptivos tienen menor diferenciación en entornos saturados. Su fortaleza es la velocidad de comprensión; su límite, la expansión a nuevas categorías sin tensión semántica.</div>
+    </div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">7.9</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8</div><div class="dim-score-lbl">Memoria &amp; retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">10</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">6.5</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8</div><div class="dim-score-lbl">Legibilidad vehicular</div></div>
+  </div>
+  <div class="dim-insight">
+    <div class="dim-insight-cat">Insight clave</div>
+    <div class="dim-insight-body">Bere Puro es el nombre que trabaja más duro en el punto de venta: no necesita diseño ni contexto para comunicar. Es la opción ideal si la estrategia prioriza la claridad sobre la construcción de marca a largo plazo. Su límite semántico es también su mayor fortaleza táctica en mercados donde el producto se vende por atributo.</div>
+  </div>
+  <div class="dim-tags">
+    <span class="dim-tag">Promesa explícita</span>
+    <span class="dim-tag">Máxima claridad semántica</span>
+    <span class="dim-tag">Origen italiano</span>
+    <span class="dim-tag">Credibilidad inmediata</span>
+    <span class="dim-tag">Funciona sin contexto</span>
+  </div>
+  <a class="scroll-hint" style="color:rgba(25,49,73,0.25)" href="#s13">↓ continuar</a>
+</section>
+
+<!-- S13: ANÁLISIS DIMENSIONAL — AFLU -->
+<section class="slide s-dim" id="s13">
+  <div class="dim-supertag">Tres dimensiones de análisis · Candidato 04</div>
+  <div class="dim-name">Aflu <em>·</em> Alternativa expansiva</div>
+  <div class="dim-tagline">Del afluente — el agua que alimenta y hace crecer. El nombre que crece con la marca.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Aflu</div>
+    <div class="dim-preview-sl">Fluimos para que crezcas</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card">
+      <div class="dim-card-cat">Semiótica</div>
+      <div class="dim-card-body">Derivado de <em>afluente</em>: curso de agua que alimenta y hace crecer a otro. Metáfora de expansión y servicio. El nombre no habla del producto sino del propósito — abastecer, nutrir, hacer crecer. Esa abstracción lo posiciona más allá de la distribución de agua: es una marca de movimiento y crecimiento.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Psicología del consumidor</div>
+      <div class="dim-card-body">Proyecta dinamismo y modernidad sin perder la referencia al agua. La A inicial y la terminación abierta en U generan una sensación de fluidez y apertura. Para el target joven y corporativo-tecnológico conecta con valores de agilidad y escalabilidad. Es el nombre con mayor potencial de extensión de línea.</div>
+    </div>
+    <div class="dim-card">
+      <div class="dim-card-cat">Neurociencia</div>
+      <div class="dim-card-body">Nombre de 2 sílabas — el rango de mayor retención inmediata según estudios de memoria semántica. Su brevedad reduce la carga cognitiva al mínimo. La referencia implícita al agua sin nombrarla activa el procesamiento inferencial, que genera mayor adhesión que la descripción directa.</div>
+    </div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">7.6</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Memoria &amp; retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">7</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9.5</div><div class="dim-score-lbl">Legibilidad vehicular</div></div>
+  </div>
+  <div class="dim-insight">
+    <div class="dim-insight-cat">Insight clave</div>
+    <div class="dim-insight-body">Aflu es el nombre con mayor proyección a futuro: su metáfora de crecimiento lo hace escalable a cualquier extensión del negocio — agua, hielo, dispenser, logística. Si la visión de la empresa trasciende la distribución de agua en el mediano plazo, Aflu es el nombre que mejor soporta esa evolución sin tensión de marca.</div>
+  </div>
+  <div class="dim-tags">
+    <span class="dim-tag">2 sílabas — alta retención</span>
+    <span class="dim-tag">Metáfora de crecimiento</span>
+    <span class="dim-tag">Máxima escalabilidad</span>
+    <span class="dim-tag">Sin límite de categoría</span>
+    <span class="dim-tag">Moderno y ágil</span>
+  </div>
+  <a class="scroll-hint" style="color:rgba(25,49,73,0.25)" href="#s14">↓ continuar</a>
+</section>
+
+<!-- S14: INSIGHT FINAL -->
+<section class="slide s-insight" id="s14">
+  <div class="tag center">Canning · GBA Sur · Insight final</div>
+  <div class="insight-hl">Cada nombre<br>es una <em>pieza.</em></div>
+  <div class="insight-sub">El nombre correcto no se elige — se decodifica a partir de la identidad que querés construir. Nuestros elegidos cubren los cuatro perfiles estratégicos clave: premium, legado, origen y expansión.</div>
+  <div class="next-step">Próximo paso: validación final y activación de la identidad visual sobre el nombre seleccionado.</div>
+  <div class="agency-sig">sombrero <em>rosa</em> — agencia boutique de marketing digital</div>
+</section>
+
+<script>
+const ids=['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14'];
+const dotsEl=document.getElementById('dots');
+ids.forEach((id,i)=>{
+  const d=document.createElement('button');
+  d.className='nav-dot'+(i===0?' active':'');
+  d.title='Slide '+(i+1);
+  d.onclick=()=>document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  dotsEl.appendChild(d);
+});
+const dots=document.querySelectorAll('.nav-dot');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i=ids.indexOf(e.target.id);
+      dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+    }
+  });
+},{threshold:0.5});
+ids.forEach(id=>obs.observe(document.getElementById(id)));
+</script>
+</body>
+</html>

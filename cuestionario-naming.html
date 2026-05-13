@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario de Naming — Sombrero Rosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --navy:#0e1f30;
+  --navy2:#193149;
+  --navy3:#1e3a54;
+  --cream:#f2f2f0;
+  --rose:#D5848E;
+  --rose2:#E39CAE;
+  --gold:#c9a84c;
+  --gold2:#e8c96a;
+  --text-muted:rgba(242,242,240,0.55);
+  --text-dim:rgba(242,242,240,0.32);
+  --sel-bg:rgba(213,132,142,0.1);
+  --sel-bdr:rgba(213,132,142,0.5);
+  --sel-txt:#a83848;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:#0a0a0a;margin:0;font-size:15px;line-height:1.6}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(14,31,48,0.97);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:14px 48px;border-bottom:1px solid rgba(201,168,76,0.2)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:auto}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-text .w1{font-size:13px;font-weight:300;letter-spacing:0.04em;color:var(--cream)}
+.nav-logo-text .w2{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--rose)}
+.nav-right{font-size:10px;font-weight:500;letter-spacing:0.18em;color:var(--text-muted);text-transform:uppercase}
+
+/* ── PROGRESS ── */
+.progress-wrap{position:sticky;top:62px;z-index:100;background:#fff;border-bottom:1px solid rgba(10,10,10,0.08);padding:10px 48px;box-shadow:0 1px 12px rgba(0,0,0,0.05)}
+.progress-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.progress-label{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(10,10,10,0.4);white-space:nowrap}
+.progress-bar{flex:1;height:3px;background:rgba(10,10,10,0.08);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:2px;transition:width 0.4s ease;width:0%}
+.progress-pct{font-size:10px;font-weight:600;color:rgba(10,10,10,0.4);min-width:32px;text-align:right}
+
+/* ── COVER ── */
+.cover{background:radial-gradient(ellipse at 30% 40%, #1e3550 0%, var(--navy) 65%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 32px 80px;position:relative;overflow:hidden;text-align:center}
+.cover-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.035)}
+.cover-ring:nth-child(1){width:440px;height:440px;bottom:-120px;left:50%;transform:translateX(-50%)}
+.cover-ring:nth-child(2){width:680px;height:680px;bottom:-220px;left:50%;transform:translateX(-50%)}
+.cover-ring:nth-child(3){width:920px;height:920px;bottom:-320px;left:50%;transform:translateX(-50%)}
+.cover-inner{position:relative;z-index:2;max-width:560px}
+
+.cover-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:52px;animation:fadeUp 0.8s ease both}
+.cover-logo img{height:40px;width:auto}
+.cover-logo-text{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.cover-logo-text .w1{font-size:13px;font-weight:300;letter-spacing:0.04em;color:var(--text-muted)}
+.cover-logo-text .w2{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--rose)}
+
+.cover-tag{font-size:10px;font-weight:500;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;animation:fadeUp 0.8s ease 0.1s both}
+.cover-title{font-size:clamp(38px,8vw,72px);font-weight:800;color:var(--cream);line-height:1;letter-spacing:-0.025em;margin-bottom:4px;animation:fadeUp 0.8s ease 0.2s both}
+.cover-title em{font-style:italic;font-weight:300;color:var(--rose2)}
+.cover-rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:24px 0;color:var(--gold);font-size:10px;animation:fadeUp 0.8s ease 0.3s both}
+.cover-rule span{width:60px;height:1px;background:rgba(201,168,76,0.3)}
+.cover-sub{font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.75;margin-bottom:44px;animation:fadeUp 0.8s ease 0.4s both}
+
+.cover-meta{display:flex;justify-content:center;border-top:1px solid rgba(255,255,255,0.07);padding-top:28px;animation:fadeUp 0.8s ease 0.5s both}
+.meta-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 28px;border-right:1px solid rgba(255,255,255,0.07)}
+.meta-item:last-child{border-right:none}
+.meta-label{font-size:9px;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold)}
+.meta-value{font-size:11px;font-weight:400;color:var(--text-muted)}
+
+.cover-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp 0.8s ease 0.8s both}
+.scroll-txt{font-size:8px;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-dim)}
+.scroll-bar{width:1px;height:32px;background:linear-gradient(180deg,rgba(201,168,76,0.6),transparent);animation:scrollPulse 2s ease-in-out infinite}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* ── MAIN ── */
+.main{max-width:700px;margin:0 auto;padding:52px 32px 80px}
+
+/* ── SECTION ── */
+.section{margin-bottom:52px}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.section-num{font-size:9px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.section-title{font-size:22px;font-weight:800;color:#0a0a0a;letter-spacing:-0.01em;line-height:1.2}
+.section-title em{font-style:italic;font-weight:300;color:var(--rose)}
+.section-line{flex:1;height:1px;background:rgba(10,10,10,0.09)}
+
+/* ── Q BLOCK ── */
+.q-block{background:#fff;border:1px solid rgba(10,10,10,0.08);border-radius:12px;padding:22px;margin-bottom:10px;transition:border-color 0.25s,box-shadow 0.25s}
+.q-block.answered{border-color:rgba(213,132,142,0.35);box-shadow:0 0 0 3px rgba(213,132,142,0.06)}
+.q-num{font-size:9px;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:rgba(10,10,10,0.3);margin-bottom:6px}
+.q-text{font-size:15px;font-weight:700;color:#0a0a0a;margin-bottom:6px;line-height:1.4}
+.q-hint{font-size:12px;font-weight:400;color:rgba(10,10,10,0.42);margin-bottom:14px;line-height:1.5}
+
+/* ── OPCIONES PILL ── */
+.options{display:flex;flex-wrap:wrap;gap:7px}
+.opt{font-size:12px;font-weight:500;padding:8px 18px;border:1.5px solid rgba(10,10,10,0.1);border-radius:30px;cursor:pointer;color:rgba(10,10,10,0.5);background:var(--cream);transition:all 0.15s;user-select:none}
+.opt:hover{border-color:var(--rose2);color:#0a0a0a;background:#fff}
+.opt.selected{background:var(--sel-bg);border-color:var(--sel-bdr);color:var(--sel-txt)}
+
+/* ── OPCIONES NOMBRE ── */
+.name-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.name-opt{background:var(--cream);border:1.5px solid rgba(10,10,10,0.08);border-radius:12px;padding:18px 20px;cursor:pointer;transition:all 0.2s;user-select:none}
+.name-opt:hover{background:#fff;border-color:rgba(213,132,142,0.3);box-shadow:0 4px 16px rgba(213,132,142,0.08)}
+.name-opt.selected{background:var(--sel-bg);border-color:var(--sel-bdr);box-shadow:0 0 0 3px rgba(213,132,142,0.08)}
+.name-opt-title{font-size:26px;font-weight:800;letter-spacing:-0.015em;color:#0a0a0a;margin-bottom:6px;transition:color 0.2s}
+.name-opt.selected .name-opt-title{color:var(--sel-txt)}
+.name-opt-tag{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(10,10,10,0.35);background:rgba(10,10,10,0.05);padding:3px 10px;border-radius:20px}
+.name-opt.selected .name-opt-tag{color:var(--sel-txt);background:rgba(213,132,142,0.12)}
+
+/* ── TEXTAREA ── */
+textarea{width:100%;min-height:80px;font-size:13px;font-weight:400;font-family:'Poppins',sans-serif;resize:vertical;padding:12px 14px;border:1.5px solid rgba(10,10,10,0.1);border-radius:10px;background:var(--cream);color:#0a0a0a;box-sizing:border-box;transition:border-color 0.2s,background 0.2s;line-height:1.6}
+textarea:focus{outline:none;border-color:rgba(213,132,142,0.5);background:#fff}
+textarea::placeholder{color:rgba(10,10,10,0.28)}
+
+/* ── ESCALA ── */
+.scale-row{display:flex;align-items:center;gap:12px}
+.scale-lbl{font-size:10px;font-weight:500;color:rgba(10,10,10,0.4);min-width:80px;line-height:1.3}
+.scale-lbl.r{text-align:right}
+.scale-opts{display:flex;gap:6px;flex:1}
+.scale-opt{flex:1;text-align:center;padding:10px 4px;border:1.5px solid rgba(10,10,10,0.1);border-radius:10px;cursor:pointer;font-size:14px;font-weight:700;color:rgba(10,10,10,0.4);background:var(--cream);transition:all 0.15s}
+.scale-opt:hover{border-color:var(--rose2);color:#0a0a0a}
+.scale-opt.selected{background:var(--sel-bg);border-color:var(--sel-bdr);color:var(--sel-txt)}
+
+/* ── SUBMIT ── */
+.submit-section{background:radial-gradient(ellipse at 30% 40%, #1e3550 0%, var(--navy) 65%);border-radius:16px;padding:40px;position:relative;overflow:hidden;margin-top:48px}
+.submit-inner{position:relative;z-index:1}
+.submit-logo{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.submit-logo img{height:32px;width:auto}
+.submit-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.submit-logo-text .w1{font-size:12px;font-weight:300;letter-spacing:0.04em;color:var(--text-muted)}
+.submit-logo-text .w2{font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--rose)}
+.submit-tag{font-size:9px;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.submit-title{font-size:36px;font-weight:800;color:var(--cream);letter-spacing:-0.02em;margin-bottom:8px;line-height:1}
+.submit-title em{font-style:italic;font-weight:300;color:var(--rose2)}
+.submit-sub{font-size:13px;font-weight:300;color:var(--text-muted);margin-bottom:28px;line-height:1.7;max-width:420px}
+.submit-btn{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;border-radius:30px;border:none;background:var(--rose);color:#fff;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(213,132,142,0.3)}
+.submit-btn:hover{background:#c5607a;transform:translateY(-1px);box-shadow:0 6px 24px rgba(213,132,142,0.4)}
+.submit-btn.success{background:#2d9e7a;box-shadow:0 4px 20px rgba(45,158,122,0.3)}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);padding:22px 48px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.15)}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{height:26px;width:auto;opacity:0.5}
+.footer-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.footer-logo-text .w1{font-size:11px;font-weight:300;letter-spacing:0.04em;color:rgba(242,242,240,0.3)}
+.footer-logo-text .w2{font-size:11px;font-weight:600;letter-spacing:0.04em;color:rgba(213,132,142,0.4)}
+.footer-right{font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .nav{padding:12px 20px}
+  .nav-right{display:none}
+  .progress-wrap{top:58px;padding:10px 20px}
+  .cover{padding:80px 20px 72px}
+  .cover-meta{flex-direction:column;align-items:center;gap:16px}
+  .meta-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);padding:0 0 16px}
+  .meta-item:last-child{border-bottom:none;padding-bottom:0}
+  .main{padding:36px 16px 60px}
+  .section-title{font-size:18px}
+  .name-options{grid-template-columns:1fr}
+  .scale-lbl{min-width:58px;font-size:9px}
+  .submit-section{padding:28px 20px;border-radius:12px}
+  .submit-title{font-size:28px}
+  .footer{flex-direction:column;gap:10px;text-align:center;padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <span class="w1">sombrero</span>
+      <span class="w2">rosa</span>
+    </div>
+  </div>
+  <div class="nav-right">Cuestionario de naming</div>
+</nav>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Progreso</span>
+    <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+    <span class="progress-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ring"></div>
+  <div class="cover-ring"></div>
+  <div class="cover-ring"></div>
+  <div class="cover-inner">
+    <div class="cover-logo">
+      <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+      <div class="cover-logo-text">
+        <span class="w1">sombrero</span>
+        <span class="w2">rosa</span>
+      </div>
+    </div>
+    <div class="cover-tag">Agencia Sombrero Rosa · Segunda ronda</div>
+    <div class="cover-title">Cuestionario de<br><em>identidad</em></div>
+    <div class="cover-rule"><span></span>◆<span></span></div>
+    <div class="cover-sub">Sus respuestas son el punto de partida para construir el nombre perfecto. No hay respuestas correctas — solo las que mejor los representan.</div>
+    <div class="cover-meta">
+      <div class="meta-item">
+        <span class="meta-label">Tiempo</span>
+        <span class="meta-value">10 — 15 minutos</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Preguntas</span>
+        <span class="meta-value">18 preguntas</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Fase</span>
+        <span class="meta-value">Naming · Segunda ronda</span>
+      </div>
+    </div>
+  </div>
+  <div class="cover-scroll">
+    <span class="scroll-txt">continuar</span>
+    <div class="scroll-bar"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- 01 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Los <em>elegidos</em></span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q1">
+      <div class="q-num">Pregunta 1 de 18</div>
+      <div class="q-text">¿Cuál de los cuatro nombres les llamó más la atención, aunque no hayan quedado conformes?</div>
+      <div class="q-hint">Seleccionen uno.</div>
+      <div class="name-options" id="q1">
+        <div class="name-opt" onclick="selName(this,'q1','block-q1')">
+          <div class="name-opt-title">Fontia</div>
+          <span class="name-opt-tag">Minimalista · Natural</span>
+        </div>
+        <div class="name-opt" onclick="selName(this,'q1','block-q1')">
+          <div class="name-opt-title">Ayell</div>
+          <span class="name-opt-tag">Minimalista · Premium</span>
+        </div>
+        <div class="name-opt" onclick="selName(this,'q1','block-q1')">
+          <div class="name-opt-title">Bere Puro</div>
+          <span class="name-opt-tag">Tradicional · Robusto</span>
+        </div>
+        <div class="name-opt" onclick="selName(this,'q1','block-q1')">
+          <div class="name-opt-title">Aflu</div>
+          <span class="name-opt-tag">Ágil · Expansivo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q2">
+      <div class="q-num">Pregunta 2 de 18</div>
+      <div class="q-text">¿Qué sintieron que faltaba en esos nombres?</div>
+      <div class="q-hint">Pueden marcar más de una opción.</div>
+      <div class="options" id="q2">
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más conexión con la familia</div>
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más fuerza e impacto</div>
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más claridad sobre el rubro</div>
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más originalidad</div>
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más raíz italiana</div>
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más modernidad</div>
+        <div class="opt multi" onclick="multi(this,'block-q2')">Más cercanía al agua</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q3">
+      <div class="q-num">Pregunta 3 de 18</div>
+      <div class="q-text">¿Hubo algún sonido, letra o parte de algún nombre que sí les gustó?</div>
+      <div class="q-hint">Cualquier detalle nos orienta para la próxima propuesta.</div>
+      <textarea id="q3" placeholder="Ej: me gustó el sonido de la F en Fontia, o la terminación -uro en Bere Puro..." oninput="taUpdate('block-q3','q3')"></textarea>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Identidad y <em>valores</em></span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q4">
+      <div class="q-num">Pregunta 4 de 18</div>
+      <div class="q-text">Si tuvieran que describir su empresa en una sola palabra, ¿cuál sería?</div>
+      <div class="q-hint">La primera que les venga a la mente.</div>
+      <textarea id="q4" placeholder="Una sola palabra..." style="min-height:60px" oninput="taUpdate('block-q4','q4')"></textarea>
+    </div>
+
+    <div class="q-block" id="block-q5">
+      <div class="q-num">Pregunta 5 de 18</div>
+      <div class="q-text">¿Qué valores son los más importantes para la marca que quieren construir?</div>
+      <div class="q-hint">Marquen hasta tres opciones.</div>
+      <div class="options" id="q5">
+        <div class="opt multi" onclick="multi(this,'block-q5')">Pureza</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Confianza</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Familia</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Modernidad</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Origen italiano</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Calidad</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Innovación</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Eficiencia logística</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Naturaleza</div>
+        <div class="opt multi" onclick="multi(this,'block-q5')">Tradición</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q6">
+      <div class="q-num">Pregunta 6 de 18</div>
+      <div class="q-text">¿Qué tan importante es que el nombre refleje el origen italiano de la familia?</div>
+      <div class="q-hint" style="margin-bottom:12px">1 = nada importante · 5 = muy importante</div>
+      <div class="scale-row">
+        <span class="scale-lbl">Nada importante</span>
+        <div class="scale-opts" id="q6">
+          <div class="scale-opt" onclick="scl(this,'q6','block-q6')">1</div>
+          <div class="scale-opt" onclick="scl(this,'q6','block-q6')">2</div>
+          <div class="scale-opt" onclick="scl(this,'q6','block-q6')">3</div>
+          <div class="scale-opt" onclick="scl(this,'q6','block-q6')">4</div>
+          <div class="scale-opt" onclick="scl(this,'q6','block-q6')">5</div>
+        </div>
+        <span class="scale-lbl r">Muy importante</span>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q7">
+      <div class="q-num">Pregunta 7 de 18</div>
+      <div class="q-text">¿Quieren que el nombre haga referencia directa al agua, o prefieren algo más abstracto?</div>
+      <div class="options" id="q7">
+        <div class="opt" onclick="sel(this,'q7','block-q7')">Referencia directa al agua</div>
+        <div class="opt" onclick="sel(this,'q7','block-q7')">Algo abstracto y propio</div>
+        <div class="opt" onclick="sel(this,'q7','block-q7')">Un punto intermedio</div>
+        <div class="opt" onclick="sel(this,'q7','block-q7')">Sin preferencia</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Personalidad de <em>marca</em></span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q8">
+      <div class="q-num">Pregunta 8 de 18</div>
+      <div class="q-text">Si su marca fuera una persona, ¿cómo la describirían?</div>
+      <div class="q-hint">Pueden marcar más de una opción.</div>
+      <div class="options" id="q8">
+        <div class="opt multi" onclick="multi(this,'block-q8')">Seria y profesional</div>
+        <div class="opt multi" onclick="multi(this,'block-q8')">Cercana y cálida</div>
+        <div class="opt multi" onclick="multi(this,'block-q8')">Joven y dinámica</div>
+        <div class="opt multi" onclick="multi(this,'block-q8')">Sofisticada y premium</div>
+        <div class="opt multi" onclick="multi(this,'block-q8')">Confiable y estable</div>
+        <div class="opt multi" onclick="multi(this,'block-q8')">Innovadora y diferente</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q9">
+      <div class="q-num">Pregunta 9 de 18</div>
+      <div class="q-text">¿Con cuál de estos perfiles de marca sienten más afinidad?</div>
+      <div class="q-hint">Solo para entender el estilo que buscan.</div>
+      <div class="options" id="q9">
+        <div class="opt" onclick="sel(this,'q9','block-q9')">Acqua Panna — elegante, italiana, premium</div>
+        <div class="opt" onclick="sel(this,'q9','block-q9')">Villavicencio — natural, argentina, cercana</div>
+        <div class="opt" onclick="sel(this,'q9','block-q9')">Evian — internacional, pura, aspiracional</div>
+        <div class="opt" onclick="sel(this,'q9','block-q9')">San Pellegrino — italiana, sofisticada, gastronómica</div>
+        <div class="opt" onclick="sel(this,'q9','block-q9')">Ninguna — queremos algo diferente</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q10">
+      <div class="q-num">Pregunta 10 de 18</div>
+      <div class="q-text">¿Qué emociones quieren que sienta alguien cuando escucha el nombre por primera vez?</div>
+      <div class="options" id="q10">
+        <div class="opt multi" onclick="multi(this,'block-q10')">Confianza</div>
+        <div class="opt multi" onclick="multi(this,'block-q10')">Curiosidad</div>
+        <div class="opt multi" onclick="multi(this,'block-q10')">Admiración</div>
+        <div class="opt multi" onclick="multi(this,'block-q10')">Cercanía</div>
+        <div class="opt multi" onclick="multi(this,'block-q10')">Frescura</div>
+        <div class="opt multi" onclick="multi(this,'block-q10')">Elegancia</div>
+        <div class="opt multi" onclick="multi(this,'block-q10')">Seguridad</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Preferencias <em>fonéticas</em></span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q11">
+      <div class="q-num">Pregunta 11 de 18</div>
+      <div class="q-text">¿Prefieren que el nombre empiece con vocal o con consonante?</div>
+      <div class="options" id="q11">
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Vocal — A, E, I, O</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Consonante fuerte — F, V, B</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Consonante suave — L, M, N</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Sin preferencia</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q12">
+      <div class="q-num">Pregunta 12 de 18</div>
+      <div class="q-text">¿Prefieren una sola palabra o dos palabras combinadas?</div>
+      <div class="q-hint">Ej: "Fontia" (una) vs "Bere Puro" (dos)</div>
+      <div class="options" id="q12">
+        <div class="opt" onclick="sel(this,'q12','block-q12')">Una sola palabra</div>
+        <div class="opt" onclick="sel(this,'q12','block-q12')">Dos palabras</div>
+        <div class="opt" onclick="sel(this,'q12','block-q12')">Indiferente</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q13">
+      <div class="q-num">Pregunta 13 de 18</div>
+      <div class="q-text">¿Hay algún sonido o combinación que definitivamente NO quieren en el nombre?</div>
+      <textarea id="q13" placeholder="Ej: nada que suene a fármaco, nada con X, nada con doble consonante..." oninput="taUpdate('block-q13','q13')"></textarea>
+    </div>
+
+    <div class="q-block" id="block-q14">
+      <div class="q-num">Pregunta 14 de 18</div>
+      <div class="q-text">¿En qué territorio cultural prefieren que se inspire el nombre?</div>
+      <div class="q-hint">Pueden marcar más de uno.</div>
+      <div class="options" id="q14">
+        <div class="opt multi" onclick="multi(this,'block-q14')">Italiano</div>
+        <div class="opt multi" onclick="multi(this,'block-q14')">Latín clásico</div>
+        <div class="opt multi" onclick="multi(this,'block-q14')">Español neutro</div>
+        <div class="opt multi" onclick="multi(this,'block-q14')">Abstracto / inventado</div>
+        <div class="opt multi" onclick="multi(this,'block-q14')">Geográfico italiano</div>
+        <div class="opt multi" onclick="multi(this,'block-q14')">Sin preferencia</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Visión a <em>futuro</em></span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q15">
+      <div class="q-num">Pregunta 15 de 18</div>
+      <div class="q-text">¿Cuál de sus productos creen que va a ser el más importante en 5 años?</div>
+      <div class="options" id="q15">
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Agua</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Hielo</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Helados</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Dispenser y accesorios</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Todos por igual</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q16">
+      <div class="q-num">Pregunta 16 de 18</div>
+      <div class="q-text">¿Tienen pensado expandirse fuera de Zona Sur GBA en el futuro?</div>
+      <div class="options" id="q16">
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Sí — crecimiento regional</div>
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Sí — crecimiento nacional</div>
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Por ahora foco en Zona Sur</div>
+        <div class="opt" onclick="sel(this,'q16','block-q16')">No lo tenemos definido</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q17">
+      <div class="q-num">Pregunta 17 de 18</div>
+      <div class="q-text">¿Tienen algún nombre o concepto propio que quieran que exploremos?</div>
+      <div class="q-hint">Cualquier idea suelta — no importa si está poco desarrollada.</div>
+      <textarea id="q17" placeholder="Cualquier palabra, nombre o concepto que les haya rondado la cabeza..." oninput="taUpdate('block-q17','q17')"></textarea>
+    </div>
+  </div>
+
+  <!-- 06 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Pregunta <em>libre</em></span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q18">
+      <div class="q-num">Pregunta 18 de 18</div>
+      <div class="q-text">¿Hay algo más que quieran que sepamos para construir el nombre perfecto?</div>
+      <div class="q-hint">Una historia, una restricción, una aspiración — cualquier detalle es bienvenido.</div>
+      <textarea id="q18" placeholder="Espacio libre para todo lo que quieran compartir..." style="min-height:110px" oninput="taUpdate('block-q18','q18')"></textarea>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-section">
+    <div class="submit-inner">
+      <div class="submit-logo">
+        <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+        <div class="submit-logo-text">
+          <span class="w1">sombrero</span>
+          <span class="w2">rosa</span>
+        </div>
+      </div>
+      <div class="submit-tag">Segunda ronda · Naming &amp; Estrategia</div>
+      <div class="submit-title">¿Todo <em>listo?</em></div>
+      <div class="submit-sub">Cuando terminen, copien el resumen y envíennoslo por WhatsApp o email. Con eso en mano, arrancamos con la nueva propuesta.</div>
+      <button class="submit-btn" id="copyBtn" onclick="copyAll()">Copiar respuestas para enviar ↗</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">
+    <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+    <div class="footer-logo-text">
+      <span class="w1">sombrero</span>
+      <span class="w2">rosa</span>
+    </div>
+  </div>
+  <div class="footer-right">Naming &amp; Branding · 2025</div>
+</div>
+
+<script>
+const TOTAL=18;
+let answered=new Set();
+
+function updateProgress(){
+  const pct=Math.round((answered.size/TOTAL)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=pct+'%';
+}
+
+function markAnswered(blockId,key){
+  answered.add(key);
+  document.getElementById(blockId).classList.add('answered');
+  updateProgress();
+}
+
+function selName(el,groupId,blockId){
+  document.querySelectorAll('#'+groupId+' .name-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  markAnswered(blockId,groupId);
+}
+
+function sel(el,groupId,blockId){
+  document.querySelectorAll('#'+groupId+' .opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  markAnswered(blockId,groupId);
+}
+
+function multi(el,blockId){
+  el.classList.toggle('selected');
+  const groupId=el.closest('.options').id;
+  if(el.closest('.options').querySelector('.selected')){
+    markAnswered(blockId,groupId);
+  } else {
+    answered.delete(groupId);
+    document.getElementById(blockId).classList.remove('answered');
+    updateProgress();
+  }
+}
+
+function scl(el,groupId,blockId){
+  document.querySelectorAll('#'+groupId+' .scale-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  markAnswered(blockId,groupId);
+}
+
+function taUpdate(blockId,taId){
+  const ta=document.getElementById(taId);
+  if(!ta)return;
+  if(ta.value.trim().length>0){
+    markAnswered(blockId,taId);
+  } else {
+    answered.delete(taId);
+    document.getElementById(blockId).classList.remove('answered');
+    updateProgress();
+  }
+}
+
+function getNameSel(groupId){
+  const el=document.querySelector('#'+groupId+' .name-opt.selected .name-opt-title');
+  return el?el.textContent.trim():'—';
+}
+
+function getSel(groupId){
+  const items=[];
+  document.querySelectorAll('#'+groupId+' .selected').forEach(el=>{
+    const t=el.querySelector('.name-opt-title');
+    items.push(t?t.textContent.trim():el.textContent.trim());
+  });
+  return items.length?items.join(' · '):'—';
+}
+
+function getScale(groupId){
+  const el=document.querySelector('#'+groupId+' .selected');
+  return el?el.textContent.trim()+'/5':'—';
+}
+
+function getTA(id){
+  const el=document.getElementById(id);
+  return el&&el.value.trim()?el.value.trim():'—';
+}
+
+function copyAll(){
+  const lines=[
+    '╔════════════════════════════════════════════╗',
+    '  CUESTIONARIO DE NAMING · SOMBRERO ROSA',
+    '  Segunda Ronda · Distribuidora de Agua · Zona Sur GBA',
+    '╚════════════════════════════════════════════╝',
+    '',
+    '── 01 · LOS ELEGIDOS ─────────────────────────',
+    '1. Nombre que más llamó la atención:',
+    '   '+getNameSel('q1'),
+    '',
+    '2. Qué faltaba en los nombres:',
+    '   '+getSel('q2'),
+    '',
+    '3. Sonidos o letras que sí gustaron:',
+    '   '+getTA('q3'),
+    '',
+    '── 02 · IDENTIDAD Y VALORES ──────────────────',
+    '4. Palabra que define la empresa:',
+    '   '+getTA('q4'),
+    '',
+    '5. Valores más importantes:',
+    '   '+getSel('q5'),
+    '',
+    '6. Importancia del origen italiano (1-5):',
+    '   '+getScale('q6'),
+    '',
+    '7. Referencia al agua:',
+    '   '+getSel('q7'),
+    '',
+    '── 03 · PERSONALIDAD DE MARCA ────────────────',
+    '8. Personalidad:',
+    '   '+getSel('q8'),
+    '',
+    '9. Referencia estética:',
+    '   '+getSel('q9'),
+    '',
+    '10. Emociones buscadas:',
+    '    '+getSel('q10'),
+    '',
+    '── 04 · PREFERENCIAS FONÉTICAS ───────────────',
+    '11. Inicio del nombre:',
+    '    '+getSel('q11'),
+    '',
+    '12. Una o dos palabras:',
+    '    '+getSel('q12'),
+    '',
+    '13. Sonidos a evitar:',
+    '    '+getTA('q13'),
+    '',
+    '14. Territorio cultural:',
+    '    '+getSel('q14'),
+    '',
+    '── 05 · VISIÓN A FUTURO ──────────────────────',
+    '15. Producto más importante en 5 años:',
+    '    '+getSel('q15'),
+    '',
+    '16. Expansión geográfica:',
+    '    '+getSel('q16'),
+    '',
+    '17. Ideas propias:',
+    '    '+getTA('q17'),
+    '',
+    '── 06 · PREGUNTA LIBRE ───────────────────────',
+    '18. Información adicional:',
+    '    '+getTA('q18'),
+    '',
+    '─────────────────────────────────────────────',
+    'Completado: '+answered.size+'/'+TOTAL+' preguntas',
+    'Agencia Sombrero Rosa · Naming & Branding · 2025',
+  ];
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{
+    const btn=document.getElementById('copyBtn');
+    btn.textContent='✓ Copiado — pegalo en WhatsApp o email';
+    btn.classList.add('success');
+    setTimeout(()=>{
+      btn.textContent='Copiar respuestas para enviar ↗';
+      btn.classList.remove('success');
+    },4000);
+  }).catch(()=>{
+    alert('Para copiar: seleccioná todo el texto con Ctrl+A y copialo manualmente.');
+  });
+}
+</script>
+</body>
+</html>

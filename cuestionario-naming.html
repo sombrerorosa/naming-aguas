@@ -520,7 +520,7 @@ textarea::placeholder{color:rgba(10,10,10,0.28)}
       <div class="submit-tag">Segunda ronda · Naming &amp; Estrategia</div>
       <div class="submit-title">¿Todo <em>listo?</em></div>
       <div class="submit-sub">Cuando terminen, copien el resumen y envíennoslo por WhatsApp o email. Con eso en mano, arrancamos con la nueva propuesta.</div>
-      <button class="submit-btn" id="copyBtn" onclick="copyAll()">Copiar respuestas para enviar ↗</button>
+      <button class="submit-btn" id="copyBtn" onclick="sendWA()">Enviar respuestas por WhatsApp ↗</button>
     </div>
   </div>
 
@@ -620,7 +620,7 @@ function getTA(id){
   return el&&el.value.trim()?el.value.trim():'—';
 }
 
-function copyAll(){
+function sendWA(){
   const lines=[
     '╔════════════════════════════════════════════╗',
     '  CUESTIONARIO DE NAMING · SOMBRERO ROSA',
@@ -691,17 +691,9 @@ function copyAll(){
     'Completado: '+answered.size+'/'+TOTAL+' preguntas',
     'Agencia Sombrero Rosa · Naming & Branding · 2025',
   ];
-  navigator.clipboard.writeText(lines.join('\n')).then(()=>{
-    const btn=document.getElementById('copyBtn');
-    btn.textContent='✓ Copiado — pegalo en WhatsApp o email';
-    btn.classList.add('success');
-    setTimeout(()=>{
-      btn.textContent='Copiar respuestas para enviar ↗';
-      btn.classList.remove('success');
-    },4000);
-  }).catch(()=>{
-    alert('Para copiar: seleccioná todo el texto con Ctrl+A y copialo manualmente.');
-  });
+  const msg = lines.join('\n');
+  const url = 'https://wa.me/5491136835264?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
 }
 </script>
 </body>

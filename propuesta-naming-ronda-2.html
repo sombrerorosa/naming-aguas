@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segunda Entrega — Propuesta de Naming · Sombrero Rosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0e1f30;--navy2:#193149;--navy3:#1e3a54;
+  --cream:#f2f2f0;--rose:#D5848E;--rose2:#E39CAE;
+  --gold:#c9a84c;--text-muted:rgba(242,242,240,0.55);--text-dim:rgba(242,242,240,0.32);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--navy);color:var(--cream);margin:0}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(14,31,48,0.97);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:14px 48px;border-bottom:1px solid rgba(201,168,76,0.2)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:auto}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-text .w1{font-size:13px;font-weight:300;letter-spacing:0.04em;color:var(--cream)}
+.nav-logo-text .w2{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--rose)}
+.nav-label{font-size:10px;font-weight:500;letter-spacing:0.18em;color:var(--text-muted);text-transform:uppercase}
+
+/* COVER */
+.cover{background:radial-gradient(ellipse at 30% 40%,#1e3550 0%,var(--navy) 65%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 80px 64px;position:relative;text-align:center}
+.cover-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.035)}
+.cover-ring:nth-child(1){width:440px;height:440px;bottom:-120px;left:50%;transform:translateX(-50%)}
+.cover-ring:nth-child(2){width:680px;height:680px;bottom:-220px;left:50%;transform:translateX(-50%)}
+.cover-ring:nth-child(3){width:920px;height:920px;bottom:-320px;left:50%;transform:translateX(-50%)}
+.cover-inner{position:relative;z-index:2;max-width:580px}
+.cover-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:48px}
+.cover-logo img{height:40px;width:auto}
+.cover-logo-text{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.cover-logo-text .w1{font-size:13px;font-weight:300;letter-spacing:0.04em;color:var(--text-muted)}
+.cover-logo-text .w2{font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--rose)}
+.cover-supertag{font-size:10px;font-weight:500;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.cover-title{font-size:80px;font-weight:800;color:var(--cream);line-height:1;letter-spacing:-0.025em;margin-bottom:4px}
+.cover-title em{font-style:italic;font-weight:300;color:var(--rose2)}
+.cover-rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:28px 0;color:var(--gold);font-size:10px}
+.cover-rule span{width:70px;height:1px;background:rgba(201,168,76,0.3)}
+.cover-sub{font-size:12px;font-weight:400;letter-spacing:0.1em;color:var(--text-muted);text-align:center;margin-bottom:60px;line-height:1.8}
+.cover-stats{display:flex;gap:80px;justify-content:center}
+.stat-label{font-size:9px;font-weight:600;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:7px;text-align:center}
+.stat-value{font-size:12px;font-weight:400;color:var(--cream);text-align:center}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:500;letter-spacing:0.22em;color:var(--text-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s}
+.scroll-hint:hover{color:var(--gold)}
+
+/* BRIEF STRIP */
+.brief-strip{background:#080f18;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.brief-inner{max-width:960px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:repeat(4,1fr)}
+.brief-item{padding:0 20px;border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;gap:3px}
+.brief-item:first-child{padding-left:0}
+.brief-item:last-child{border-right:none}
+.bi-label{font-size:8px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,168,76,0.55)}
+.bi-value{font-size:12px;font-weight:300;color:rgba(255,255,255,0.38);line-height:1.4}
+
+/* RONDA DIVIDER */
+.ronda-div{padding:16px 80px;display:flex;align-items:center;gap:16px}
+.ronda-num{font-size:9px;font-weight:700;letter-spacing:0.26em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+.ronda-line{flex:1;height:1px;background:rgba(255,255,255,0.08)}
+.ronda-tag{font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.18);white-space:nowrap}
+
+/* DIM SECTION — análisis por nombre */
+.s-dim{background:#f2f2f0;padding:72px 80px 56px;position:relative}
+.s-dim-dk{background:var(--navy2);padding:72px 80px 56px;position:relative}
+.dim-supertag{font-size:9px;font-weight:600;letter-spacing:0.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.dim-name{font-size:52px;font-weight:800;letter-spacing:-0.02em;line-height:1;margin-bottom:4px}
+.dim-name-lt{color:#193149}
+.dim-name-dk{color:var(--cream)}
+.dim-name em{font-style:italic;font-weight:300;color:var(--rose)}
+.dim-tagline{font-size:13px;font-weight:400;letter-spacing:0.01em;margin-bottom:28px}
+.dim-tagline-lt{color:#999}
+.dim-tagline-dk{color:var(--text-muted)}
+
+/* PREVIEW BLOCK */
+.dim-preview{width:100%;background:#193149;border-radius:14px;padding:36px 60px;text-align:center;margin-bottom:24px}
+.dim-preview-label{font-size:8.5px;font-weight:600;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.dim-preview-name{font-size:52px;font-weight:800;color:var(--cream);letter-spacing:-0.02em;line-height:1}
+.dim-preview-sl{font-size:11px;font-weight:300;font-style:italic;color:rgba(242,242,240,0.38);margin-top:8px;letter-spacing:0.08em}
+
+.dim-preview-lt{width:100%;background:#193149;border-radius:14px;padding:36px 60px;text-align:center;margin-bottom:24px}
+
+/* ANALYSIS CARDS */
+.dim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;margin-bottom:20px}
+.dim-card-lt{background:#fff;border:1px solid rgba(25,49,73,0.08);border-radius:12px;padding:22px 20px}
+.dim-card-dk{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px 20px}
+.dim-card-cat-lt{font-size:8.5px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.dim-card-cat-dk{font-size:8.5px;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.dim-card-body-lt{font-size:11.5px;font-weight:400;line-height:1.65;color:#555}
+.dim-card-body-dk{font-size:11.5px;font-weight:400;line-height:1.65;color:rgba(255,255,255,0.5)}
+
+/* SCORES */
+.dim-scores{display:flex;gap:10px;width:100%;margin-bottom:18px}
+.dim-score-box{flex:1;background:#193149;border-radius:10px;padding:14px 10px;text-align:center}
+.dim-score-box-lt{flex:1;background:rgba(25,49,73,0.07);border:1px solid rgba(25,49,73,0.1);border-radius:10px;padding:14px 10px;text-align:center}
+.dim-score-num{font-size:26px;font-weight:800;color:var(--cream);letter-spacing:-0.02em;line-height:1}
+.dim-score-num-lt{font-size:26px;font-weight:800;color:#193149;letter-spacing:-0.02em;line-height:1}
+.dim-score-lbl{font-size:8px;font-weight:500;letter-spacing:0.1em;color:rgba(242,242,240,0.38);text-transform:uppercase;margin-top:4px}
+.dim-score-lbl-lt{font-size:8px;font-weight:500;letter-spacing:0.1em;color:rgba(25,49,73,0.4);text-transform:uppercase;margin-top:4px}
+
+/* INSIGHT */
+.dim-insight-lt{background:#fff;border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:14px 20px;width:100%;margin-bottom:16px}
+.dim-insight-dk{background:rgba(213,132,142,0.06);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:14px 20px;width:100%;margin-bottom:16px}
+.dim-insight-cat{font-size:8.5px;font-weight:600;letter-spacing:0.2em;color:var(--rose);text-transform:uppercase;margin-bottom:5px}
+.dim-insight-body-lt{font-size:11.5px;font-weight:400;line-height:1.65;color:#444}
+.dim-insight-body-dk{font-size:11.5px;font-weight:400;line-height:1.65;color:rgba(255,255,255,0.5)}
+
+/* TAGS */
+.dim-tags{display:flex;flex-wrap:wrap;gap:8px;width:100%}
+.dim-tag-lt{font-size:9px;font-weight:600;letter-spacing:0.08em;color:#193149;background:rgba(25,49,73,0.07);border-radius:20px;padding:5px 13px;text-transform:uppercase}
+.dim-tag-dk{font-size:9px;font-weight:600;letter-spacing:0.08em;color:rgba(242,242,240,0.5);background:rgba(255,255,255,0.06);border-radius:20px;padding:5px 13px;text-transform:uppercase}
+
+/* COMPARATIVA */
+.s-comp{background:#0c1a26;padding:72px 80px 56px}
+.comp-title{font-size:52px;font-weight:800;color:var(--cream);letter-spacing:-0.02em;margin-bottom:8px;text-align:center}
+.comp-title em{font-style:italic;font-weight:300;color:var(--rose)}
+.comp-sub{font-size:13px;font-weight:400;color:var(--text-muted);text-align:center;max-width:600px;margin:0 auto 40px}
+.comp-ronda-label{font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,168,76,0.45);margin-bottom:14px}
+.comp-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.comp-grid-4b{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.cmp{border:1px solid rgba(242,242,240,0.08);border-radius:12px;padding:20px 16px;background:rgba(255,255,255,0.02)}
+.cmp.lead{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.04)}
+.cmp.lead::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.2));margin:-20px -16px 16px;border-radius:12px 12px 0 0}
+.cmp-ord{font-size:9px;font-weight:700;letter-spacing:0.2em;color:rgba(201,168,76,0.28);text-transform:uppercase;margin-bottom:6px}
+.cmp-name{font-size:22px;font-weight:700;color:var(--cream);margin-bottom:4px;letter-spacing:-0.015em}
+.cmp-badge{font-size:8px;font-weight:600;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:block}
+.cmp-desc{font-size:10px;font-weight:400;line-height:1.6;color:var(--text-muted);margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(242,242,240,0.06)}
+.bar-row{margin-bottom:7px}
+.bar-lbl{display:flex;justify-content:space-between;font-size:9px;font-weight:400;color:var(--text-muted);margin-bottom:3px}
+.bar-track{height:3px;background:rgba(242,242,240,0.07);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;background:var(--rose)}
+
+/* CIERRE */
+.s-close{background:var(--navy3);padding:72px 80px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.close-hl{font-size:56px;font-weight:700;color:var(--cream);letter-spacing:-0.02em;line-height:1.05;max-width:700px;margin-bottom:20px}
+.close-hl em{font-style:italic;font-weight:300;color:var(--rose)}
+.close-sub{font-size:14px;font-weight:400;line-height:1.75;color:var(--text-muted);max-width:560px;margin-bottom:32px}
+.close-box{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:18px 28px;font-size:12px;font-weight:400;color:var(--gold);max-width:520px}
+.close-sig{margin-top:32px;font-size:11px;font-weight:400;letter-spacing:0.08em;color:var(--text-dim)}
+.close-sig em{color:var(--rose);font-style:italic}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav{padding:12px 20px}.nav-label{display:none}
+  .cover{padding:80px 24px 56px}.cover-title{font-size:44px}
+  .cover-stats{flex-direction:column;gap:20px;align-items:center}
+  .brief-inner{grid-template-columns:1fr 1fr;padding:0 24px}
+  .ronda-div{padding:14px 24px}
+  .s-dim,.s-dim-dk{padding:64px 24px 48px}
+  .dim-name{font-size:36px}
+  .dim-grid{grid-template-columns:1fr}
+  .dim-scores{flex-wrap:wrap}
+  .dim-score-box,.dim-score-box-lt{min-width:calc(33% - 8px)}
+  .s-comp{padding:64px 24px 48px}
+  .comp-title{font-size:36px}
+  .comp-grid-4,.comp-grid-4b{grid-template-columns:1fr 1fr}
+  .s-close{padding:60px 24px}
+  .close-hl{font-size:36px}
+}
+@media(max-width:480px){
+  .comp-grid-4,.comp-grid-4b{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+    <div class="nav-logo-text"><span class="w1">sombrero</span><span class="w2">rosa</span></div>
+  </div>
+  <div class="nav-label">Segunda entrega · Naming</div>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ring"></div><div class="cover-ring"></div><div class="cover-ring"></div>
+  <div class="cover-inner">
+    <div class="cover-logo">
+      <img src="logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+      <div class="cover-logo-text"><span class="w1">sombrero</span><span class="w2">rosa</span></div>
+    </div>
+    <div class="cover-supertag">Agencia Sombrero Rosa · Fase 1 · Segunda entrega</div>
+    <div class="cover-title">Propuesta de<br><em>naming</em></div>
+    <div class="cover-rule"><span></span>◆<span></span></div>
+    <div class="cover-sub">12 candidatos analizados en dos rondas.<br>Los 4 originales más 8 nuevos desarrollados a partir del cuestionario de ustedes.</div>
+    <div class="cover-stats">
+      <div><div class="stat-label">Ronda 1</div><div class="stat-value">4 candidatos</div></div>
+      <div><div class="stat-label">Ronda 2</div><div class="stat-value">8 candidatos nuevos</div></div>
+      <div><div class="stat-label">Metodología</div><div class="stat-value">Semiótica · Psicología · Neurociencia</div></div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#r1">↓ continuar</a>
+</div>
+
+<!-- BRIEF STRIP -->
+<div class="brief-strip">
+  <div class="brief-inner">
+    <div class="brief-item"><span class="bi-label">Valor clave</span><span class="bi-value">Libertad · Sin personalismo · Propósito</span></div>
+    <div class="brief-item"><span class="bi-label">Personalidad</span><span class="bi-value">Seria · Profesional · Seguridad</span></div>
+    <div class="brief-item"><span class="bi-label">Fonética</span><span class="bi-value">Cierre consonántico fuerte</span></div>
+    <div class="brief-item"><span class="bi-label">Territorio</span><span class="bi-value">Abstracto / inventado · Geográfico italiano</span></div>
+  </div>
+</div>
+
+<!-- ══ RONDA 1 ══ -->
+<div class="ronda-div" id="r1" style="background:var(--navy2)">
+  <span class="ronda-num">Ronda 1 · Primera entrega</span>
+  <div class="ronda-line"></div>
+  <span class="ronda-tag">Fontia · Ayell · Bere Puro · Aflu</span>
+</div>
+
+<!-- FONTIA -->
+<div class="s-dim">
+  <div class="dim-supertag">Candidato 01 · Ronda 1 · Recomendación principal</div>
+  <div class="dim-name dim-name-lt">Fontia <em>·</em> Minimalista y natural</div>
+  <div class="dim-tagline dim-tagline-lt">Del italiano fonte — fuente, manantial. La promesa de origen en una sola palabra.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Fontia</div>
+    <div class="dim-preview-sl">Dall'origine alla tua tavola</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Semiótica</div><div class="dim-card-body-lt">Del italiano <em>fonte</em> — fuente, manantial. La terminación <em>-ia</em> añade abstracción que eleva el concepto de genérico a nombre propio. No describe el producto: describe su origen, que es la promesa de marca más poderosa en la categoría.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Psicología del consumidor</div><div class="dim-card-body-lt">Las raíces italiano-latinas activan esquemas mentales de calidad, tradición y refinamiento. La F inicial proyecta firmeza. La o central evoca apertura y calidez. Genera confianza en el target familiar y credibilidad institucional en el corporativo simultáneamente.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Neurociencia</div><div class="dim-card-body-lt">Fonética de consonantes continuas (F, N) y vocales abiertas — baja carga cognitiva. Estructura de 3 sílabas: el cerebro procesa y retiene palabras en ese rango con un 40% más de eficiencia. Activa el <em>fluency effect</em>: lo fácil de procesar se percibe como más verdadero y confiable.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9.1</div><div class="dim-score-lbl-lt">Score global</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9</div><div class="dim-score-lbl-lt">Memoria & retención</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9</div><div class="dim-score-lbl-lt">Claridad semántica</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">10</div><div class="dim-score-lbl-lt">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-lt"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-lt">Fontia activa el fluency effect: cuando un nombre es fácil de procesar, el cerebro lo evalúa como más verdadero y confiable. La facilidad de pronunciación reduce la fricción cognitiva y aumenta la intención de compra. Es el nombre más completo de la primera ronda.</div></div>
+  <div class="dim-tags"><span class="dim-tag-lt">Bajo esfuerzo cognitivo</span><span class="dim-tag-lt">Alta confianza proyectada</span><span class="dim-tag-lt">Origen italiano</span><span class="dim-tag-lt">Paraguas multiproducto</span><span class="dim-tag-lt">Fluency effect</span></div>
+</div>
+
+<!-- AYELL -->
+<div class="s-dim-dk">
+  <div class="dim-supertag">Candidato 02 · Ronda 1 · Alternativa moderna</div>
+  <div class="dim-name dim-name-dk">Ayell <em>·</em> Minimalista y premium</div>
+  <div class="dim-tagline dim-tagline-dk">Nombre arbitrario de alta eficiencia — construye su propio significado sin límites.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Ayell</div>
+    <div class="dim-preview-sl">Acqua di qualità superiore</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Semiótica</div><div class="dim-card-body-dk">Signo arbitrario — no tiene significado lexical propio. Esto es una ventaja estratégica: la marca construye su propio significado sin ataduras previas. Contiene el código sonoro del apellido fundador sin reproducirlo literalmente. Es un signo en blanco que se llena de valor con el tiempo.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Psicología del consumidor</div><div class="dim-card-body-dk">La A inicial activa apertura y comienzo. La doble LL final genera equilibrio visual — el cerebro percibe simetría como estabilidad y confianza. Su brevedad proyecta seguridad y modernidad. Para el target corporativo conecta con marcas globales de perfil tecnológico y premium.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Neurociencia</div><div class="dim-card-body-dk">Nombre inventado con fonética familiar — la combinación más eficiente para branding según estudios de neuromarketing (Alter & Oppenheimer, 2006). El cerebro no busca significado: lo construye, generando mayor adhesión emocional a largo plazo. Google, Apple y Nike operan bajo esta misma arquitectura.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">8.2</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Memoria & retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">6</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.5</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-dk"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-dk">Los nombres arbitrarios tienen mayor potencial de brand equity a largo plazo porque no están limitados por el significado original. Ayell tiene la misma arquitectura de construcción de marca que las marcas globales más valiosas del mundo. Requiere mayor inversión inicial en significado, pero el retorno es ilimitado.</div></div>
+  <div class="dim-tags"><span class="dim-tag-dk">Nombre arbitrario</span><span class="dim-tag-dk">Brand equity ilimitado</span><span class="dim-tag-dk">Guiño familiar sutil</span><span class="dim-tag-dk">Sin límite semántico</span><span class="dim-tag-dk">Alta retención</span></div>
+</div>
+
+<!-- BERE PURO -->
+<div class="s-dim">
+  <div class="dim-supertag">Candidato 03 · Ronda 1 · Alternativa tradicional</div>
+  <div class="dim-name dim-name-lt">Bere Puro <em>·</em> Tradicional y robusto</div>
+  <div class="dim-tagline dim-tagline-lt">"Beber puro" en italiano. La promesa más explícita de la categoría en dos palabras.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Bere Puro</div>
+    <div class="dim-preview-sl">L'acqua che parla da sola</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Semiótica</div><div class="dim-card-body-lt">Nombre descriptivo de máxima densidad semántica: comunica acción (beber) y atributo (puro) en dos palabras. La raíz italiana le otorga sofisticación y diferencial de categoría. No deja espacio para la ambigüedad: el nombre es la promesa, y la promesa es el negocio.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Psicología del consumidor</div><div class="dim-card-body-lt">Activa directamente el atributo de pureza — el valor más buscado en agua. La combinación de consonantes suaves (B, R, P) y vocales abiertas genera una sonoridad limpia y confiable. En el target familiar produce reconocimiento inmediato; en el corporativo proyecta seriedad y transparencia.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Neurociencia</div><div class="dim-card-body-lt">Al describir explícitamente el beneficio, reduce el esfuerzo cognitivo de interpretación. Los nombres descriptivos tienen alta claridad inicial pero menor diferenciación en entornos saturados. Su fortaleza es la velocidad de comprensión; su límite, la expansión a nuevas categorías sin tensión semántica.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">7.9</div><div class="dim-score-lbl-lt">Score global</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">8</div><div class="dim-score-lbl-lt">Memoria & retención</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">10</div><div class="dim-score-lbl-lt">Claridad semántica</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">6.5</div><div class="dim-score-lbl-lt">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-lt"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-lt">Bere Puro apela al instinto primario de hidratación sin artificios. Su fuerza radica en la promesa de "limpieza" sensorial. Su límite semántico es también su mayor fortaleza táctica en mercados donde el producto se vende por atributo.</div></div>
+  <div class="dim-tags"><span class="dim-tag-lt">Promesa explícita</span><span class="dim-tag-lt">Máxima claridad semántica</span><span class="dim-tag-lt">Origen italiano</span><span class="dim-tag-lt">Funciona sin contexto</span><span class="dim-tag-lt">Credibilidad inmediata</span></div>
+</div>
+
+<!-- AFLU -->
+<div class="s-dim-dk">
+  <div class="dim-supertag">Candidato 04 · Ronda 1 · Alternativa expansiva</div>
+  <div class="dim-name dim-name-dk">Aflu <em>·</em> Ágil y expansivo</div>
+  <div class="dim-tagline dim-tagline-dk">Del afluente — el agua que alimenta y hace crecer. El nombre que crece con la marca.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Aflu</div>
+    <div class="dim-preview-sl">Fluimos para que crezcas</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Semiótica</div><div class="dim-card-body-dk">Derivado de <em>afluente</em>: curso de agua que alimenta y hace crecer a otro. Metáfora de expansión y servicio. El nombre no habla del producto sino del propósito — abastecer, nutrir, hacer crecer. Esa abstracción lo posiciona más allá de la distribución de agua: es una marca de movimiento y crecimiento.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Psicología del consumidor</div><div class="dim-card-body-dk">Proyecta dinamismo y modernidad sin perder la referencia al agua. La A inicial y la terminación abierta en U generan sensación de fluidez y apertura. Para el target joven y corporativo-tecnológico conecta con valores de agilidad y escalabilidad. El nombre con mayor potencial de extensión de línea.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Neurociencia</div><div class="dim-card-body-dk">Nombre de 2 sílabas — el rango de mayor retención inmediata según estudios de memoria semántica. Su brevedad reduce la carga cognitiva al mínimo. La referencia implícita al agua sin nombrarla activa el procesamiento inferencial, que genera mayor adhesión que la descripción directa.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">7.6</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Memoria & retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">7</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-dk"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-dk">Aflu funciona como marca paraguas: su metáfora de crecimiento lo hace escalable a cualquier extensión del negocio — agua, hielo, dispenser, logística. Si la visión de la empresa trasciende la distribución de agua en el mediano plazo, Aflu soporta esa evolución sin tensión de marca.</div></div>
+  <div class="dim-tags"><span class="dim-tag-dk">2 sílabas — alta retención</span><span class="dim-tag-dk">Metáfora de crecimiento</span><span class="dim-tag-dk">Máxima escalabilidad</span><span class="dim-tag-dk">Sin límite de categoría</span><span class="dim-tag-dk">Ágil y moderno</span></div>
+</div>
+
+<!-- ══ RONDA 2 ══ -->
+<div class="ronda-div" style="background:#0a1520">
+  <span class="ronda-num">Ronda 2 · A partir del cuestionario</span>
+  <div class="ronda-line"></div>
+  <span class="ronda-tag">Fontex · Liven · Kuvit · Sorgon · Volten · Fontara · Aquor · Voltena</span>
+</div>
+
+<!-- FONTEX -->
+<div class="s-dim">
+  <div class="dim-supertag">Candidato 05 · Ronda 2 · Recomendación principal</div>
+  <div class="dim-name dim-name-lt">Fontex <em>·</em> Industrial y preciso</div>
+  <div class="dim-tagline dim-tagline-lt">Evolución de Fontia. Misma raíz de origen, cierre contundente. Responde exactamente al feedback de ustedes.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Fontex</div>
+    <div class="dim-preview-sl">Desde el origen. Con propósito.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Semiótica</div><div class="dim-card-body-lt">Fusión de <em>fonte</em> (manantial italiano) + sufijo <em>-ex</em> latino de origen y salida. La X activa percepción de precisión y escala. Signo de doble capa: pureza de origen + autoridad corporativa. No describe el producto — describe de dónde viene, que es la promesa más poderosa de la categoría.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Psicología del consumidor</div><div class="dim-card-body-lt">Mismo concepto reconocible de Fontia con cierre contundente en lugar del suave -ia. Para familias activa confianza por la raíz conocida. Para el target corporativo la X agrega autoridad y escala. Resuelve exactamente lo que nos transmitieron en el cuestionario: más fuerza e impacto, sin perder el origen.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Neurociencia</div><div class="dim-card-body-lt">Bisílabo — máxima eficiencia cognitiva. La X activa el efecto Von Restorff: el cerebro retiene lo diferente. Fluency effect por raíz conocida + retención adicional por la X. Es la combinación más eficiente del proceso: familiar + diferenciado al mismo tiempo.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9.3</div><div class="dim-score-lbl-lt">Score global</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9.5</div><div class="dim-score-lbl-lt">Memoria & retención</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9</div><div class="dim-score-lbl-lt">Claridad semántica</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9</div><div class="dim-score-lbl-lt">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-lt"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-lt">Fontex es la evolución quirúrgica de Fontia — toma lo que funcionaba (el concepto de origen, el sonido inicial) y reemplaza lo que no (el cierre suave -ia) por la terminación más contundente del alfabeto. Es una corrección de precisión, no un cambio de dirección. El nombre más fuerte del proceso.</div></div>
+  <div class="dim-tags"><span class="dim-tag-lt">Bisílabo — eficiencia máxima</span><span class="dim-tag-lt">X — efecto Von Restorff</span><span class="dim-tag-lt">Resuelve el feedback</span><span class="dim-tag-lt">Origen + escala</span><span class="dim-tag-lt">Fluency effect</span></div>
+</div>
+
+<!-- LIVEN -->
+<div class="s-dim-dk">
+  <div class="dim-supertag">Candidato 06 · Ronda 2 · Alternativa filosófica</div>
+  <div class="dim-name dim-name-dk">Liven <em>·</em> Filosófico y con propósito</div>
+  <div class="dim-tagline dim-tagline-dk">Del latín libero + movimiento. El único nombre que nace directamente de sus palabras.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Liven</div>
+    <div class="dim-preview-sl">Libertad que fluye. Propósito que permanece.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Semiótica</div><div class="dim-card-body-dk">Del latín <em>libero</em> + terminación <em>-ven</em> de movimiento. En inglés "to liven" significa "dar vida". Opera en tres capas: libertad + vida + movimiento. Alta densidad conceptual en cinco letras sin que ninguna capa sea obvia — el nombre descansa en la marca, no en el diccionario.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Psicología del consumidor</div><div class="dim-card-body-dk">Nace directamente de la palabra "Libertad" que eligieron en el cuestionario. Transmite propósito sin personalismo — el nombre es mayor que cualquier persona. Para familias evoca vida y frescura; para empresas proyecta visión e independencia. Sin connotación negativa en ningún idioma relevante.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Neurociencia</div><div class="dim-card-body-dk">Bisílabo con acento en la primera sílaba — ritmo muy natural y rápido de procesar. Nombres inventados con fonética familiar generan mayor adhesión emocional a largo plazo que los descriptivos. Cinco letras perfectas para vehicular, indumentaria y digital. Mayor brand equity potencial del proceso.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">9.1</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Memoria & retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">10</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-dk"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-dk">Liven es el único nombre del proceso que nace directamente de sus palabras: libertad, propósito, sin personalismo, empatía — todo condensado en cinco letras. La claridad semántica es menor porque no describe la categoría, pero eso es exactamente su mayor fortaleza a largo plazo.</div></div>
+  <div class="dim-tags"><span class="dim-tag-dk">Libertad + movimiento</span><span class="dim-tag-dk">Sin personalismo</span><span class="dim-tag-dk">Brand equity ilimitado</span><span class="dim-tag-dk">Mayor potencial largo plazo</span><span class="dim-tag-dk">Nace del cuestionario</span></div>
+</div>
+
+<!-- KUVIT -->
+<div class="s-dim">
+  <div class="dim-supertag">Candidato 07 · Ronda 2 · Alternativa dinámica</div>
+  <div class="dim-name dim-name-lt">Kuvit <em>·</em> Dinámico y urbano</div>
+  <div class="dim-tagline dim-tagline-lt">Nombre arbitrario con máximo impacto visual. La K como recurso de diferenciación inmediata.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Kuvit</div>
+    <div class="dim-preview-sl">Movimiento con propósito.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Semiótica</div><div class="dim-card-body-lt">Nombre arbitrario. Resuena con <em>muovere</em> (mover) y el sufijo <em>-vit</em> de vita. La K es el signo más impactante visualmente en tipografía de flota. Sin anclaje conceptual claro — el nombre depende de la construcción de marca posterior para adquirir significado.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Psicología del consumidor</div><div class="dim-card-body-lt">La K proyecta energía y modernidad — ideal para target joven o tecnológico. Para el target familiar puede sentirse frío o industrial. Menor conexión con los valores expresados en el cuestionario: libertad, propósito, empatía, seriedad sin agresividad.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Neurociencia</div><div class="dim-card-body-lt">Bisílabo con K memorable — alta retención inicial. Micro-fricción en la combinación KV para el público mayor. Requiere mayor inversión inicial en construcción de significado que los otros candidatos. La K activa Von Restorff pero también puede generar distancia emocional.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">7.8</div><div class="dim-score-lbl-lt">Score global</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">8.8</div><div class="dim-score-lbl-lt">Memoria & retención</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">5.5</div><div class="dim-score-lbl-lt">Claridad semántica</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">8</div><div class="dim-score-lbl-lt">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-lt"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-lt">Kuvit tiene una personalidad visual muy potente — la K es impactante y memorable. Pero es el nombre que más inversión requiere en construcción de significado, y el que menos resuena con los valores que expresaron: libertad, propósito, empatía, seriedad sin agresividad. Perfil más joven y dinámico que el brief.</div></div>
+  <div class="dim-tags"><span class="dim-tag-lt">K — alto impacto visual</span><span class="dim-tag-lt">Arbitrario puro</span><span class="dim-tag-lt">Mayor inversión inicial</span><span class="dim-tag-lt">Perfil joven / dinámico</span><span class="dim-tag-lt">Von Restorff</span></div>
+</div>
+
+<!-- SORGON -->
+<div class="s-dim-dk">
+  <div class="dim-supertag">Candidato 08 · Ronda 2 · Recomendación destacada</div>
+  <div class="dim-name dim-name-dk">Sorgon <em>·</em> Sólido y geológico</div>
+  <div class="dim-tagline dim-tagline-dk">De sorgente — manantial italiano. Cierre consonántico -on. El nombre que más completo sale de la exploración.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Sorgon</div>
+    <div class="dim-preview-sl">Del manantial, con permanencia.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Semiótica</div><div class="dim-card-body-dk">De <em>sorgente</em> — manantial, fuente natural en italiano. La contracción conserva el núcleo semántico del origen del agua y agrega cierre <em>-on</em> contundente. No existe como marca en el rubro. Evoca algo antiguo, sólido, casi geológico. Signo motivado con raíz clara pero forma completamente original.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Psicología del consumidor</div><div class="dim-card-body-dk">El cierre <em>-on</em> activa solidez, fuerza y permanencia — exactamente el perfil serio y profesional del brief. Para el target corporativo es muy efectivo. Para el familiar puede sonar levemente industrial pero dentro de lo aceptable. Sin connotación negativa en español ni italiano. Sin personalismo.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Neurociencia</div><div class="dim-card-body-dk">2 sílabas — máxima eficiencia cognitiva. Cierre en consonante nasal <em>-on</em>, uno de los más contundentes y resonantes del alfabeto. La rareza de la combinación SOR-GON activa el efecto Von Restorff. Excelente legibilidad en branding vehicular. Sin fricción de pronunciación en ningún target.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9.2</div><div class="dim-score-lbl">Memoria & retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">9</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-dk"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-dk">Sorgon entra al shortlist con la mejor combinación del proceso: raíz italiana verificable + cierre consonántico fuerte + bisílabo + sin existencia previa en el rubro. Cumple todos los criterios del brief sin excepción. Junto a Fontex, es la opción más sólida de la ronda 2.</div></div>
+  <div class="dim-tags"><span class="dim-tag-dk">Sorgente — manantial italiano</span><span class="dim-tag-dk">Cierre -on contundente</span><span class="dim-tag-dk">Sin existencia en el rubro</span><span class="dim-tag-dk">Bisílabo eficiente</span><span class="dim-tag-dk">Von Restorff</span></div>
+</div>
+
+<!-- VOLTEN -->
+<div class="s-dim">
+  <div class="dim-supertag">Candidato 09 · Ronda 2 · Premium europeo</div>
+  <div class="dim-name dim-name-lt">Volten <em>·</em> Movimiento y ciclo</div>
+  <div class="dim-tagline dim-tagline-lt">Raíz volta + cierre europeo -en. El ciclo del agua como identidad de marca.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Volten</div>
+    <div class="dim-preview-sl">El ciclo que nunca se detiene.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Semiótica</div><div class="dim-card-body-lt">Raíz <em>volta</em> (vuelta, ciclo del agua, voltaje) + cierre <em>-en</em> europeo. Evoca el ciclo hidrológico, movimiento constante y energía. Suena a topónimo italiano real (como Módena o Verona) aunque no lo sea. Sin anclaje descriptivo obvio — el signo es libre de construir su propio universo semántico.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Psicología del consumidor</div><div class="dim-card-body-lt">La V inicial es el signo más impactante visualmente en tipografía de flota. Proyecta dinamismo, precisión y modernidad premium. Para el familiar evoca marca europea de calidad. Para el corporativo conecta con seriedad, expansión y visión. El cierre -en es firme sin sonar agresivo.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Neurociencia</div><div class="dim-card-body-lt">2 sílabas — eficiencia máxima. Cierre en <em>-en</em> consonántico y resonante. La combinación Vol-ten no existe en el rubro. La V inicial genera gran impacto visual en tipografía vehicular — diferenciador inmediato en flota e indumentaria. Sin fricción de pronunciación.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">8.8</div><div class="dim-score-lbl-lt">Score global</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9</div><div class="dim-score-lbl-lt">Memoria & retención</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">7.8</div><div class="dim-score-lbl-lt">Claridad semántica</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">9</div><div class="dim-score-lbl-lt">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-lt"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-lt">Volten combina lo mejor de dos mundos: la solidez de una raíz con significado (volta / ciclo) y la apertura de un nombre que no está encadenado a una categoría. La V es el recurso visual más potente del proceso — en flota e indumentaria es diferenciador inmediato. Shortlist junto a Fontex y Sorgon.</div></div>
+  <div class="dim-tags"><span class="dim-tag-lt">Volta + -en europeo</span><span class="dim-tag-lt">V — impacto visual máximo</span><span class="dim-tag-lt">Premium europeo</span><span class="dim-tag-lt">Ciclo + flujo</span><span class="dim-tag-lt">Sin ruido semántico</span></div>
+</div>
+
+<!-- FONTARA -->
+<div class="s-dim-dk">
+  <div class="dim-supertag">Candidato 10 · Ronda 2 · Alternativa cálida</div>
+  <div class="dim-name dim-name-dk">Fontara <em>·</em> Geográfico y familiar</div>
+  <div class="dim-tagline dim-tagline-dk">Fonte + ara (altar latino). Origen sagrado. La opción más cálida y poética del proceso.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Fontara</div>
+    <div class="dim-preview-sl">Del origen sagrado. Con calidez.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Semiótica</div><div class="dim-card-body-dk">Fusión de <em>fonte</em> (fuente/manantial) + <em>ara</em> (altar, origen sagrado en latín). Evoca pureza de origen con dimensión casi ritual. La terminación la acerca a topónimos italianos reales — Ferrara, Módena — lo que activa percepción de lugar con historia real, aunque no lo sea.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Psicología del consumidor</div><div class="dim-card-body-dk">La terminación <em>-ara</em> activa percepción femenina y cálida — muy positivo para el target familiar. Para el corporativo puede sonar menos contundente que opciones con cierre consonántico. El concepto de origen sagrado conecta con confianza y pureza sin personalismo.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Neurociencia</div><div class="dim-card-body-dk">3 sílabas — dentro del rango óptimo de retención. La terminación en vocal <em>-a</em> genera cierta fricción con el pedido de cierre consonántico fuerte del brief. Alta retención por raíz reconocible. Menos contundente en alta velocidad vehicular que Sorgon o Volten, pero completamente legible.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">8.2</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.5</div><div class="dim-score-lbl">Memoria & retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.2</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.8</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-dk"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-dk">Fontara es cálida, geográfica y poética — la mejor opción si priorizan el target familiar sobre el corporativo. Su mayor fricción con el brief es la terminación vocal -a en lugar del cierre consonántico solicitado. Si ese punto no es decisivo, es una opción muy competitiva con fuerte potencial de identidad visual.</div></div>
+  <div class="dim-tags"><span class="dim-tag-dk">Fonte + ara — origen sagrado</span><span class="dim-tag-dk">Geográfico italiano</span><span class="dim-tag-dk">Fuerte target familiar</span><span class="dim-tag-dk">Terminación vocal</span><span class="dim-tag-dk">Cálido y poético</span></div>
+</div>
+
+<!-- AQUOR -->
+<div class="s-dim">
+  <div class="dim-supertag">Candidato 11 · Ronda 2 · Alternativa de exploración</div>
+  <div class="dim-name dim-name-lt">Aquor <em>·</em> Agua con fuerza</div>
+  <div class="dim-tagline dim-tagline-lt">Variante de aqua con cierre -or latino de poder. Mejor opción del territorio Aqua-.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Aquor</div>
+    <div class="dim-preview-sl">Fuerza del origen.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Semiótica</div><div class="dim-card-body-lt">Variante de <em>aqua</em> con cierre en <em>-or</em> — sufijo latino de alta potencia semántica: <em>amor, honor, vigor, ardor</em>. Esa asociación eleva la raíz simple "agua" al concepto de fuerza y valor. Signo motivado con capa conceptual adicional. Más diferenciado que otras opciones del territorio Aqua-.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Psicología del consumidor</div><div class="dim-card-body-lt">El cierre <em>-or</em> activa fuerza y autoridad — muy positivo para el corporativo. Para el familiar mantiene la asociación con agua sin sonar técnico. La Q interna es visualmente inusual — recurso gráfico de diferenciación. Riesgo compartido con el prefijo Aqua- por saturación en el rubro.</div></div>
+    <div class="dim-card-lt"><div class="dim-card-cat-lt">Neurociencia</div><div class="dim-card-body-lt">2 sílabas — eficiencia máxima. El cierre <em>-or</em> es más resonante que <em>-ar</em>: genera mayor vibración oral, lo que aumenta retención auditiva. La Q activa efecto Von Restorff. Comparte el riesgo de interferencia proactiva de la raíz Aqua- saturada en el mercado argentino.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">7.9</div><div class="dim-score-lbl-lt">Score global</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">8.2</div><div class="dim-score-lbl-lt">Memoria & retención</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">8.8</div><div class="dim-score-lbl-lt">Claridad semántica</div></div>
+    <div class="dim-score-box-lt"><div class="dim-score-num-lt">7.2</div><div class="dim-score-lbl-lt">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-lt"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-lt">La mejor versión del territorio Aqua-. Si el cliente insiste en una referencia explícita al agua, Aquor es la opción más estratégica de ese grupo. Sin embargo, para diferenciación real y construcción de identidad propia a largo plazo, Fontex, Sorgon o Volten son caminos más sólidos.</div></div>
+  <div class="dim-tags"><span class="dim-tag-lt">Aqua + -or latino de fuerza</span><span class="dim-tag-lt">Q — recurso gráfico</span><span class="dim-tag-lt">Mejor del territorio Aqua-</span><span class="dim-tag-lt">Riesgo saturación</span><span class="dim-tag-lt">Cierre resonante</span></div>
+</div>
+
+<!-- VOLTENA -->
+<div class="s-dim-dk">
+  <div class="dim-supertag">Candidato 12 · Ronda 2 · Origen de Volten</div>
+  <div class="dim-name dim-name-dk">Voltena <em>·</em> Topónimo italiano</div>
+  <div class="dim-tagline dim-tagline-dk">Misma raíz y personalidad que Volten, con terminación geográfica italiana -ena.</div>
+  <div class="dim-preview">
+    <div class="dim-preview-label">Distribuidora · Zona Sur GBA</div>
+    <div class="dim-preview-name">Voltena</div>
+    <div class="dim-preview-sl">El ciclo del agua, con elegancia.</div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Semiótica</div><div class="dim-card-body-dk">Raíz <em>volta</em> + terminación <em>-ena</em> geográfica italiana. Evoca ciclo del agua, energía y movimiento. Suena a topónimo italiano real aunque no lo sea — como Módena o Verona. Misma base conceptual que Volten pero con terminación vocal que suaviza el signo.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Psicología del consumidor</div><div class="dim-card-body-dk">La terminación <em>-ena</em> activa percepción femenina y cálida — evoca nombres de ciudad como Módena o Verona. Para el target familiar es muy positivo. Para el corporativo puede sonar menos contundente. Transmite sensación de marca con historia aunque sea nueva.</div></div>
+    <div class="dim-card-dk"><div class="dim-card-cat-dk">Neurociencia</div><div class="dim-card-body-dk">3 sílabas fluidas y memorables. Terminación en vocal <em>-a</em> no responde al pedido de cierre consonántico fuerte del brief. Sin embargo la secuencia Volt-ena es muy fluida y natural. La versión Volten surgió como corrección de esta fricción — misma identidad, cierre más firme.</div></div>
+  </div>
+  <div class="dim-scores">
+    <div class="dim-score-box"><div class="dim-score-num">8</div><div class="dim-score-lbl">Score global</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.6</div><div class="dim-score-lbl">Memoria & retención</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">7.2</div><div class="dim-score-lbl">Claridad semántica</div></div>
+    <div class="dim-score-box"><div class="dim-score-num">8.5</div><div class="dim-score-lbl">Versatilidad paraguas</div></div>
+  </div>
+  <div class="dim-insight-dk"><div class="dim-insight-cat">Insight clave</div><div class="dim-insight-body-dk">Voltena es el origen conceptual de Volten — misma personalidad, mismo territorio semántico. La terminación -a la hace más cálida y geográfica pero genera fricción con el brief. Si prefieren la versión más suave y femenina de este concepto, Voltena es la opción. Si prefiere contundencia, Volten.</div></div>
+  <div class="dim-tags"><span class="dim-tag-dk">Topónimo italiano</span><span class="dim-tag-dk">Misma base que Volten</span><span class="dim-tag-dk">Terminación vocal</span><span class="dim-tag-dk">Cálida y geográfica</span><span class="dim-tag-dk">Voltena → Volten</span></div>
+</div>
+
+<!-- ══ COMPARATIVA FINAL ══ -->
+<div class="s-comp">
+  <div style="text-align:center;margin-bottom:40px">
+    <div style="font-size:9px;font-weight:600;letter-spacing:0.26em;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:10px">Decisión</div>
+    <div class="comp-title">Comparativa <em>final</em></div>
+    <div class="comp-sub">12 candidatos. Dos rondas. La elección define la identidad estratégica de la empresa para los próximos 10 años.</div>
+  </div>
+
+  <div class="comp-ronda-label">Ronda 2 · Candidatos nuevos</div>
+  <div class="comp-grid-4">
+    <div class="cmp lead">
+      <div class="cmp-ord">01 · Ronda 2</div>
+      <div class="cmp-name">Fontex</div>
+      <span class="cmp-badge">Score 93/100 · Recomendación principal</span>
+      <div class="cmp-desc">Evolución de Fontia. Resuelve el feedback exacto. Primera opción clara del proceso completo.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>9.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+    </div>
+    <div class="cmp">
+      <div class="cmp-ord">02 · Ronda 2</div>
+      <div class="cmp-name">Liven</div>
+      <span class="cmp-badge">Score 91/100 · Alternativa filosófica</span>
+      <div class="cmp-desc">Nace directamente de sus palabras. Brand equity máximo. Ideal si priorizan identidad filosófica a largo plazo.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>9.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+    </div>
+    <div class="cmp">
+      <div class="cmp-ord">03 · Ronda 2</div>
+      <div class="cmp-name">Sorgon</div>
+      <span class="cmp-badge">Score 90/100 · Recomendación destacada</span>
+      <div class="cmp-desc">Manantial italiano + cierre -on. Cumple todos los criterios del brief sin excepción.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8.8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>9.2/10</span></div><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+    </div>
+    <div class="cmp">
+      <div class="cmp-ord">04 · Ronda 2</div>
+      <div class="cmp-name">Volten</div>
+      <span class="cmp-badge">Score 88/100 · Premium europeo</span>
+      <div class="cmp-desc">Ciclo + flujo + V impactante. El recurso visual más potente del proceso en flota y vehicular.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8.6/10</span></div><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>9/10</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+    </div>
+  </div>
+  <div class="comp-grid-4b">
+    <div class="cmp" style="opacity:0.85">
+      <div class="cmp-ord">05 · Ronda 2</div>
+      <div class="cmp-name">Fontara</div>
+      <span class="cmp-badge">Score 82/100 · Alternativa cálida</span>
+      <div class="cmp-desc">Geográfico y familiar. Fricción: terminación vocal -a vs brief.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>8.2/10</span></div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>8.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+    </div>
+    <div class="cmp" style="opacity:0.85">
+      <div class="cmp-ord">06 · Ronda 2</div>
+      <div class="cmp-name">Kuvit</div>
+      <span class="cmp-badge">Score 78/100 · Alternativa dinámica</span>
+      <div class="cmp-desc">Impacto visual con K. Requiere mayor inversión en construcción de significado.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>5.5/10</span></div><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>7.2/10</span></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>8.8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+    </div>
+    <div class="cmp" style="opacity:0.85">
+      <div class="cmp-ord">07 · Ronda 2</div>
+      <div class="cmp-name">Aquor</div>
+      <span class="cmp-badge">Score 79/100 · Exploración</span>
+      <div class="cmp-desc">Mejor del territorio Aqua-. Riesgo por saturación del prefijo en el rubro.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>8.8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8/10</span></div><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>8.2/10</span></div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+    </div>
+    <div class="cmp" style="opacity:0.85">
+      <div class="cmp-ord">08 · Ronda 2</div>
+      <div class="cmp-name">Voltena</div>
+      <span class="cmp-badge">Score 80/100 · Origen de Volten</span>
+      <div class="cmp-desc">Versión cálida de Volten. Misma personalidad, terminación vocal.</div>
+      <div class="bar-row"><div class="bar-lbl"><span>Semiótica</span><span>7.2/10</span></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Psicología</span><span>8.2/10</span></div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+      <div class="bar-row"><div class="bar-lbl"><span>Neurociencia</span><span>8.6/10</span></div><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+    </div>
+  </div>
+
+  <div style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:14px">Ronda 1 · Primera entrega · Para contexto</div>
+  <div class="comp-grid-4" style="margin-bottom:40px">
+    <div class="cmp" style="opacity:0.55">
+      <div class="cmp-ord">Ronda 1</div><div class="cmp-name" style="font-size:18px">Fontia</div>
+      <span class="cmp-badge">Score 91/100</span>
+      <div class="cmp-desc">Base de referencia. Evolucionó a Fontex.</div>
+    </div>
+    <div class="cmp" style="opacity:0.55">
+      <div class="cmp-ord">Ronda 1</div><div class="cmp-name" style="font-size:18px">Ayell</div>
+      <span class="cmp-badge">Score 82/100</span>
+      <div class="cmp-desc">Brand equity arbitrario ilimitado. Vigente si se prioriza independencia semántica total.</div>
+    </div>
+    <div class="cmp" style="opacity:0.55">
+      <div class="cmp-ord">Ronda 1</div><div class="cmp-name" style="font-size:18px">Bere Puro</div>
+      <span class="cmp-badge">Score 79/100</span>
+      <div class="cmp-desc">Máxima claridad semántica. Opción si se prioriza comunicación directa del atributo.</div>
+    </div>
+    <div class="cmp" style="opacity:0.55">
+      <div class="cmp-ord">Ronda 1</div><div class="cmp-name" style="font-size:18px">Aflu</div>
+      <span class="cmp-badge">Score 76/100</span>
+      <div class="cmp-desc">Máxima proyección expansiva. Visión de marca más allá de la categoría agua.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CIERRE -->
+<div class="s-close">
+  <div style="font-size:9px;font-weight:600;letter-spacing:0.26em;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:12px">Canning · GBA Sur · Siguiente paso</div>
+  <div class="close-hl">Cada nombre<br>es una <em>decisión.</em></div>
+  <div class="close-sub">El nombre correcto no se elige — se decodifica a partir de la identidad que querés construir. Con dos rondas y 12 candidatos analizados, el proceso está maduro para la decisión final.</div>
+  <div class="close-box">Próximo paso: selección del nombre finalista y activación de la identidad visual.</div>
+  <div class="close-sig">sombrero <em>rosa</em> — agencia de marketing digital</div>
+</div>
+
+</body>
+</html>

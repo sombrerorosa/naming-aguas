@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontia — Cierre de Fase 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&family=Tenor+Sans&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --deep:#07111F;--navy:#0A1628;--mid:#1C2E4A;
+  --white:#F7F4F0;--off:#EEEAE3;--cream:#E8E3D6;
+  --gold:#B8965A;--gold-lt:#D4B07A;
+  --ice:#A8C4D4;--ice-lt:#D4E6F0;
+  --rosa:#C87890;
+}
+html{scroll-behavior:smooth}
+body{background:var(--deep);font-family:'DM Sans',sans-serif;color:var(--white);overflow-x:hidden}
+
+/* ─── UTILIDADES ─── */
+.serif{font-family:'Cormorant Garamond',serif}
+.sans{font-family:'Tenor Sans',sans-serif}
+.gold{color:var(--gold)}
+.ice{color:var(--ice)}
+
+/* ════════════════════════════
+   HERO — Apertura
+════════════════════════════ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  overflow:hidden;padding:60px 32px;text-align:center;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 115%,rgba(168,196,212,0.16) 0%,transparent 60%),
+    linear-gradient(170deg,#050D18 0%,#0A1628 55%,#060E1A 100%);
+}
+.h-rings{position:absolute;bottom:-240px;left:50%;transform:translateX(-50%);z-index:0}
+.h-ring{position:absolute;border-radius:50%;transform:translate(-50%,-50%);top:0;left:0}
+.hr1{width:300px;height:300px;border:1px solid rgba(168,196,212,0.14)}
+.hr2{width:520px;height:520px;border:1px solid rgba(168,196,212,0.08)}
+.hr3{width:740px;height:740px;border:1px solid rgba(168,196,212,0.05)}
+.hr4{width:960px;height:960px;border:1px solid rgba(184,150,90,0.03)}
+.hr5{width:1180px;height:1180px;border:1px solid rgba(168,196,212,0.02)}
+.h-beam{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:52%;background:linear-gradient(180deg,transparent,rgba(184,150,90,0.35) 45%,rgba(168,196,212,0.18) 70%,transparent);z-index:1}
+.h-dot{position:absolute;top:0;left:50%;transform:translate(-50%,0);width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 20px rgba(184,150,90,0.8),0 0 50px rgba(184,150,90,0.3);z-index:2;animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 16px rgba(184,150,90,0.7)}50%{box-shadow:0 0 30px rgba(184,150,90,1),0 0 70px rgba(184,150,90,0.4)}}
+.h-inner{position:relative;z-index:3;max-width:640px}
+.h-agency{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:56px;animation:fadeUp 1s ease both}
+.h-agency img{width:26px;height:26px;object-fit:contain;opacity:.45}
+.h-agency-s{font-size:11px;font-weight:300;color:rgba(247,244,240,0.28);letter-spacing:.05em}
+.h-agency-r{font-size:11px;font-weight:600;color:rgba(200,120,144,0.45);letter-spacing:.05em}
+.h-eye{font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:rgba(184,150,90,0.6);margin-bottom:22px;animation:fadeUp 1s ease .1s both}
+.h-name{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(80px,15vw,136px);letter-spacing:.1em;line-height:1;color:var(--white);animation:fadeUp 1s ease .2s both}
+.h-name .o{color:var(--gold)}
+.h-orn{display:flex;align-items:center;justify-content:center;gap:16px;margin:22px 0;animation:fadeUp 1s ease .32s both}
+.orn-l{width:56px;height:1px;background:linear-gradient(90deg,transparent,rgba(184,150,90,0.4))}
+.orn-l.r{background:linear-gradient(90deg,rgba(184,150,90,0.4),transparent)}
+.orn-d{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.h-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:200;font-size:clamp(16px,2.5vw,22px);letter-spacing:.18em;color:rgba(168,196,212,0.55);margin-bottom:28px;animation:fadeUp 1s ease .44s both}
+.h-sub{font-size:14px;font-weight:300;color:rgba(247,244,240,0.32);line-height:1.85;max-width:460px;margin:0 auto 44px;animation:fadeUp 1s ease .56s both}
+.h-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;animation:fadeUp 1s ease .68s both}
+.chip{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.32em;text-transform:uppercase;padding:6px 16px;border-radius:20px;border:.5px solid rgba(168,196,212,0.18);color:rgba(168,196,212,0.45);background:rgba(168,196,212,0.03)}
+.h-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp 1s ease 1s both}
+.h-scroll span{font-size:7px;letter-spacing:.45em;text-transform:uppercase;color:rgba(168,196,212,0.22)}
+.h-scroll-bar{width:1px;height:34px;background:linear-gradient(180deg,rgba(184,150,90,0.5),transparent);animation:scPulse 2s ease-in-out infinite}
+@keyframes scPulse{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ════════════════════════════
+   TRANSICIÓN — Aiello → Fontia
+════════════════════════════ */
+.transition-sec{
+  position:relative;background:var(--off);padding:88px 32px;overflow:hidden;
+}
+.transition-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,150,90,0.3),transparent)}
+.t-inner{max-width:900px;margin:0 auto}
+.sec-eye{font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,46px);font-weight:300;color:#0A0A0A;line-height:1.15;margin-bottom:10px}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-sub{font-size:14px;font-weight:300;color:rgba(10,10,10,0.48);line-height:1.85;max-width:540px;margin-bottom:52px}
+
+/* Línea de tiempo de transición */
+.timeline{display:flex;align-items:stretch;gap:0;margin-bottom:52px;background:#fff;border:.5px solid rgba(10,10,10,0.09);border-radius:4px;overflow:hidden}
+.tl-block{flex:1;padding:32px 28px;position:relative}
+.tl-block:first-child{border-right:.5px solid rgba(10,10,10,0.08)}
+.tl-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:200;color:rgba(184,150,90,0.1);line-height:1;margin-bottom:4px}
+.tl-label{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:rgba(10,10,10,0.35);margin-bottom:12px;display:block}
+.tl-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#0A0A0A;margin-bottom:12px;line-height:1}
+.tl-name .o{color:var(--gold)}
+.tl-desc{font-size:13px;font-weight:300;color:rgba(10,10,10,0.55);line-height:1.75}
+.tl-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.tl-tag{font-size:10px;font-weight:300;padding:3px 10px;border-radius:20px;background:var(--off);color:rgba(10,10,10,0.45);border:.5px solid rgba(10,10,10,0.1)}
+.tl-arrow{width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(184,150,90,0.04)}
+.tl-arrow-icon{font-size:20px;color:rgba(184,150,90,0.4)}
+
+/* Cita narrativa */
+.quote-block{
+  background:var(--navy);border-radius:4px;padding:40px 44px;
+  position:relative;overflow:hidden;
+}
+.quote-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 110%,rgba(168,196,212,0.1) 0%,transparent 65%)}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:200;color:rgba(184,150,90,0.15);line-height:.8;margin-bottom:-10px;position:relative;z-index:1}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);font-weight:300;font-style:italic;color:rgba(247,244,240,0.75);line-height:1.65;position:relative;z-index:1;margin-bottom:20px}
+.quote-text em{color:var(--gold);font-style:normal}
+.quote-attr{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:rgba(168,196,212,0.35);position:relative;z-index:1}
+
+/* ════════════════════════════
+   ADN — Los 4 pilares
+════════════════════════════ */
+.dna-sec{position:relative;background:var(--deep);padding:88px 32px;overflow:hidden}
+.dna-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,150,90,0.18),transparent)}
+.dna-inner{max-width:900px;margin:0 auto}
+.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px;margin-bottom:52px}
+.pillar{background:rgba(255,255,255,0.03);border:.5px solid rgba(255,255,255,0.07);border-radius:4px;padding:28px 26px;position:relative;overflow:hidden}
+.pillar::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+.p1::before{background:linear-gradient(180deg,var(--gold),transparent)}
+.p2::before{background:linear-gradient(180deg,var(--ice),transparent)}
+.p3::before{background:linear-gradient(180deg,rgba(184,150,90,0.5),transparent)}
+.p4::before{background:linear-gradient(180deg,rgba(168,196,212,0.5),transparent)}
+.pillar-n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:200;color:rgba(184,150,90,0.1);line-height:1;margin-bottom:4px}
+.pillar-l{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.pillar-t{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);margin-bottom:10px}
+.pillar-d{font-size:13px;font-weight:300;color:rgba(247,244,240,0.45);line-height:1.75}
+
+/* Significado */
+.meaning-card{background:rgba(255,255,255,0.03);border:.5px solid rgba(255,255,255,0.07);border-radius:4px;padding:36px 40px}
+.mc-grid{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.mc-name{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:200;letter-spacing:.08em;color:var(--white);line-height:1}
+.mc-name .o{color:var(--gold)}
+.mc-origin{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:.15em;color:rgba(168,196,212,0.45);display:block;margin-top:4px}
+.mc-items{display:flex;flex-direction:column;gap:16px}
+.mc-item{}
+.mc-item-label{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:rgba(184,150,90,0.55);display:block;margin-bottom:4px}
+.mc-item-text{font-size:13px;font-weight:300;color:rgba(247,244,240,0.45);line-height:1.7}
+
+/* ════════════════════════════
+   SIMULACIÓN VISUAL
+════════════════════════════ */
+.visual-sec{position:relative;background:var(--off);padding:88px 32px;overflow:hidden}
+.visual-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,150,90,0.25),transparent)}
+.visual-inner{max-width:900px;margin:0 auto}
+.mockups-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;margin-bottom:52px}
+.mockup{border-radius:4px;overflow:hidden}
+
+/* Etiqueta */
+.mk-label-bg{background:#fff;padding:32px 20px;display:flex;align-items:center;justify-content:center;min-height:200px}
+.mk-label{width:100%;max-width:150px;background:var(--navy);border-radius:3px;padding:22px 16px;text-align:center;position:relative;overflow:hidden}
+.mk-label::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(168,196,212,0.14) 0%,transparent 65%)}
+.mk-l-eye{font-family:'Tenor Sans',sans-serif;font-size:6px;letter-spacing:.4em;text-transform:uppercase;color:rgba(184,150,90,0.6);margin-bottom:8px;position:relative;z-index:1}
+.mk-l-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:200;letter-spacing:.1em;color:var(--white);line-height:1;position:relative;z-index:1}
+.mk-l-name .o{color:var(--gold)}
+.mk-l-div{width:28px;height:1px;background:linear-gradient(90deg,transparent,rgba(184,150,90,0.5),transparent);margin:8px auto;position:relative;z-index:1}
+.mk-l-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:7px;letter-spacing:.14em;color:rgba(168,196,212,0.45);position:relative;z-index:1}
+.mk-caption{font-size:8px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:rgba(10,10,10,0.32);padding:10px 14px;background:var(--cream);text-align:center}
+
+/* Flota */
+.mk-fleet-bg{background:var(--cream);padding:32px 16px;display:flex;align-items:center;justify-content:center;min-height:200px}
+.mk-fleet{width:100%;background:var(--navy);border-radius:3px;padding:18px;position:relative;overflow:hidden}
+.mk-fleet-bar{position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,var(--gold),var(--ice))}
+.mk-fleet-ct{display:flex;flex-direction:column;gap:2px;padding-left:8px}
+.mk-fleet-eye{font-size:5px;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:rgba(184,150,90,0.6)}
+.mk-fleet-wm{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:200;letter-spacing:.1em;color:var(--white);line-height:1}
+.mk-fleet-wm .o{color:var(--gold)}
+.mk-fleet-tag{font-size:6px;font-weight:300;font-style:italic;letter-spacing:.12em;color:rgba(168,196,212,0.38)}
+.mk-caption-lt{font-size:8px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:rgba(10,10,10,0.32);padding:10px 14px;background:var(--cream);text-align:center}
+
+/* Social */
+.mk-social-bg{background:#111;padding:32px 20px;display:flex;align-items:center;justify-content:center;min-height:200px}
+.mk-social{width:110px;height:110px;background:var(--navy);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.mk-social::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(168,196,212,0.14) 0%,transparent 60%)}
+.mk-social-bot{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(168,196,212,0.4),transparent)}
+.mk-social-nm{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:200;letter-spacing:.1em;color:var(--white);line-height:1;position:relative;z-index:1}
+.mk-social-nm .o{color:var(--gold)}
+.mk-social-sub{font-size:6px;font-weight:300;font-style:italic;letter-spacing:.14em;color:rgba(168,196,212,0.4);position:relative;z-index:1;margin-top:6px}
+.mk-caption-dk{font-size:8px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:rgba(247,244,240,0.2);padding:10px 14px;background:rgba(255,255,255,0.03);text-align:center}
+
+/* Paleta */
+.palette-block{margin-bottom:44px}
+.palette-swatches{display:flex;gap:10px;margin-top:18px}
+.swatch{flex:1}
+.sw-color{height:52px;border-radius:3px;position:relative;overflow:hidden}
+.sw-color::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.06),transparent)}
+.sw-name{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(10,10,10,0.5);margin-top:6px;display:block}
+.sw-hex{font-size:9px;font-weight:300;color:rgba(10,10,10,0.32);letter-spacing:.04em}
+
+/* Tipografía */
+.typo-block-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.typo-card{background:#fff;border:.5px solid rgba(10,10,10,0.09);border-radius:4px;padding:24px 26px}
+.typo-card.gold-border{border-left:3px solid var(--gold)}
+.typo-spec-s{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:200;color:#0A0A0A;line-height:1;margin-bottom:8px}
+.typo-spec-t{font-family:'Tenor Sans',sans-serif;font-size:18px;letter-spacing:.12em;color:#0A0A0A;line-height:1;margin-bottom:8px}
+.typo-meta strong{font-size:10px;font-weight:600;color:rgba(10,10,10,0.65);display:block;margin-bottom:2px}
+.typo-meta span{font-size:11px;font-weight:300;color:rgba(10,10,10,0.4)}
+
+/* ════════════════════════════
+   LO QUE VIENE
+════════════════════════════ */
+.next-sec{position:relative;background:var(--navy);padding:88px 32px;overflow:hidden}
+.next-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 110%,rgba(168,196,212,0.1) 0%,transparent 60%)}
+.next-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.next-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.phase-card{background:rgba(255,255,255,0.03);border:.5px solid rgba(255,255,255,0.07);border-radius:4px;padding:28px 24px}
+.phase-card.active-phase{border-color:rgba(184,150,90,0.3)}
+.phase-card.active-phase::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(184,150,90,0.2));border-radius:4px 4px 0 0}
+.phase-card{position:relative}
+.ph-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.ph-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:200;color:rgba(184,150,90,0.1);line-height:1}
+.ph-badge{font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.pb-done{background:#E1F5EE;color:#085041}
+.pb-now{background:rgba(184,150,90,0.12);color:var(--gold)}
+.pb-next{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3)}
+.ph-icon{font-size:20px;margin-bottom:8px;display:block}
+.ph-label{font-family:'Tenor Sans',sans-serif;font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:6px}
+.ph-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);margin-bottom:12px}
+.ph-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.ph-items li{font-size:12px;font-weight:300;color:rgba(255,255,255,0.35);padding-left:14px;position:relative;line-height:1.4}
+.ph-items li::before{content:'·';position:absolute;left:0;color:var(--gold);font-size:16px;line-height:1}
+
+/* ════════════════════════════
+   CIERRE — Gracias
+════════════════════════════ */
+.thanks-sec{
+  position:relative;min-height:100vh;
+  background:var(--deep);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:80px 32px;text-align:center;
+}
+.thanks-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(168,196,212,0.08) 0%,transparent 65%),linear-gradient(160deg,#050D18 0%,#0A1628 50%,#060E1A 100%)}
+.t-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0}
+.t-ring{position:absolute;border-radius:50%;transform:translate(-50%,-50%);top:0;left:0}
+.tr1{width:280px;height:280px;border:1px solid rgba(168,196,212,0.12)}
+.tr2{width:480px;height:480px;border:1px solid rgba(168,196,212,0.07)}
+.tr3{width:680px;height:680px;border:1px solid rgba(168,196,212,0.04)}
+.tr4{width:880px;height:880px;border:1px solid rgba(184,150,90,0.03)}
+.t-inner{position:relative;z-index:2;max-width:600px}
+.t-eye{font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:rgba(184,150,90,0.55);margin-bottom:36px;display:block}
+.t-name{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(72px,13vw,116px);letter-spacing:.1em;line-height:1;color:var(--white);margin-bottom:28px}
+.t-name .o{color:var(--gold)}
+.t-orn{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:28px}
+.t-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(20px,3.5vw,32px);letter-spacing:.04em;line-height:1.35;color:rgba(247,244,240,0.65);margin-bottom:28px}
+.t-title em{font-style:italic;color:var(--ice)}
+.t-text{font-size:14px;font-weight:300;color:rgba(247,244,240,0.32);line-height:1.95;margin-bottom:52px;max-width:500px;margin-left:auto;margin-right:auto}
+/* Barra de paleta final */
+.t-palette{display:flex;height:4px;border-radius:2px;overflow:hidden;max-width:200px;margin:0 auto 40px}
+.tp1{flex:1;background:#0A1628}
+.tp2{flex:1;background:#1C2E4A}
+.tp3{flex:1;background:#A8C4D4}
+.tp4{flex:1;background:#B8965A}
+.tp5{flex:.5;background:#F7F4F0}
+.t-agency{display:flex;align-items:center;justify-content:center;gap:9px;padding-top:28px;border-top:.5px solid rgba(168,196,212,0.08)}
+.t-agency img{width:22px;height:22px;object-fit:contain;opacity:.4}
+.t-agency-s{font-size:11px;font-weight:300;color:rgba(247,244,240,0.22);letter-spacing:.05em}
+.t-agency-r{font-size:11px;font-weight:700;color:rgba(200,120,144,0.38);letter-spacing:.05em}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:680px){
+  .pillars-grid,.mockups-grid,.next-phases,.typo-block-row{grid-template-columns:1fr}
+  .mc-grid{grid-template-columns:1fr}
+  .timeline{flex-direction:column}
+  .tl-block:first-child{border-right:none;border-bottom:.5px solid rgba(10,10,10,0.08)}
+  .tl-arrow{width:100%;height:40px}
+  .palette-swatches{flex-wrap:wrap}
+  .swatch{min-width:calc(50% - 5px)}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="h-rings">
+    <div class="h-ring hr1"></div><div class="h-ring hr2"></div>
+    <div class="h-ring hr3"></div><div class="h-ring hr4"></div>
+    <div class="h-ring hr5"></div>
+  </div>
+  <div class="h-beam"></div>
+  <div class="h-dot"></div>
+  <div class="h-inner">
+    <div class="h-agency">
+      <img src="https://sombrerorosa.github.io/naming-aguas/logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+      <span class="h-agency-s">sombrero</span>
+      <span class="h-agency-r">rosa</span>
+    </div>
+    <div class="h-eye">Fase 1 — Naming & Estrategia · Completado</div>
+    <div class="h-name">F<span class="o">o</span>ntia</div>
+    <div class="h-orn">
+      <div class="orn-l"></div><div class="orn-d"></div><div class="orn-l r"></div>
+    </div>
+    <div class="h-tagline">Dall'origine alla tua tavola</div>
+    <div class="h-sub">El nombre que van a construir. La marca que los va a representar. El origen de todo lo que viene.</div>
+    <div class="h-chips">
+      <div class="chip">Agua</div>
+      <div class="chip">Hielo</div>
+      <div class="chip">Helados</div>
+      <div class="chip">Dispenser</div>
+      <div class="chip">Zona Sur GBA</div>
+    </div>
+  </div>
+  <div class="h-scroll">
+    <span>continuar</span>
+    <div class="h-scroll-bar"></div>
+  </div>
+</section>
+
+
+<!-- ════ TRANSICIÓN AIELLO → FONTIA ════ -->
+<section class="transition-sec">
+  <div class="t-inner">
+    <span class="sec-eye">El origen de Fontia</span>
+    <div class="sec-title">De una historia familiar<br>a una <em>identidad propia</em></div>
+    <div class="sec-sub">Toda marca poderosa nace de algo real. Fontia no es un nombre inventado desde cero — es la evolución consciente de décadas de trabajo, confianza y presencia en el mercado.</div>
+
+    <div class="timeline">
+      <div class="tl-block">
+        <div class="tl-num">01</div>
+        <span class="tl-label">El origen</span>
+        <div class="tl-name">Juan Aiello<br><span style="font-size:20px;color:rgba(10,10,10,0.4)">e hijos</span></div>
+        <p class="tl-desc">Una empresa familiar construida con trabajo y compromiso en Zona Oeste. Un apellido que se convirtió en sinónimo de confianza, distribución y presencia en el sector. El punto de partida de todo.</p>
+        <div class="tl-tags">
+          <span class="tl-tag">Legado familiar</span>
+          <span class="tl-tag">Zona Oeste</span>
+          <span class="tl-tag">Distribución</span>
+          <span class="tl-tag">Confianza construida</span>
+        </div>
+      </div>
+      <div class="tl-arrow"><div class="tl-arrow-icon">→</div></div>
+      <div class="tl-block">
+        <div class="tl-num">02</div>
+        <span class="tl-label">La evolución</span>
+        <div class="tl-name">F<span class="o">o</span>ntia</div>
+        <p class="tl-desc">Una identidad corporativa propia, construida para crecer más allá de lo familiar. Embotellamiento propio, diversificación de productos, expansión hacia Zona Sur. La misma solidez de origen — con una presencia de marca para el futuro.</p>
+        <div class="tl-tags">
+          <span class="tl-tag">Identidad propia</span>
+          <span class="tl-tag">Zona Sur GBA</span>
+          <span class="tl-tag">Embotellamiento propio</span>
+          <span class="tl-tag">Expansión</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">No renegar del pasado sino <em>construir sobre él</em>. Fontia lleva en su ADN la historia de quienes la fundaron — y en su nombre, la promesa de todo lo que viene. Una fuente no borra su origen: lo prolonga.</p>
+      <div class="quote-attr">Concepto estratégico · Sombrero Rosa · 2025</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ ADN DE MARCA ════ -->
+<section class="dna-sec">
+  <div class="dna-inner">
+    <span class="sec-eye" style="color:rgba(184,150,90,0.65)">ADN de Marca</span>
+    <div class="sec-title" style="color:var(--white)">Los cuatro <em>pilares</em> de Fontia</div>
+    <div class="sec-sub" style="color:rgba(247,244,240,0.38)">Cada decisión de diseño, cada aplicación y cada palabra de la marca descansa sobre estos fundamentos.</div>
+
+    <div class="pillars-grid">
+      <div class="pillar p1">
+        <div class="pillar-n">01</div>
+        <span class="pillar-l">Origen con propósito</span>
+        <div class="pillar-t">La fuente como promesa</div>
+        <p class="pillar-d">Fontia no distribuye agua. Distribuye lo que nace en el origen. De <em>fonte</em> — manantial en italiano — una marca que no habla del producto sino de dónde viene. Esa diferencia define la percepción de calidad.</p>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-n">02</div>
+        <span class="pillar-l">Evolución tecnológica</span>
+        <div class="pillar-t">De lo familiar a lo corporativo</div>
+        <p class="pillar-d">La marca está diseñada para operar como empresa propia — no como extensión de otra. Embotellamiento propio, identidad independiente, sistema de marca que escala con el negocio sin fricciones.</p>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-n">03</div>
+        <span class="pillar-l">Solidez y presencia</span>
+        <div class="pillar-t">Una marca que se ve y se recuerda</div>
+        <p class="pillar-d">Seis letras limpias. Legible a 80 km/h en una flota. Reconocible en una góndola, en una etiqueta, en una firma de email. Fontia está construida para dominar todos los puntos de contacto con el mercado.</p>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-n">04</div>
+        <span class="pillar-l">Versatilidad sistémica</span>
+        <div class="pillar-t">Un nombre para toda la línea</div>
+        <p class="pillar-d">Fontia Agua. Fontia Hielo. Fontia Helados. Fontia Dispenser. El nombre funciona como apellido de producto — cada línea futura crece bajo el mismo paraguas sin forzar nada.</p>
+      </div>
+    </div>
+
+    <!-- Significado -->
+    <div class="meaning-card">
+      <div class="mc-grid">
+        <div>
+          <div class="mc-name">F<span class="o">o</span>ntia</div>
+          <span class="mc-origin">Del italiano fonte — fuente, manantial</span>
+        </div>
+        <div class="mc-items">
+          <div class="mc-item">
+            <span class="mc-item-label">Semiótica</span>
+            <p class="mc-item-text">Evoca origen, pureza y agua sin decirlo directamente. El signo más poderoso en branding es el que muestra sin explicar. Fontia no describe — promete.</p>
+          </div>
+          <div class="mc-item">
+            <span class="mc-item-label">Neurociencia aplicada</span>
+            <p class="mc-item-text">Tres sílabas — el rango óptimo de retención cerebral. Consonantes suaves y vocales abiertas generan el <em>fluency effect</em>: fácil de procesar, percibido como confiable. Dos públicos, un solo nombre.</p>
+          </div>
+          <div class="mc-item">
+            <span class="mc-item-label">Psicología del consumidor</span>
+            <p class="mc-item-text">Las raíces italianas activan esquemas de calidad y tradición en el consumidor. Genera confianza en el hogar y credibilidad en el target corporativo simultáneamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ SIMULACIÓN VISUAL ════ -->
+<section class="visual-sec">
+  <div class="visual-inner">
+    <span class="sec-eye">Simulación Visual</span>
+    <div class="sec-title">Fontia en el <em>mundo real</em></div>
+    <div class="sec-sub">Las primeras aproximaciones visuales de cómo se verá la marca en sus aplicaciones principales. Todo esto se desarrolla en profundidad en la Fase 2.</div>
+
+    <div class="mockups-grid">
+      <div class="mockup">
+        <div class="mk-label-bg">
+          <div class="mk-label">
+            <div class="mk-l-eye">Acqua Pura</div>
+            <div class="mk-l-name">F<span class="o">o</span>ntia</div>
+            <div class="mk-l-div"></div>
+            <div class="mk-l-sub">Dall'origine</div>
+          </div>
+        </div>
+        <div class="mk-caption">Etiqueta de Producto</div>
+      </div>
+      <div class="mockup">
+        <div class="mk-fleet-bg">
+          <div class="mk-fleet">
+            <div class="mk-fleet-bar"></div>
+            <div class="mk-fleet-ct">
+              <div class="mk-fleet-eye">Distribución Oficial</div>
+              <div class="mk-fleet-wm">F<span class="o">o</span>ntia</div>
+              <div class="mk-fleet-tag">Dall'origine alla tua tavola</div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-caption-lt">Branding Vehicular</div>
+      </div>
+      <div class="mockup">
+        <div class="mk-social-bg">
+          <div class="mk-social">
+            <div class="mk-social-nm">F<span class="o">o</span>ntia</div>
+            <div class="mk-social-sub">Acqua Pura</div>
+            <div class="mk-social-bot"></div>
+          </div>
+        </div>
+        <div class="mk-caption-dk">Redes Sociales</div>
+      </div>
+    </div>
+
+    <!-- Paleta -->
+    <div class="palette-block">
+      <span class="sec-eye">Paleta de Colores</span>
+      <div class="sec-title" style="font-size:clamp(22px,3vw,32px);margin-bottom:6px">Sistema cromático <em>Fontia</em></div>
+      <div class="sec-sub" style="margin-bottom:18px">Sin verde — una paleta de profundidad, pureza y distinción.</div>
+      <div class="palette-swatches">
+        <div class="swatch"><div class="sw-color" style="background:#0A1628"></div><span class="sw-name">Azul Noche</span><span class="sw-hex">#0A1628</span></div>
+        <div class="swatch"><div class="sw-color" style="background:#1C2E4A"></div><span class="sw-name">Azul Profundo</span><span class="sw-hex">#1C2E4A</span></div>
+        <div class="swatch"><div class="sw-color" style="background:#A8C4D4"></div><span class="sw-name">Azul Agua</span><span class="sw-hex">#A8C4D4</span></div>
+        <div class="swatch"><div class="sw-color" style="background:#B8965A"></div><span class="sw-name">Dorado</span><span class="sw-hex">#B8965A</span></div>
+        <div class="swatch"><div class="sw-color" style="background:#F7F4F0;border:.5px solid rgba(0,0,0,0.08)"></div><span class="sw-name">Blanco Marfil</span><span class="sw-hex">#F7F4F0</span></div>
+      </div>
+    </div>
+
+    <!-- Tipografía -->
+    <span class="sec-eye">Tipografía</span>
+    <div class="sec-title" style="font-size:clamp(22px,3vw,32px);margin-bottom:20px">Sistema tipográfico <em>Fontia</em></div>
+    <div class="typo-block-row">
+      <div class="typo-card gold-border">
+        <div class="typo-spec-s">Fontia</div>
+        <div class="typo-meta"><strong>Cormorant Garamond Light</strong><span>Logotipo · Títulos · Packaging · Etiquetas</span></div>
+      </div>
+      <div class="typo-card">
+        <div class="typo-spec-t">TENOR SANS</div>
+        <div class="typo-meta"><strong>Tenor Sans Regular</strong><span>Labels · Vehicular · Comunicación · UI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ LO QUE VIENE ════ -->
+<section class="next-sec">
+  <div class="next-inner">
+    <span class="sec-eye" style="color:rgba(184,150,90,0.65)">El camino por delante</span>
+    <div class="sec-title" style="color:var(--white)">La Fase 1 es solo el <em>comienzo</em></div>
+    <div class="sec-sub" style="color:rgba(247,244,240,0.38)">Elegir el nombre fue el primer paso — y el más importante. Lo que viene es donde Fontia cobra vida visual y presencia real en el mercado.</div>
+
+    <div class="next-phases">
+      <div class="phase-card">
+        <div class="ph-top">
+          <div class="ph-num">01</div>
+          <span class="ph-badge pb-done">✓ Completado</span>
+        </div>
+        <span class="ph-icon">🧠</span>
+        <span class="ph-label">Fase 1</span>
+        <div class="ph-name">Naming & Estrategia</div>
+        <ul class="ph-items">
+          <li>ADN y estrategia de marca</li>
+          <li>Exploración y evaluación de nombres</li>
+          <li>Análisis semiótico y neurocientífico</li>
+          <li>Elección del nombre Fontia</li>
+          <li>Registro de marca — INPI</li>
+        </ul>
+      </div>
+      <div class="phase-card active-phase">
+        <div class="ph-top">
+          <div class="ph-num">02</div>
+          <span class="ph-badge pb-now">Siguiente paso</span>
+        </div>
+        <span class="ph-icon">🎨</span>
+        <span class="ph-label">Fase 2</span>
+        <div class="ph-name">Identidad Visual</div>
+        <ul class="ph-items">
+          <li>Diseño del isologo definitivo</li>
+          <li>Sistema gráfico completo</li>
+          <li>Paleta cromática oficial</li>
+          <li>Manual de Marca — Brandbook</li>
+          <li>Coherencia en todos los soportes</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="ph-top">
+          <div class="ph-num">03</div>
+          <span class="ph-badge pb-next">Por delante</span>
+        </div>
+        <span class="ph-icon">🚚</span>
+        <span class="ph-label">Fase 3</span>
+        <div class="ph-name">Aplicaciones</div>
+        <ul class="ph-items">
+          <li>Branding vehicular — flota</li>
+          <li>Etiquetas y packaging</li>
+          <li>Papelería comercial</li>
+          <li>Firma de email corporativa</li>
+          <li>Kit de redes sociales</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ CIERRE — GRACIAS ════ -->
+<section class="thanks-sec">
+  <div class="t-rings">
+    <div class="t-ring tr1"></div><div class="t-ring tr2"></div>
+    <div class="t-ring tr3"></div><div class="t-ring tr4"></div>
+  </div>
+  <div class="t-inner">
+    <span class="t-eye">Cierre de Fase 1</span>
+    <div class="t-name">F<span class="o">o</span>ntia</div>
+    <div class="t-orn">
+      <div class="orn-l"></div><div class="orn-d"></div><div class="orn-l r"></div>
+    </div>
+    <div class="t-title">
+      Gracias por <em>confiar</em><br>en este proceso
+    </div>
+    <p class="t-text">
+      Elegir un nombre es mucho más que elegir una palabra. Es decidir cómo van a presentarse al mundo durante los próximos años. Es la primera promesa que hacen a sus clientes, a sus socios y a sí mismos.<br><br>
+      Fontia lleva en sus seis letras todo lo que construyeron como familia y todo lo que quieren construir como empresa. Eso no es casualidad — es estrategia.<br><br>
+      Lo que viene es donde la marca cobra vida. El camino está abierto.
+    </p>
+    <div class="t-palette">
+      <div class="tp1"></div><div class="tp2"></div>
+      <div class="tp3"></div><div class="tp4"></div><div class="tp5"></div>
+    </div>
+    <div class="t-agency">
+      <img src="https://sombrerorosa.github.io/naming-aguas/logo-sombrero-rosa.png" alt="Sombrero Rosa" onerror="this.style.display='none'">
+      <span class="t-agency-s">sombrero</span>
+      <span class="t-agency-r">rosa</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

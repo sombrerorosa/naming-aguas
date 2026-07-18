@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario de Logo — Fontia · Sombrero Rosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,300&family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root {
+  --navy: #0D1E3A;
+  --navy-dk: #08111E;
+  --bg: #EEEAE3;
+  --surface: #F7F4F0;
+  --surface2: #E8E3D6;
+  --text: #0A0A0A;
+  --text-muted: rgba(10,10,10,0.42);
+  --border: rgba(10,10,10,0.09);
+  --rosa: #D4748C;
+  --rosa2: #C05A72;
+  --gold: #C9A84C;
+  --sel-bg: rgba(212,116,140,0.1);
+  --sel-bdr: rgba(212,116,140,0.5);
+  --sel-txt: #A8384F;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', system-ui, -apple-system, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1525;
+    --surface: #132038;
+    --surface2: #0e1a2e;
+    --text: #F0EDE8;
+    --text-muted: rgba(240,237,232,0.42);
+    --border: rgba(255,255,255,0.08);
+    --sel-bg: rgba(212,116,140,0.14);
+    --sel-bdr: rgba(212,116,140,0.45);
+    --sel-txt: #E8A0B0;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1525;
+  --surface: #132038;
+  --surface2: #0e1a2e;
+  --text: #F0EDE8;
+  --text-muted: rgba(240,237,232,0.42);
+  --border: rgba(255,255,255,0.08);
+  --sel-bg: rgba(212,116,140,0.14);
+  --sel-bdr: rgba(212,116,140,0.45);
+  --sel-txt: #E8A0B0;
+}
+:root[data-theme="light"] {
+  --bg: #EEEAE3;
+  --surface: #F7F4F0;
+  --surface2: #E8E3D6;
+  --text: #0A0A0A;
+  --text-muted: rgba(10,10,10,0.42);
+  --border: rgba(10,10,10,0.09);
+  --sel-bg: rgba(212,116,140,0.1);
+  --sel-bdr: rgba(212,116,140,0.5);
+  --sel-txt: #A8384F;
+}
+
+html { scroll-behavior: smooth }
+body { background: var(--bg); font-family: var(--sans); color: var(--text); font-size: 15px; line-height: 1.6 }
+
+/* ── COVER ── */
+.cover {
+  background: var(--navy);
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 60px 32px 88px;
+  position: relative; overflow: hidden; text-align: center;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(100,140,200,0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #08111E 0%, #0D1E3A 50%, #08111E 100%);
+}
+.c-ring {
+  position: absolute; border-radius: 50%;
+  left: 50%; bottom: 0;
+  transform: translate(-50%, 50%);
+  border: 1px solid rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.cr1 { width: 380px; height: 380px }
+.cr2 { width: 620px; height: 620px }
+.cr3 { width: 860px; height: 860px }
+
+.c-inner { position: relative; z-index: 2; max-width: 560px }
+
+.logo-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 48px;
+}
+.logo-sr {
+  display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1;
+}
+.logo-s { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.4); letter-spacing: .04em }
+.logo-r { font-size: 12px; font-weight: 700; color: var(--rosa); letter-spacing: .04em }
+
+.fontia-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(54px, 11vw, 88px);
+  letter-spacing: .08em;
+  color: rgba(247,244,240,0.92);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.fontia-name .o { color: var(--gold) }
+.fontia-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: .2em;
+  color: rgba(168,196,212,0.4);
+  margin-bottom: 32px;
+}
+
+.c-eye {
+  display: block;
+  font-size: 10px; font-weight: 700; letter-spacing: .35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.c-title {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800; color: #F7F4F0; line-height: 1.05;
+  margin-bottom: 16px; letter-spacing: -.01em; text-wrap: balance;
+}
+.c-title em { font-style: italic; font-weight: 700; color: var(--rosa) }
+
+.c-orn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-bottom: 18px;
+}
+.orn-l { width: 48px; height: 1px; background: rgba(201,168,76,0.35) }
+.orn-d { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg) }
+
+.c-sub {
+  font-size: 14px; font-weight: 300;
+  color: rgba(255,255,255,0.32); line-height: 1.85;
+  margin-bottom: 36px; max-width: 440px; margin-left: auto; margin-right: auto;
+}
+.c-meta {
+  display: flex; justify-content: center; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px;
+}
+.meta-i {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 0 22px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.meta-i:last-child { border-right: none }
+.meta-l { font-size: 9px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); opacity: .7 }
+.meta-v { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35) }
+
+.c-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.sc-t { font-size: 8px; font-weight: 700; letter-spacing: .4em; text-transform: uppercase; color: rgba(255,255,255,0.18) }
+.sc-b { width: 1px; height: 32px; background: linear-gradient(180deg, rgba(201,168,76,0.6), transparent); animation: scP 2s ease-in-out infinite }
+@keyframes scP { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+/* ── PROGRESS ── */
+.progress-wrap {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 32px;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+}
+.progress-inner {
+  max-width: 680px; margin: 0 auto;
+  display: flex; align-items: center; gap: 14px;
+}
+.prog-logo { display: flex; align-items: center; gap: 7px; margin-right: 4px }
+.prog-logo-txt { font-size: 11px; font-weight: 700; color: var(--rosa) }
+.prog-label { font-size: 11px; font-weight: 300; color: var(--text-muted); white-space: nowrap }
+.prog-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--rosa), var(--gold)); border-radius: 2px; transition: width .4s ease; width: 0% }
+.prog-pct { font-size: 11px; font-weight: 600; color: var(--text-muted); min-width: 32px; text-align: right }
+
+/* ── MAIN ── */
+.main { max-width: 680px; margin: 0 auto; padding: 52px 32px 80px }
+
+/* ── SECTION ── */
+.section { margin-bottom: 52px }
+.sec-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px }
+.sec-num { font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); white-space: nowrap }
+.sec-title { font-size: 21px; font-weight: 800; color: var(--text); letter-spacing: -.01em; text-wrap: balance }
+.sec-title em { font-style: italic; font-weight: 700; color: var(--rosa) }
+.sec-line { flex: 1; height: .5px; background: var(--border) }
+
+/* ── QUESTION BLOCK ── */
+.q-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px; margin-bottom: 10px;
+  transition: border-color .25s, box-shadow .25s;
+}
+.q-block.answered {
+  border-color: rgba(212,116,140,0.3);
+  box-shadow: 0 0 0 3px rgba(212,116,140,0.06);
+}
+.q-num { font-size: 9px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px }
+.q-text { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.4 }
+.q-hint { font-size: 12px; font-weight: 300; color: var(--text-muted); margin-bottom: 14px; line-height: 1.55 }
+
+/* ── OPCIONES ── */
+.options { display: flex; flex-wrap: wrap; gap: 7px }
+.opt {
+  font-size: 13px; font-weight: 500;
+  padding: 8px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 30px; cursor: pointer;
+  color: var(--text-muted);
+  background: var(--surface2);
+  transition: all .15s; user-select: none;
+}
+.opt:hover { border-color: rgba(212,116,140,0.4); color: var(--text); background: var(--surface) }
+.opt.selected { background: var(--sel-bg); border-color: var(--sel-bdr); color: var(--sel-txt) }
+
+/* ── OPCIONES VISUALES ── */
+.visual-opts { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px }
+.vis-opt {
+  border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 16px 12px; cursor: pointer;
+  transition: all .2s; user-select: none;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: var(--surface2); text-align: center;
+}
+.vis-opt:hover { background: var(--surface); border-color: rgba(212,116,140,0.3) }
+.vis-opt.selected { background: var(--sel-bg); border-color: var(--sel-bdr) }
+.vis-icon { font-size: 28px; line-height: 1 }
+.vis-label { font-size: 11px; font-weight: 700; color: var(--text); line-height: 1.3 }
+.vis-opt.selected .vis-label { color: var(--sel-txt) }
+.vis-sub { font-size: 10px; font-weight: 300; color: var(--text-muted); line-height: 1.4 }
+.vis-opt.selected .vis-sub { color: rgba(168,56,79,0.7) }
+
+/* ── ESCALA ── */
+.scale-row { display: flex; align-items: center; gap: 12px }
+.scale-lbl { font-size: 11px; font-weight: 400; color: var(--text-muted); min-width: 88px; line-height: 1.3 }
+.scale-lbl.r { text-align: right }
+.scale-opts { display: flex; gap: 6px; flex: 1 }
+.scale-opt {
+  flex: 1; text-align: center; padding: 10px 4px;
+  border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer;
+  font-size: 14px; font-weight: 700; color: var(--text-muted);
+  background: var(--surface2); transition: all .15s;
+}
+.scale-opt:hover { border-color: rgba(212,116,140,0.4); color: var(--text) }
+.scale-opt.selected { background: var(--sel-bg); border-color: var(--sel-bdr); color: var(--sel-txt) }
+
+/* ── TEXTAREA ── */
+textarea {
+  width: 100%; min-height: 80px;
+  font-size: 14px; font-weight: 300; font-family: var(--sans);
+  resize: vertical; padding: 12px 14px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--surface2); color: var(--text);
+  box-sizing: border-box; transition: border-color .2s, background .2s; line-height: 1.6;
+}
+textarea:focus { outline: none; border-color: rgba(212,116,140,0.5); background: var(--surface) }
+textarea::placeholder { color: var(--text-muted) }
+
+/* ── COLOR PICKER ── */
+.color-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px }
+.color-opt {
+  border-radius: 8px; height: 52px; cursor: pointer;
+  border: 2px solid transparent; transition: all .2s;
+  position: relative; overflow: hidden;
+}
+.color-opt:hover { transform: scale(1.05) }
+.color-opt.selected { border-color: var(--sel-bdr); box-shadow: 0 0 0 3px rgba(212,116,140,0.15) }
+.color-opt.selected::after {
+  content: '✓'; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+.color-lbl { font-size: 9px; font-weight: 500; color: var(--text-muted); text-align: center; margin-top: 4px; letter-spacing: .05em }
+
+/* ── SUBMIT ── */
+.submit-section {
+  background: var(--navy);
+  border-radius: 16px; padding: 36px;
+  position: relative; overflow: hidden; margin-top: 48px;
+}
+.submit-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(100,140,200,0.1) 0%, transparent 65%);
+}
+.submit-inner { position: relative; z-index: 1 }
+.submit-logo-row { display: flex; align-items: center; gap: 8px; margin-bottom: 18px }
+.submit-logo-s { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.3) }
+.submit-logo-r { font-size: 12px; font-weight: 700; color: rgba(212,116,140,0.6) }
+.submit-fontia {
+  font-family: var(--serif); font-style: italic;
+  font-size: 48px; font-weight: 400; letter-spacing: .08em;
+  color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 12px;
+}
+.submit-fontia .o { color: rgba(201,168,76,0.35) }
+.submit-title { font-size: 26px; font-weight: 800; color: #F7F4F0; margin-bottom: 8px; letter-spacing: -.01em }
+.submit-title em { font-style: italic; color: var(--rosa) }
+.submit-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.35); margin-bottom: 24px; line-height: 1.7; max-width: 420px }
+
+.submit-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center }
+
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .03em;
+  padding: 14px 28px; border-radius: 30px; border: none;
+  background: #25D366; color: #fff; cursor: pointer;
+  transition: all .2s; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  text-decoration: none;
+}
+.btn-wa:hover { background: #1EB857; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(37,211,102,0.4) }
+.btn-wa:active { transform: translateY(0) }
+
+.btn-copy {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  padding: 10px 20px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.15); background: transparent;
+  color: rgba(255,255,255,0.45); cursor: pointer;
+  transition: all .2s;
+}
+.btn-copy:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7) }
+.btn-copy.success { border-color: rgba(37,211,102,0.4); color: rgba(37,211,102,0.7) }
+
+/* ── FOOTER ── */
+.footer {
+  background: #050505; padding: 22px 32px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.ft-s { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.2) }
+.ft-r { font-size: 11px; font-weight: 700; color: rgba(212,116,140,0.3) }
+.ft-year { font-size: 9px; color: rgba(255,255,255,0.15); letter-spacing: .15em }
+
+@media (max-width: 580px) {
+  .cover { padding: 48px 20px 72px }
+  .main { padding: 40px 16px 60px }
+  .progress-wrap { padding: 10px 16px }
+  .visual-opts { grid-template-columns: repeat(2,1fr) }
+  .color-grid { grid-template-columns: repeat(4,1fr) }
+  .c-meta { flex-wrap: wrap; gap: 14px }
+  .meta-i { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 14px }
+  .meta-i:last-child { border-bottom: none }
+  .submit-section { padding: 26px 20px }
+  .footer { flex-direction: column; text-align: center }
+  .scale-row { flex-direction: column; align-items: stretch }
+  .scale-lbl { min-width: auto; text-align: left }
+  .scale-lbl.r { text-align: left }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="c-ring cr1"></div>
+  <div class="c-ring cr2"></div>
+  <div class="c-ring cr3"></div>
+  <div class="c-inner">
+    <div class="logo-row">
+      <img src="https://sombrerorosa.github.io/naming-aguas/logo-sombrero-rosa.png" alt="Sombrero Rosa" width="38" height="38" style="object-fit:contain" onerror="this.style.display='none'">
+      <div class="logo-sr">
+        <span class="logo-s">sombrero</span>
+        <span class="logo-r">rosa</span>
+      </div>
+    </div>
+    <div class="fontia-name">F<span class="o">o</span>ntia</div>
+    <div class="fontia-sub">Dall'origine alla tua tavola</div>
+    <span class="c-eye">Fase 2 · Identidad Visual</span>
+    <div class="c-title">Cuestionario de <em>logo</em></div>
+    <div class="c-orn"><div class="orn-l"></div><div class="orn-d"></div><div class="orn-l"></div></div>
+    <p class="c-sub">Sus respuestas son la materia prima del isologo de Fontia. No hay respuestas correctas — hay respuestas honestas. Esas son las que mejor nos guían.</p>
+    <div class="c-meta">
+      <div class="meta-i"><span class="meta-l">Tiempo</span><span class="meta-v">15 — 20 min</span></div>
+      <div class="meta-i"><span class="meta-l">Preguntas</span><span class="meta-v">20 preguntas</span></div>
+      <div class="meta-i"><span class="meta-l">Fase</span><span class="meta-v">Identidad Visual</span></div>
+    </div>
+  </div>
+  <div class="c-scroll"><span class="sc-t">continuar</span><div class="sc-b"></div></div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="prog-logo">
+      <img src="https://sombrerorosa.github.io/naming-aguas/logo-sombrero-rosa.png" alt="" width="20" height="20" style="object-fit:contain" onerror="this.style.display='none'">
+      <span class="prog-logo-txt">rosa</span>
+    </div>
+    <span class="prog-label">Progreso</span>
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <span class="prog-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- 01 — PERCEPCIÓN DE MARCA -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Cómo <em>sienten</em> su marca</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q1">
+      <div class="q-num">Pregunta 1 de 20</div>
+      <div class="q-text">Si Fontia fuera una persona, ¿cómo se vestiría?</div>
+      <div class="q-hint">La primera imagen que les venga a la mente.</div>
+      <div class="options" id="q1">
+        <div class="opt" onclick="sel(this,'q1','block-q1')">Traje oscuro, elegante y sobrio</div>
+        <div class="opt" onclick="sel(this,'q1','block-q1')">Ropa de trabajo limpia y funcional</div>
+        <div class="opt" onclick="sel(this,'q1','block-q1')">Casual premium — jean y camisa de calidad</div>
+        <div class="opt" onclick="sel(this,'q1','block-q1')">Uniforme corporativo con identidad propia</div>
+        <div class="opt" onclick="sel(this,'q1','block-q1')">Algo moderno y tecnológico</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q2">
+      <div class="q-num">Pregunta 2 de 20</div>
+      <div class="q-text">¿Qué palabra define mejor la personalidad visual que quieren para Fontia?</div>
+      <div class="q-hint">Solo una.</div>
+      <div class="options" id="q2">
+        <div class="opt" onclick="sel(this,'q2','block-q2')">Sólida</div>
+        <div class="opt" onclick="sel(this,'q2','block-q2')">Elegante</div>
+        <div class="opt" onclick="sel(this,'q2','block-q2')">Moderna</div>
+        <div class="opt" onclick="sel(this,'q2','block-q2')">Confiable</div>
+        <div class="opt" onclick="sel(this,'q2','block-q2')">Fresca</div>
+        <div class="opt" onclick="sel(this,'q2','block-q2')">Italiana</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q3">
+      <div class="q-num">Pregunta 3 de 20</div>
+      <div class="q-text">¿A quién le habla el logo principalmente?</div>
+      <div class="q-hint">Piensen en quién lo va a ver con más frecuencia.</div>
+      <div class="options" id="q3">
+        <div class="opt" onclick="sel(this,'q3','block-q3')">Familias — en góndola o etiqueta</div>
+        <div class="opt" onclick="sel(this,'q3','block-q3')">Empresas y fábricas — en papelería y reuniones</div>
+        <div class="opt" onclick="sel(this,'q3','block-q3')">Los dos por igual</div>
+        <div class="opt" onclick="sel(this,'q3','block-q3')">La flota vehicular — lo ve todo el mundo</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q4">
+      <div class="q-num">Pregunta 4 de 20</div>
+      <div class="q-text">¿Qué no querés que sienta alguien cuando ve el logo de Fontia bajo ningún punto de vista?</div>
+      <div class="q-hint">Pueden marcar más de uno.</div>
+      <div class="options" id="q4">
+        <div class="opt multi" onclick="multi(this,'block-q4')">Que es una empresa chica o informal</div>
+        <div class="opt multi" onclick="multi(this,'block-q4')">Que es una marca genérica de agua</div>
+        <div class="opt multi" onclick="multi(this,'block-q4')">Que es una empresa familiar sin proyección</div>
+        <div class="opt multi" onclick="multi(this,'block-q4')">Que es fría o impersonal</div>
+        <div class="opt multi" onclick="multi(this,'block-q4')">Que es pasada de moda</div>
+        <div class="opt multi" onclick="multi(this,'block-q4')">Que parece extranjera o desconectada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 — REFERENCIAS VISUALES -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Referencias <em>visuales</em></span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q5">
+      <div class="q-num">Pregunta 5 de 20</div>
+      <div class="q-text">¿Hay alguna marca — de cualquier rubro — cuyo logo admiren? ¿Por qué?</div>
+      <div class="q-hint">No tiene que ser del rubro agua. Puede ser un banco, una marca de ropa, una empresa de tecnología. Lo que importa es qué les genera.</div>
+      <textarea id="q5" placeholder="Ej: me gusta el logo de Mercado Libre porque transmite profesionalismo y confianza..." oninput="taUpdate('block-q5','q5')"></textarea>
+    </div>
+
+    <div class="q-block" id="block-q6">
+      <div class="q-num">Pregunta 6 de 20</div>
+      <div class="q-text">¿Cuál de estos estilos gráficos se acerca más a lo que imaginan para Fontia?</div>
+      <div class="q-hint">Pueden marcar hasta dos.</div>
+      <div class="visual-opts" id="q6">
+        <div class="vis-opt" onclick="multiVis(this,'block-q6')">
+          <div class="vis-icon">🔷</div>
+          <div class="vis-label">Geométrico</div>
+          <div class="vis-sub">Formas precisas, ángulos, construcción técnica</div>
+        </div>
+        <div class="vis-opt" onclick="multiVis(this,'block-q6')">
+          <div class="vis-icon">💧</div>
+          <div class="vis-label">Orgánico</div>
+          <div class="vis-sub">Curvas naturales, fluidez, formas inspiradas en la naturaleza</div>
+        </div>
+        <div class="vis-opt" onclick="multiVis(this,'block-q6')">
+          <div class="vis-icon">✦</div>
+          <div class="vis-label">Minimalista</div>
+          <div class="vis-sub">Solo lo esencial, mucho espacio, máxima simplicidad</div>
+        </div>
+        <div class="vis-opt" onclick="multiVis(this,'block-q6')">
+          <div class="vis-icon">🏛️</div>
+          <div class="vis-label">Clásico</div>
+          <div class="vis-sub">Serif, elegancia atemporal, referencia a lo europeo</div>
+        </div>
+        <div class="vis-opt" onclick="multiVis(this,'block-q6')">
+          <div class="vis-icon">⚡</div>
+          <div class="vis-label">Moderno</div>
+          <div class="vis-sub">Dinámico, contemporáneo, tecnológico</div>
+        </div>
+        <div class="vis-opt" onclick="multiVis(this,'block-q6')">
+          <div class="vis-icon">🌿</div>
+          <div class="vis-label">Natural</div>
+          <div class="vis-sub">Conexión con el origen, la pureza y el agua</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q7">
+      <div class="q-num">Pregunta 7 de 20</div>
+      <div class="q-text">¿Hay algún estilo gráfico que definitivamente no va con Fontia?</div>
+      <div class="q-hint">Pueden marcar más de uno — esto nos ayuda a descartar caminos.</div>
+      <div class="options" id="q7">
+        <div class="opt multi" onclick="multi(this,'block-q7')">Demasiado juguetón o infantil</div>
+        <div class="opt multi" onclick="multi(this,'block-q7')">Demasiado recargado u ornamental</div>
+        <div class="opt multi" onclick="multi(this,'block-q7')">Demasiado frío o industrial</div>
+        <div class="opt multi" onclick="multi(this,'block-q7')">Demasiado genérico o similar a otros</div>
+        <div class="opt multi" onclick="multi(this,'block-q7')">Demasiado moderno o disruptivo</div>
+        <div class="opt multi" onclick="multi(this,'block-q7')">Demasiado tradicional o antiguo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 — COLOR -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">03</span>
+      <span class="sec-title">El <em>color</em> de Fontia</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q8">
+      <div class="q-num">Pregunta 8 de 20</div>
+      <div class="q-text">La paleta inicial de Fontia incluye azules profundos y dorado. ¿Cómo se sienten con esa dirección?</div>
+      <div class="options" id="q8">
+        <div class="opt" onclick="sel(this,'q8','block-q8')">Muy bien — es exactamente lo que imaginamos</div>
+        <div class="opt" onclick="sel(this,'q8','block-q8')">Bien, pero queremos explorar variantes</div>
+        <div class="opt" onclick="sel(this,'q8','block-q8')">Queremos algo diferente</div>
+        <div class="opt" onclick="sel(this,'q8','block-q8')">No tenemos una opinión formada aún</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q9">
+      <div class="q-num">Pregunta 9 de 20</div>
+      <div class="q-text">¿Qué colores sienten que representan a Fontia? Marquen todos los que resuenen.</div>
+      <div class="q-hint">No se limiten a lo que ya vieron — marquen lo que les parece correcto para la marca.</div>
+      <div class="color-grid" id="q9">
+        <div>
+          <div class="color-opt" style="background:#0A1628" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Azul Noche</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#1C5C9A" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Azul Royal</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#A8C4D4" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Celeste Agua</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#B8965A" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Dorado</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#2C2C2C" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Negro Carbón</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#F7F4F0;border:1.5px solid rgba(0,0,0,0.12)" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Blanco Marfil</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#6B8F6B" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Verde Oliva</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#8B4513" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Tierra</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#C0C0C0" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Plata</div>
+        </div>
+        <div>
+          <div class="color-opt" style="background:#2E4A6A" onclick="multiColor(this,'block-q9')"></div>
+          <div class="color-lbl">Azul Petróleo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q10">
+      <div class="q-num">Pregunta 10 de 20</div>
+      <div class="q-text">¿Hay colores que definitivamente no quieren en el logo de Fontia?</div>
+      <textarea id="q10" placeholder="Ej: nada con verde, nada muy brillante o neón, sin rojo..." oninput="taUpdate('block-q10','q10')"></textarea>
+    </div>
+  </div>
+
+  <!-- 04 — TIPOGRAFÍA E ISÓTIPO -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Tipografía e <em>isótipo</em></span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q11">
+      <div class="q-num">Pregunta 11 de 20</div>
+      <div class="q-text">¿Cómo quieren que se vea el nombre Fontia en el logo?</div>
+      <div class="options" id="q11">
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Letras finas y elegantes — estilo serif clásico</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Letras modernas y limpias — sin serifa</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Letras fuertes y condensadas — impacto y presencia</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Todo en mayúsculas — autoridad corporativa</div>
+        <div class="opt" onclick="sel(this,'q11','block-q11')">Combinación — elegante arriba, técnico abajo</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q12">
+      <div class="q-num">Pregunta 12 de 20</div>
+      <div class="q-text">¿El logo debería tener un símbolo o isótipo además del nombre?</div>
+      <div class="q-hint">El isótipo es el elemento gráfico que acompaña o puede usarse solo — como la manzana de Apple.</div>
+      <div class="options" id="q12">
+        <div class="opt" onclick="sel(this,'q12','block-q12')">Sí — queremos un símbolo que funcione solo</div>
+        <div class="opt" onclick="sel(this,'q12','block-q12')">Sí — pero solo como acompañante del nombre</div>
+        <div class="opt" onclick="sel(this,'q12','block-q12')">No — solo el nombre, limpio y directo</div>
+        <div class="opt" onclick="sel(this,'q12','block-q12')">No tenemos preferencia</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q13">
+      <div class="q-num">Pregunta 13 de 20</div>
+      <div class="q-text">Si hay un símbolo, ¿qué territorio conceptual prefieren?</div>
+      <div class="q-hint">Pueden marcar más de uno.</div>
+      <div class="options" id="q13">
+        <div class="opt multi" onclick="multi(this,'block-q13')">Agua — gota, onda, flujo</div>
+        <div class="opt multi" onclick="multi(this,'block-q13')">Origen — fuente, manantial, nacimiento</div>
+        <div class="opt multi" onclick="multi(this,'block-q13')">Geometría — forma propia sin referencia literal</div>
+        <div class="opt multi" onclick="multi(this,'block-q13')">Italiano — referencia cultural o geográfica</div>
+        <div class="opt multi" onclick="multi(this,'block-q13')">Movimiento — distribución, logística, flujo</div>
+        <div class="opt multi" onclick="multi(this,'block-q13')">Abstracción — algo que no diga nada obvio</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q14">
+      <div class="q-num">Pregunta 14 de 20</div>
+      <div class="q-text">¿Qué tan importante es que el logo incorpore la letra F de Fontia como elemento visual?</div>
+      <div class="scale-row">
+        <span class="scale-lbl">Nada importante</span>
+        <div class="scale-opts" id="q14">
+          <div class="scale-opt" onclick="scl(this,'q14','block-q14')">1</div>
+          <div class="scale-opt" onclick="scl(this,'q14','block-q14')">2</div>
+          <div class="scale-opt" onclick="scl(this,'q14','block-q14')">3</div>
+          <div class="scale-opt" onclick="scl(this,'q14','block-q14')">4</div>
+          <div class="scale-opt" onclick="scl(this,'q14','block-q14')">5</div>
+        </div>
+        <span class="scale-lbl r">Muy importante</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 — APLICACIONES -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">05</span>
+      <span class="sec-title">Dónde va a <em>vivir</em> el logo</span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q15">
+      <div class="q-num">Pregunta 15 de 20</div>
+      <div class="q-text">¿Cuál es la aplicación más importante para el logo en el corto plazo?</div>
+      <div class="q-hint">La que más urgencia tiene o la que más impacto va a tener.</div>
+      <div class="options" id="q15">
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Flota vehicular — camiones y utilitarios</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Etiquetas de producto — agua y envases</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Redes sociales — perfil e imagen de marca</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Papelería corporativa — remitos, facturas, cartas</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Indumentaria — uniformes y ropa de trabajo</div>
+        <div class="opt" onclick="sel(this,'q15','block-q15')">Todo a la vez</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q16">
+      <div class="q-num">Pregunta 16 de 20</div>
+      <div class="q-text">El logo va a funcionar sobre fondos claros y oscuros. ¿Tienen preferencia por alguno?</div>
+      <div class="options" id="q16">
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Preferimos fondo oscuro — más premium</div>
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Preferimos fondo claro — más limpio</div>
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Los dos — necesitamos las dos versiones</div>
+        <div class="opt" onclick="sel(this,'q16','block-q16')">Sin preferencia</div>
+      </div>
+    </div>
+
+    <div class="q-block" id="block-q17">
+      <div class="q-num">Pregunta 17 de 20</div>
+      <div class="q-text">¿Cómo imaginan el logo en 3 años — cuando Fontia ya esté consolidada en el mercado?</div>
+      <div class="q-hint">Proyéctense hacia adelante.</div>
+      <textarea id="q17" placeholder="Ej: quiero que sea tan reconocible que cuando alguien lo vea en la calle sepa que somos nosotros..." oninput="taUpdate('block-q17','q17')"></textarea>
+    </div>
+  </div>
+
+  <!-- 06 — CIERRE -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">06</span>
+      <span class="sec-title">Para <em>cerrar</em></span>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="q-block" id="block-q18">
+      <div class="q-num">Pregunta 18 de 20</div>
+      <div class="q-text">¿Hay algún logo que vieron alguna vez y que no les gustó para nada? ¿Qué tenía que los molestó?</div>
+      <div class="q-hint">Esto nos ayuda tanto como las referencias positivas.</div>
+      <textarea id="q18" placeholder="Ej: ese logo de agua que tiene una gota enorme y letras azules genéricas — parece un diseño de los 90..." oninput="taUpdate('block-q18','q18')"></textarea>
+    </div>
+
+    <div class="q-block" id="block-q19">
+      <div class="q-num">Pregunta 19 de 20</div>
+      <div class="q-text">¿Hay algo que desean personalmente del logo de Fontia — más allá de lo que necesita la empresa?</div>
+      <div class="q-hint">Algo que les dé orgullo, que quieran mostrar, que los represente.</div>
+      <textarea id="q19" placeholder="Ej: que cuando mi familia lo vea en un camión, sienta que hicimos algo grande..." oninput="taUpdate('block-q19','q19')"></textarea>
+    </div>
+
+    <div class="q-block" id="block-q20">
+      <div class="q-num">Pregunta 20 de 20</div>
+      <div class="q-text">¿Hay algo que no les pregunté y que sientan que es importante que sepamos para diseñar el logo?</div>
+      <div class="q-hint">Espacio libre para todo lo que quieran compartir.</div>
+      <textarea id="q20" placeholder="Cualquier detalle, restricción, historia o contexto que nos ayude a entender mejor..." style="min-height:110px" oninput="taUpdate('block-q20','q20')"></textarea>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-section">
+    <div class="submit-inner">
+      <div class="submit-logo-row">
+        <img src="https://sombrerorosa.github.io/naming-aguas/logo-sombrero-rosa.png" alt="" width="26" height="26" style="object-fit:contain" onerror="this.style.display='none'">
+        <span class="submit-logo-s">sombrero&nbsp;</span>
+        <span class="submit-logo-r">rosa</span>
+      </div>
+      <div class="submit-fontia">F<span class="o">o</span>ntia</div>
+      <div class="submit-title">¿Todo <em>listo?</em></div>
+      <p class="submit-sub">Cuando terminen, envíen sus respuestas por WhatsApp. En menos de 24 horas arrancamos el diseño del logo.</p>
+      <div class="submit-actions">
+        <button class="btn-wa" id="waBtn" onclick="sendWhatsApp()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar por WhatsApp
+        </button>
+        <button class="btn-copy" id="copyBtn" onclick="copyText()">Copiar texto</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div style="display:flex;align-items:center;gap:6px">
+    <img src="https://sombrerorosa.github.io/naming-aguas/logo-sombrero-rosa.png" alt="" width="18" height="18" style="object-fit:contain;opacity:.3" onerror="this.style.display='none'">
+    <span class="ft-s">sombrero&nbsp;</span><span class="ft-r">rosa</span>
+  </div>
+  <span class="ft-year">Identidad Visual · Fase 2 · Fontia · 2025</span>
+</div>
+
+<script>
+const TOTAL = 20;
+const answered = new Set();
+
+function updateProgress() {
+  const pct = Math.round((answered.size / TOTAL) * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+}
+function markAnswered(blockId, key) {
+  answered.add(key);
+  document.getElementById(blockId).classList.add('answered');
+  updateProgress();
+}
+function sel(el, groupId, blockId) {
+  document.querySelectorAll('#' + groupId + ' .opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  markAnswered(blockId, groupId);
+}
+function multi(el, blockId) {
+  el.classList.toggle('selected');
+  const groupId = el.closest('.options').id;
+  if (el.closest('.options').querySelector('.selected')) {
+    markAnswered(blockId, groupId);
+  } else {
+    answered.delete(groupId);
+    document.getElementById(blockId).classList.remove('answered');
+    updateProgress();
+  }
+}
+function multiVis(el, blockId) {
+  el.classList.toggle('selected');
+  const groupId = el.closest('.visual-opts').id;
+  if (el.closest('.visual-opts').querySelector('.selected')) {
+    markAnswered(blockId, groupId);
+  } else {
+    answered.delete(groupId);
+    document.getElementById(blockId).classList.remove('answered');
+    updateProgress();
+  }
+}
+function multiColor(el, blockId) {
+  el.classList.toggle('selected');
+  const groupId = el.closest('.color-grid').id;
+  if (el.closest('.color-grid').querySelector('.selected')) {
+    markAnswered(blockId, groupId);
+  } else {
+    answered.delete(groupId);
+    document.getElementById(blockId).classList.remove('answered');
+    updateProgress();
+  }
+}
+function scl(el, groupId, blockId) {
+  document.querySelectorAll('#' + groupId + ' .scale-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  markAnswered(blockId, groupId);
+}
+function taUpdate(blockId, taId) {
+  const ta = document.getElementById(taId);
+  if (!ta) return;
+  if (ta.value.trim().length > 0) {
+    markAnswered(blockId, taId);
+  } else {
+    answered.delete(taId);
+    document.getElementById(blockId).classList.remove('answered');
+    updateProgress();
+  }
+}
+
+function getSel(id) {
+  const items = [];
+  const container = document.getElementById(id);
+  if (!container) return '—';
+  container.querySelectorAll('.selected').forEach(el => {
+    const lbl = el.querySelector('.vis-label');
+    items.push(lbl ? lbl.textContent.trim() : el.textContent.trim());
+  });
+  return items.length ? items.join(' · ') : '—';
+}
+function getScale(id) {
+  const el = document.querySelector('#' + id + ' .selected');
+  return el ? el.textContent.trim() + '/5' : '—';
+}
+function getTA(id) {
+  const el = document.getElementById(id);
+  return el && el.value.trim() ? el.value.trim() : '—';
+}
+
+function buildText() {
+  return [
+    '╔══════════════════════════════════════════════╗',
+    '  CUESTIONARIO DE LOGO · FONTIA · SOMBRERO ROSA',
+    '  Fase 2 — Identidad Visual',
+    '╚══════════════════════════════════════════════╝',
+    '',
+    '── 01 · PERCEPCIÓN DE MARCA ───────────────────',
+    '1. Si Fontia fuera una persona, se vestiría:',
+    '   ' + getSel('q1'),
+    '',
+    '2. Palabra que define la personalidad visual:',
+    '   ' + getSel('q2'),
+    '',
+    '3. A quién le habla el logo principalmente:',
+    '   ' + getSel('q3'),
+    '',
+    '4. Lo que NO quieren que sienta alguien al verlo:',
+    '   ' + getSel('q4'),
+    '',
+    '── 02 · REFERENCIAS VISUALES ──────────────────',
+    '5. Marcas que admiran y por qué:',
+    '   ' + getTA('q5'),
+    '',
+    '6. Estilo gráfico que se acerca a Fontia:',
+    '   ' + getSel('q6'),
+    '',
+    '7. Estilo que definitivamente no va:',
+    '   ' + getSel('q7'),
+    '',
+    '── 03 · COLOR ─────────────────────────────────',
+    '8. Dirección azul + dorado:',
+    '   ' + getSel('q8'),
+    '',
+    '9. Colores que representan a Fontia:',
+    '   ' + getSel('q9'),
+    '',
+    '10. Colores que no quieren:',
+    '    ' + getTA('q10'),
+    '',
+    '── 04 · TIPOGRAFÍA E ISÓTIPO ──────────────────',
+    '11. Cómo quieren ver el nombre Fontia:',
+    '    ' + getSel('q11'),
+    '',
+    '12. ¿Logo con símbolo/isótipo?',
+    '    ' + getSel('q12'),
+    '',
+    '13. Territorio conceptual del símbolo:',
+    '    ' + getSel('q13'),
+    '',
+    '14. Importancia de la F como elemento visual (1–5):',
+    '    ' + getScale('q14'),
+    '',
+    '── 05 · APLICACIONES ──────────────────────────',
+    '15. Aplicación más importante a corto plazo:',
+    '    ' + getSel('q15'),
+    '',
+    '16. Preferencia de fondo:',
+    '    ' + getSel('q16'),
+    '',
+    '17. El logo en 3 años:',
+    '    ' + getTA('q17'),
+    '',
+    '── 06 · CIERRE ────────────────────────────────',
+    '18. Logo que no les gustó y por qué:',
+    '    ' + getTA('q18'),
+    '',
+    '19. Qué desean personalmente del logo:',
+    '    ' + getTA('q19'),
+    '',
+    '20. Algo más que quieran compartir:',
+    '    ' + getTA('q20'),
+    '',
+    '──────────────────────────────────────────────',
+    'Completado: ' + answered.size + '/' + TOTAL + ' preguntas',
+    'Sombrero Rosa · Identidad Visual · Fontia · 2025',
+  ].join('\n');
+}
+
+function sendWhatsApp() {
+  const text = buildText();
+  const encoded = encodeURIComponent(text);
+  window.open('https://wa.me/5491136825264?text=' + encoded, '_blank');
+}
+
+function copyText() {
+  const text = buildText();
+  const btn = document.getElementById('copyBtn');
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('success');
+    setTimeout(() => { btn.textContent = 'Copiar texto'; btn.classList.remove('success'); }, 3000);
+  }).catch(() => {
+    alert('Para copiar: seleccioná todo el texto con Ctrl+A.');
+  });
+}
+</script>
+</body>
+</html>

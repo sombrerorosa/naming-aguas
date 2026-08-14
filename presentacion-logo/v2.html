@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontia — Fase 2 · Identidad Visual</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0e1f30;--navy2:#152b40;--black:#0a1622;
+  --cream:#f2f2f0;--rose:#D5848E;--rose2:#E39CAE;
+  --tm:rgba(242,242,240,.55);--td:rgba(242,242,240,.3);
+  --abyss:#0C1520;--copper:#B5622A;--steel:#8FA8BC;--ivory:#F8F5F0;--linen:#E2DAD0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--navy);color:var(--cream);font-size:15px;line-height:1.6}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(14,31,48,.97);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:12px 44px;border-bottom:1px solid rgba(181,98,42,.25)}
+.nav-logo{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo .w1{font-size:13px;font-weight:300;letter-spacing:.04em;color:var(--cream)}
+.nav-logo .w2{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--rose)}
+.nav-dots{display:flex;gap:6px}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:rgba(242,242,240,.2);border:none;cursor:pointer;transition:.3s;padding:0}
+.nav-dot.active{background:var(--copper);transform:scale(1.4)}
+.nav-label{font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--tm);text-transform:uppercase}
+
+.slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:104px 56px 72px;position:relative}
+.slide.top{justify-content:flex-start}
+.wrap{width:100%;max-width:1180px}
+.tag{font-size:9px;font-weight:600;letter-spacing:.26em;color:var(--copper);text-transform:uppercase;margin-bottom:13px}
+.h1{font-size:clamp(34px,5.6vw,68px);font-weight:800;letter-spacing:-.025em;line-height:1}
+.h1 em{font-style:italic;font-weight:300;color:var(--rose2)}
+.h2{font-size:clamp(25px,3.5vw,42px);font-weight:700;letter-spacing:-.018em;line-height:1.08;margin-bottom:13px}
+.h2 em{font-style:italic;font-weight:300;color:var(--copper)}
+.lead{font-size:13.5px;font-weight:300;line-height:1.85;color:var(--tm);max-width:720px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:26px 0;color:var(--copper);font-size:10px}
+.rule span{width:68px;height:1px;background:rgba(181,98,42,.35)}
+.scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:500;letter-spacing:.22em;color:var(--td);text-transform:uppercase;text-decoration:none}
+.scroll:hover{color:var(--copper)}
+
+.s-cover{background:radial-gradient(ellipse at 30% 38%,#1e3550 0%,var(--navy) 66%)}
+.s-light{background:var(--ivory);color:#12212f}
+.s-light .lead{color:#5c6672}
+.s-light .h2{color:var(--abyss)}
+.s-light .scroll{color:rgba(11,33,64,.25)}
+.s-linen{background:var(--linen);color:#12212f}
+.s-linen .lead{color:#5c6672}.s-linen .h2{color:var(--abyss)}
+.s-linen .scroll{color:rgba(11,33,64,.28)}
+.s-navy{background:var(--navy2)}
+.s-black{background:var(--black)}
+
+.wordmark{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,9vw,108px);font-weight:300;letter-spacing:.07em;line-height:1;color:var(--cream)}
+.wordmark em{font-style:normal;color:var(--copper)}
+.sub-it{font-size:11px;font-weight:500;letter-spacing:.34em;color:var(--copper);text-transform:uppercase;margin-top:14px}
+
+.stats{display:flex;gap:52px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+.stat-l{font-size:9px;font-weight:600;letter-spacing:.22em;color:var(--copper);text-transform:uppercase;margin-bottom:6px;text-align:center}
+.stat-v{font-size:12px;color:var(--cream);text-align:center}
+
+/* PILARES */
+.pil{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.pil-c{background:#fff;border:1px solid rgba(11,33,64,.09);border-radius:13px;padding:24px 22px;position:relative;overflow:hidden}
+.pil-n{font-size:48px;font-weight:900;color:rgba(11,33,64,.05);position:absolute;top:4px;right:12px;line-height:1}
+.pil-t{font-size:13.5px;font-weight:800;color:var(--abyss);margin-bottom:9px;position:relative}
+.pil-b{font-size:11.5px;line-height:1.7;color:#5c6672;position:relative}
+
+/* PALETA */
+.pal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.pal-c{background:#fff;border-radius:13px;overflow:hidden;border:1px solid rgba(11,33,64,.08)}
+.pal-chip{height:112px}
+.pal-b{padding:16px 18px}
+.pal-r{font-size:8.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin-bottom:5px}
+.pal-n{font-size:13.5px;font-weight:700;color:var(--abyss);margin-bottom:3px}
+.pal-h{font-size:11px;font-weight:600;color:var(--abyss)}
+.pal-m{font-size:9.5px;color:#8d97a1;line-height:1.55;margin-top:3px}
+
+/* PALETAS ALTERNATIVAS */
+.alt-pal{margin-top:52px;padding-top:40px;border-top:1px solid rgba(11,33,64,.12)}
+.alt-pal-name{font-size:11px;font-weight:800;color:var(--abyss);margin:26px 0 12px;letter-spacing:.02em}
+.alt-pal-name span{font-size:9px;font-weight:600;color:#8d97a1;text-transform:uppercase;letter-spacing:.14em;margin-left:8px}
+.pal-sm{grid-template-columns:repeat(5,1fr)}
+.pal-sm .pal-chip{height:78px}
+.pal-sm .pal-b{padding:12px 14px}
+.pal-sm .pal-n{font-size:12px}
+.pal-sm .pal-h{font-size:10px}
+
+/* FINALISTA */
+.fin-head{display:flex;align-items:flex-end;gap:26px;width:100%;margin-bottom:26px;padding-bottom:22px;border-bottom:1px solid rgba(11,33,64,.13)}
+.fin-num{font-size:70px;font-weight:900;line-height:.8;letter-spacing:-.05em;color:rgba(11,33,64,.13)}
+.fin-name{font-size:38px;font-weight:800;letter-spacing:-.025em;color:var(--abyss);line-height:1;margin-bottom:6px}
+.fin-terr{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--copper)}
+.fin-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;width:100%;align-items:start}
+.fin-logo{background:#fff;border:1px solid rgba(11,33,64,.08);border-radius:14px;padding:34px 30px;display:flex;align-items:center;justify-content:center;min-height:230px}
+.fin-logo img{max-width:100%;max-height:200px;display:block}
+.rac-t{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:11px}
+.rac-b{font-size:13px;line-height:1.9;color:#4d5761}
+.rac-b b{color:var(--abyss);font-weight:600}
+.esc{margin-top:20px;padding-top:18px;border-top:1px solid rgba(11,33,64,.1)}
+.esc-t{font-size:8.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8d97a1;margin-bottom:9px}
+.esc-b{font-size:11.5px;line-height:1.8;color:#6b7480}
+.esc-b b{color:var(--abyss);font-weight:600}
+
+/* APLICACIONES */
+.apl{width:100%;margin-top:26px}
+.apl-lbl{font-size:8.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8d97a1;margin-bottom:12px}
+.apl-mood{width:100%;border-radius:14px;border:1px solid rgba(11,33,64,.1);display:block;background:#fff}
+.apl-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.apl-2 img{width:100%;border-radius:14px;border:1px solid rgba(11,33,64,.1);display:block;background:#fff}
+
+/* COMPARATIVA */
+.cmp{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;width:100%;margin-top:32px}
+.cmp-c{background:#fff;border:1px solid rgba(11,33,64,.09);border-radius:13px;overflow:hidden;text-align:center}
+.cmp-i{padding:26px 16px;display:flex;align-items:center;justify-content:center;min-height:150px;background:var(--ivory)}
+.cmp-i img{max-width:100%;max-height:110px}
+.cmp-b{padding:14px 12px 18px}
+.cmp-n{font-size:13px;font-weight:800;color:var(--abyss);margin-bottom:4px}
+.cmp-t{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
+
+/* ROADMAP */
+.rm{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.rm-c{border:1px solid rgba(242,242,240,.12);border-radius:14px;padding:26px 24px}
+.rm-c.done{background:rgba(181,98,42,.06);border-color:rgba(181,98,42,.3)}
+.rm-st{font-size:8.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:9px}
+.rm-t{font-size:17px;font-weight:800;color:var(--cream);margin-bottom:13px}
+.rm-l{font-size:11.5px;line-height:2;color:var(--tm)}
+
+.quote{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;line-height:1.45;color:var(--cream);max-width:760px;margin:0 auto}
+.quote em{color:var(--copper);font-style:italic}
+.sig{margin-top:36px;font-size:11px;letter-spacing:.08em;color:var(--td)}
+.sig em{color:var(--rose);font-style:italic}
+
+@media(max-width:1000px){
+  .slide{padding:86px 20px 60px}
+  .nav{padding:11px 18px}.nav-label{display:none}
+  .pil,.pal,.rm,.fin-grid,.apl-2{grid-template-columns:1fr}
+  .pal{grid-template-columns:1fr 1fr}
+  .pal-sm{grid-template-columns:1fr 1fr}
+  .cmp{grid-template-columns:1fr 1fr}
+  .fin-head{gap:14px}.fin-num{font-size:44px}.fin-name{font-size:26px}
+  .stats{gap:22px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo"><span class="w1">sombrero</span><span class="w2">rosa</span></div>
+  <div class="nav-dots" id="dots"></div>
+  <div class="nav-label">Fontia · Fase 2</div>
+</nav>
+
+<!-- 0 PORTADA -->
+<section class="slide s-cover center" id="s0">
+  <div class="tag">Agencia Sombrero Rosa · Fase 2 · Completado</div>
+  <div class="wordmark">F<em>o</em>ntia</div>
+  <div class="sub-it">Del origen a vos</div>
+  <div class="rule"><span></span>◆<span></span></div>
+  <div class="h1" style="font-size:clamp(24px,3.2vw,42px)">Identidad <em>visual</em></div>
+  <div class="lead center" style="margin-top:18px">El nombre ya está. Ahora tiene cara. Cinco caminos posibles para la marca que van a llevar en cada camión, cada bidón y cada punto de contacto durante los próximos años.</div>
+  <div class="stats">
+    <div><div class="stat-l">Propuestas</div><div class="stat-v">5 finalistas</div></div>
+    <div><div class="stat-l">Paleta</div><div class="stat-v">Cobre · Abismo · Marfil</div></div>
+    <div><div class="stat-l">Aplicaciones</div><div class="stat-v">Flota · Bidón · Dispenser · Uniforme</div></div>
+    <div><div class="stat-l">Decisión</div><div class="stat-v">De ustedes</div></div>
+  </div>
+  <a class="scroll" href="#s1">↓ continuar</a>
+</section>
+
+<!-- 1 PUENTE FASE 1 -->
+<section class="slide s-light top" id="s1">
+  <div class="wrap">
+    <div class="tag">De dónde venimos</div>
+    <div class="h2">El nombre eligió el <em>camino</em></div>
+    <div class="lead">En la Fase 1 quedó definido qué es Fontia: una marca que no habla del producto sino de su origen. Cada una de las cinco propuestas que van a ver sostiene esa promesa — cambia el cómo, nunca el qué.</div>
+    <div class="pil">
+      <div class="pil-c"><div class="pil-n">01</div><div class="pil-t">Origen con propósito</div><div class="pil-b">De <i>fonte</i> — manantial en italiano. La marca no distribuye agua: distribuye lo que nace en el origen.</div></div>
+      <div class="pil-c"><div class="pil-n">02</div><div class="pil-t">De lo familiar a lo propio</div><div class="pil-b">Una identidad construida para operar como empresa propia, con embotellamiento propio y expansión a Zona Sur.</div></div>
+      <div class="pil-c"><div class="pil-n">03</div><div class="pil-t">Solidez y presencia</div><div class="pil-b">Legible a 80 km/h en una flota. Reconocible en una góndola, una etiqueta y una firma de mail.</div></div>
+      <div class="pil-c"><div class="pil-n">04</div><div class="pil-t">Versatilidad sistémica</div><div class="pil-b">Fontia Agua. Fontia Hielo. Fontia Helados. Fontia Dispenser. Un apellido para toda la línea.</div></div>
+    </div>
+  </div>
+  <a class="scroll" href="#s2">↓ continuar</a>
+</section>
+
+<!-- 2 PALETA -->
+<section class="slide s-light top" id="s2">
+  <div class="wrap">
+    <div class="tag">Sistema cromático</div>
+    <div class="h2">Paleta <em>Cobre</em></div>
+    <div class="lead">Un azul profundo que da autoridad, un cobre cálido que da carácter, y un marfil que deja respirar. Es la paleta que sostiene las cinco propuestas — cambia el dibujo, no el color. El <b>acero</b> completa el sistema sin entrar nunca en el logo: es el color de apoyo para gráficos, íconos, tablas y jerarquías secundarias. Su función es dar aire y orden cuando hay mucha información en pantalla, sin robarle protagonismo al cobre ni competir con el azul.</div>
+    <div class="pal">
+      <div class="pal-c"><div class="pal-chip" style="background:#0C1520"></div><div class="pal-b"><div class="pal-r">Primario</div><div class="pal-n">Azul Abismo</div><div class="pal-h">#0C1520</div><div class="pal-m">RGB 12·21·32</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#B5622A"></div><div class="pal-b"><div class="pal-r">Acento</div><div class="pal-n">Cobre Bruñido</div><div class="pal-h">#B5622A</div><div class="pal-m">RGB 181·98·42</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#8FA8BC"></div><div class="pal-b"><div class="pal-r">Sistema</div><div class="pal-n">Acero</div><div class="pal-h">#8FA8BC</div><div class="pal-m">RGB 143·168·188</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#F8F5F0;border-bottom:1px solid rgba(0,0,0,.06)"></div><div class="pal-b"><div class="pal-r">Fondo</div><div class="pal-n">Marfil Cálido</div><div class="pal-h">#F8F5F0</div><div class="pal-m">RGB 248·245·240</div></div></div>
+    </div>
+
+    <div class="alt-pal">
+      <div class="tag">Para evaluar en la reunión</div>
+      <div class="h2" style="font-size:clamp(20px,2.6vw,30px)">Paletas <em>alternativas</em></div>
+      <div class="lead">Cuatro sistemas cromáticos adicionales, construidos con la misma lógica que la paleta Cobre — principal, acento, neutro y fondo — para comparar distintos caracteres de marca antes de cerrar la decisión.</div>
+
+      <div class="alt-pal-name">Performance Premium <span>Naranja como acento</span></div>
+      <div class="pal pal-sm">
+        <div class="pal-c"><div class="pal-chip" style="background:#071A2B"></div><div class="pal-b"><div class="pal-r">Principal</div><div class="pal-n">Azul Noche</div><div class="pal-h">#071A2B</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#D46A32"></div><div class="pal-b"><div class="pal-r">Acento</div><div class="pal-n">Naranja Quemado</div><div class="pal-h">#D46A32</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,.06)"></div><div class="pal-b"><div class="pal-r">Contraste</div><div class="pal-n">Blanco</div><div class="pal-h">#FFFFFF</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#8995A1"></div><div class="pal-b"><div class="pal-r">Neutro</div><div class="pal-n">Gris Acero</div><div class="pal-h">#8995A1</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#1B2633"></div><div class="pal-b"><div class="pal-r">Profundidad</div><div class="pal-n">Azul Pizarra</div><div class="pal-h">#1B2633</div></div></div>
+      </div>
+
+      <div class="alt-pal-name">Modern Premium <span>Coral como acento</span></div>
+      <div class="pal pal-sm">
+        <div class="pal-c"><div class="pal-chip" style="background:#073B4C"></div><div class="pal-b"><div class="pal-r">Principal</div><div class="pal-n">Azul Petróleo</div><div class="pal-h">#073B4C</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#C94C4C"></div><div class="pal-b"><div class="pal-r">Acento</div><div class="pal-n">Coral Profundo</div><div class="pal-h">#C94C4C</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#F4F1EA;border-bottom:1px solid rgba(0,0,0,.06)"></div><div class="pal-b"><div class="pal-r">Fondo</div><div class="pal-n">Marfil</div><div class="pal-h">#F4F1EA</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#8B9398"></div><div class="pal-b"><div class="pal-r">Neutro</div><div class="pal-n">Gris Piedra</div><div class="pal-h">#8B9398</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#364A4F"></div><div class="pal-b"><div class="pal-r">Profundidad</div><div class="pal-n">Azul Pizarra</div><div class="pal-h">#364A4F</div></div></div>
+      </div>
+
+      <div class="alt-pal-name">Nueva Paleta Cromática <span>Rojo como acento</span></div>
+      <div class="pal pal-sm">
+        <div class="pal-c"><div class="pal-chip" style="background:#08243D"></div><div class="pal-b"><div class="pal-r">Principal</div><div class="pal-n">Azul Fontia</div><div class="pal-h">#08243D</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#C52B3A"></div><div class="pal-b"><div class="pal-r">Acento</div><div class="pal-n">Rojo Fontia</div><div class="pal-h">#C52B3A</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,.06)"></div><div class="pal-b"><div class="pal-r">Contraste</div><div class="pal-n">Blanco</div><div class="pal-h">#FFFFFF</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#8D9AB8"></div><div class="pal-b"><div class="pal-r">Neutro</div><div class="pal-n">Gris Azulado</div><div class="pal-h">#8D9AB8</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#0F1A26"></div><div class="pal-b"><div class="pal-r">Profundidad</div><div class="pal-n">Azul Grafito</div><div class="pal-h">#0F1A26</div></div></div>
+      </div>
+
+      <div class="alt-pal-name">Heritage Moderno <span>Borgoña como acento</span></div>
+      <div class="pal pal-sm">
+        <div class="pal-c"><div class="pal-chip" style="background:#102A56"></div><div class="pal-b"><div class="pal-r">Principal</div><div class="pal-n">Azul Ultramar</div><div class="pal-h">#102A56</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#7C2636"></div><div class="pal-b"><div class="pal-r">Acento</div><div class="pal-n">Borgoña</div><div class="pal-h">#7C2636</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#D7C5A3"></div><div class="pal-b"><div class="pal-r">Secundario</div><div class="pal-n">Champagne</div><div class="pal-h">#D7C5A3</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#F5F1E8;border-bottom:1px solid rgba(0,0,0,.06)"></div><div class="pal-b"><div class="pal-r">Fondo</div><div class="pal-n">Marfil</div><div class="pal-h">#F5F1E8</div></div></div>
+        <div class="pal-c"><div class="pal-chip" style="background:#7A8794"></div><div class="pal-b"><div class="pal-r">Neutro</div><div class="pal-n">Azul Gris</div><div class="pal-h">#7A8794</div></div></div>
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s3">↓ continuar</a>
+</section>
+
+<!-- 3 FINALISTA 1 · MONOLITO -->
+<section class="slide s-light top" id="s3">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">01</div>
+      <div>
+        <div class="fin-name">Monolito</div>
+        <div class="fin-terr">Arquitectura · Contundencia</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img/01-monolito-logo.webp" alt="Monolito"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">Una F construida con planos macizos, sin adornos. <b>Es la propuesta que más lejos lleva el pedido de no parecer una empresa chica</b> — su peso visual comunica solidez antes de que nadie lea el nombre. El corte de cobre en el brazo inferior evita que sea solo un bloque: aporta el detalle cálido que la conecta con el resto del sistema.<br><br>Es la más contundente a distancia. En un camión en movimiento se lee entera antes que cualquier otra.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">La F sola funciona como símbolo <b>sin ninguna adaptación</b>: sirve tal cual para avatar de WhatsApp, favicon y bordado. En monocromo pierde el cobre pero mantiene toda su fuerza, porque su carácter está en la forma y no en el color.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood" src="img/01-monolito-elementos.webp" alt="Elementos Monolito">
+      <div class="apl-2">
+        <img src="img/01-monolito-camion.webp" alt="Camión CIMES">
+        <img src="img/01-monolito-utilitario.webp" alt="Utilitario CIMES">
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s4">↓ continuar</a>
+</section>
+
+<!-- 4 FINALISTA 2 · COLUMNA -->
+<section class="slide s-linen top" id="s4">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">02</div>
+      <div>
+        <div class="fin-name">Columna</div>
+        <div class="fin-terr">Arquitectura · Origen</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img/02-columna-logo.webp" alt="Columna"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">La F resuelta como estructura: dos columnas y un dintel de cobre apoyado encima. <b>Es la lectura más directa del acueducto</b> — habla de origen, de ingeniería y de raíz italiana sin dibujar una gota ni nombrar el agua.<br><br>Es la propuesta que mejor traduce la promesa del nombre. <i>Fonte</i> es manantial, y un manantial que dura es el que alguien construyó para que durara. Ninguna distribuidora de la zona está usando este territorio.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">Funciona directo en formatos grandes — flota, cartelería, etiqueta. Para usos chicos como el bordado de uniforme o el avatar, el sistema incluye una <b>versión con las verticales engrosadas</b>: la misma marca con distinto peso óptico, para que nunca se cierre.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood" src="img/02-columna-elementos.webp" alt="Elementos Columna">
+      <div class="apl-2">
+        <img src="img/02-columna-camion.webp" alt="Camión CIMES">
+        <img src="img/02-columna-utilitario.webp" alt="Utilitario CIMES">
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s5">↓ continuar</a>
+</section>
+
+<!-- 5 FINALISTA 3 · VERTIENTE -->
+<section class="slide s-light top" id="s5">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">03</div>
+      <div>
+        <div class="fin-name">Vertiente</div>
+        <div class="fin-terr">Caída · Naturaleza del agua</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img/03-vertiente-logo.webp" alt="Vertiente"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">Un trazo de cobre nace del brazo de la F y desciende hasta apoyarse en la base. <b>Es el gesto más orgánico del set</b>: sugiere el agua que cae desde el origen sin dibujar ni una gota ni una onda.<br><br>Es también la más cálida. Donde las otras hablan de estructura o de sistema, esta habla de naturaleza — el serif clásico y el movimiento del trazo le dan un registro más humano, más cercano al hogar que a la oficina.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">En color y formato grande funciona directo. El sistema incorpora una <b>versión con el trazo calado</b> para monocromo, bordado y vinilo de corte, de modo que la caída de agua siga leyéndose como un elemento propio y no se funda con la letra.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood" src="img/03-vertiente-elementos.webp" alt="Elementos Vertiente">
+      <div class="apl-2">
+        <img src="img/03-vertiente-camion.webp" alt="Camión CIMES">
+        <img src="img/03-vertiente-utilitario.webp" alt="Utilitario CIMES">
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s6">↓ continuar</a>
+</section>
+
+<!-- 6 FINALISTA 4 · CAUCE -->
+<section class="slide s-linen top" id="s6">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">04</div>
+      <div>
+        <div class="fin-name">Manantial</div>
+        <div class="fin-terr">Nacimiento · Expansión</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img/04-manantial-logo.webp" alt="Manantial"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">Anillos concéntricos que nacen de un punto y se expanden hacia afuera. <b>Es la traducción más literal de "manantial" sin usar una gota</b> — el agua que brota y se abre, exactamente lo que el nombre promete.<br><br>Tiene una segunda lectura que le suma valor de negocio: esos mismos anillos son un mapa de expansión territorial. Fontia naciendo en un punto y llegando cada vez más lejos. Es la única propuesta cuyo símbolo no parte de ninguna letra, y por eso el signo funciona solo, sin depender del nombre para significar algo.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">Es de las de mejor comportamiento del set: el emblema <b>se sostiene entero a 24 píxeles</b> y en monocromo no pierde ninguna de sus capas. Funciona directo como avatar, favicon, bordado y vinilo de corte sin adaptaciones.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood" src="img/04-manantial-elementos.webp" alt="Elementos Manantial">
+      <div class="apl-2">
+        <img src="img/04-manantial-camion.webp" alt="Camión CIMES">
+        <img src="img/04-manantial-utilitario.webp" alt="Utilitario CIMES">
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s7">↓ continuar</a>
+</section>
+
+<!-- 7 FINALISTA 5 · CIRCULACIÓN -->
+<section class="slide s-light top" id="s7">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">05</div>
+      <div>
+        <div class="fin-name">Circulación</div>
+        <div class="fin-terr">Continuidad · Contemporánea</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img/05-circulacion-logo.webp" alt="Circulación"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">La O se abre en un anillo y la N se continúa en la T en un solo trazo, sin cortes. <b>Toda la marca está construida sobre una idea: nada se detiene.</b><br><br>Es la propuesta que más se aleja del registro clásico y la que más lejos mira. No habla de origen sino de servicio continuo — el agua que siempre está, la entrega que nunca falla. Es la más moderna del set y la que mejor va a envejecer en entornos digitales.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">Es la de mejor comportamiento en reducción de todo el proceso: se sostiene entera en tamaños donde otras empiezan a ceder. El sistema suma una <b>versión de la O como símbolo autónomo</b> para avatar, favicon y aplicaciones cuadradas, y un lockup apilado para formatos verticales.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood" src="img/05-circulacion-elementos.webp" alt="Elementos Circulación">
+      <div class="apl-2">
+        <img src="img/05-circulacion-camion.webp" alt="Camión CIMES">
+        <img src="img/05-circulacion-utilitario.webp" alt="Utilitario CIMES">
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s8">↓ continuar</a>
+</section>
+
+<!-- 8 COMPARATIVA -->
+<section class="slide s-light" id="s8">
+  <div class="wrap center">
+    <div class="tag">Las cinco</div>
+    <div class="h2">Una al lado de la <em>otra</em></div>
+    <div class="lead">No hay una correcta. Hay cinco maneras distintas de contar la misma verdad — y la que elijan va a definir cómo los ve el mercado durante los próximos diez años.</div>
+    <div class="cmp">
+      <div class="cmp-c"><div class="cmp-i"><img src="img/01-monolito-logo.webp" alt="Monolito"></div><div class="cmp-b"><div class="cmp-n">Monolito</div><div class="cmp-t">Contundencia</div></div></div>
+      <div class="cmp-c"><div class="cmp-i"><img src="img/02-columna-logo.webp" alt="Columna"></div><div class="cmp-b"><div class="cmp-n">Columna</div><div class="cmp-t">Origen</div></div></div>
+      <div class="cmp-c"><div class="cmp-i"><img src="img/03-vertiente-logo.webp" alt="Vertiente"></div><div class="cmp-b"><div class="cmp-n">Vertiente</div><div class="cmp-t">Naturaleza</div></div></div>
+      <div class="cmp-c"><div class="cmp-i"><img src="img/04-manantial-logo.webp" alt="Manantial"></div><div class="cmp-b"><div class="cmp-n">Manantial</div><div class="cmp-t">Nacimiento</div></div></div>
+      <div class="cmp-c"><div class="cmp-i"><img src="img/05-circulacion-logo.webp" alt="Circulación"></div><div class="cmp-b"><div class="cmp-n">Circulación</div><div class="cmp-t">Continuidad</div></div></div>
+    </div>
+  </div>
+  <a class="scroll" href="#s9">↓ continuar</a>
+</section>
+
+<!-- 9 ROADMAP -->
+<section class="slide s-navy top" id="s9">
+  <div class="wrap">
+    <div class="tag">El camino por delante</div>
+    <div class="h2" style="color:var(--cream)">Lo que viene después de <em>elegir</em></div>
+    <div class="lead">Elegir el logo no cierra la Fase 2 — la habilita. Con la propuesta definida, la marca se convierte en un sistema completo listo para producir.</div>
+    <div class="rm">
+      <div class="rm-c done">
+        <div class="rm-st">✓ Completado</div>
+        <div class="rm-t">Fase 1 · Naming</div>
+        <div class="rm-l">
+          ADN y estrategia de marca<br>
+          Exploración y evaluación de nombres<br>
+          Análisis semiótico y neurocientífico<br>
+          Elección del nombre Fontia<br>
+          Registro de marca — INPI
+        </div>
+      </div>
+      <div class="rm-c" style="border-color:rgba(181,98,42,.45)">
+        <div class="rm-st">En curso — decisión de ustedes</div>
+        <div class="rm-t">Fase 2 · Identidad</div>
+        <div class="rm-l">
+          Exploración de rutas de diseño<br>
+          Sistema cromático oficial<br>
+          <b style="color:var(--cream)">Elección del logo definitivo</b><br>
+          Sistema de versiones y usos<br>
+          Manual de Marca — Brandbook
+        </div>
+      </div>
+      <div class="rm-c">
+        <div class="rm-st">Por delante</div>
+        <div class="rm-t">Fase 3 · Aplicaciones</div>
+        <div class="rm-l">
+          Branding vehicular — flota completa<br>
+          Etiquetas y packaging<br>
+          Papelería comercial<br>
+          Firma de email corporativa<br>
+          Kit de redes sociales
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s10">↓ continuar</a>
+</section>
+
+<!-- 10 CIERRE -->
+<section class="slide s-cover center" id="s10">
+  <div class="tag">Cierre de Fase 2</div>
+  <div class="wordmark">F<em>o</em>ntia</div>
+  <div class="sub-it">Del origen a vos</div>
+  <div class="rule"><span></span>◆<span></span></div>
+  <div class="quote">Un logo no es un dibujo lindo. Es la primera cosa que la gente va a ver de ustedes — <em>en un camión, en una oficina, en la puerta de una casa</em> — y la única que va a quedar cuando no haya nadie explicando nada.</div>
+  <div class="lead center" style="margin-top:30px">Las cinco propuestas funcionan. Las cinco están construidas para durar, para crecer con el negocio y para sostener el nombre que eligieron. La decisión no es cuál está mejor hecha: es cuál se parece más a la empresa que quieren ser.</div>
+  <div class="sig">sombrero <em>rosa</em> — naming &amp; branding · Fontia · Fase 2 · 2026</div>
+</section>
+
+<script>
+const ids=['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
+const dotsEl=document.getElementById('dots');
+ids.forEach((id,i)=>{const d=document.createElement('button');d.className='nav-dot'+(i===0?' active':'');d.onclick=()=>document.getElementById(id).scrollIntoView({behavior:'smooth'});dotsEl.appendChild(d);});
+const dots=document.querySelectorAll('.nav-dot');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const i=ids.indexOf(e.target.id);dots.forEach((d,j)=>d.classList.toggle('active',j===i));}});},{threshold:.4});
+ids.forEach(id=>obs.observe(document.getElementById(id)));
+</script>
+</body>
+</html>

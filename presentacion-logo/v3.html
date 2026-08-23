@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontia — Fase 2 · Paleta &amp; Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0e1f30;--navy2:#152b40;--black:#0a1622;
+  --cream:#f2f2f0;--rose:#D5848E;--rose2:#E39CAE;
+  --tm:rgba(242,242,240,.55);--td:rgba(242,242,240,.3);
+  --abyss:#0C1520;--copper:#B5622A;--steel:#8FA8BC;--ivory:#F8F5F0;--linen:#E2DAD0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--navy);color:var(--cream);font-size:15px;line-height:1.6}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(14,31,48,.97);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:12px 44px;border-bottom:1px solid rgba(181,98,42,.25)}
+.nav-logo{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo .w1{font-size:13px;font-weight:300;letter-spacing:.04em;color:var(--cream)}
+.nav-logo .w2{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--rose)}
+.nav-dots{display:flex;gap:6px}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:rgba(242,242,240,.2);border:none;cursor:pointer;transition:.3s;padding:0}
+.nav-dot.active{background:var(--copper);transform:scale(1.4)}
+.nav-label{font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--tm);text-transform:uppercase}
+
+.slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:104px 56px 72px;position:relative}
+.slide.top{justify-content:flex-start}
+.wrap{width:100%;max-width:1180px}
+.tag{font-size:9px;font-weight:600;letter-spacing:.26em;color:var(--copper);text-transform:uppercase;margin-bottom:13px}
+.h1{font-size:clamp(34px,5.6vw,68px);font-weight:800;letter-spacing:-.025em;line-height:1}
+.h1 em{font-style:italic;font-weight:300;color:var(--rose2)}
+.h2{font-size:clamp(25px,3.5vw,42px);font-weight:700;letter-spacing:-.018em;line-height:1.08;margin-bottom:13px}
+.h2 em{font-style:italic;font-weight:300;color:var(--copper)}
+.lead{font-size:13.5px;font-weight:300;line-height:1.85;color:var(--tm);max-width:720px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:26px 0;color:var(--copper);font-size:10px}
+.rule span{width:68px;height:1px;background:rgba(181,98,42,.35)}
+.scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:500;letter-spacing:.22em;color:var(--td);text-transform:uppercase;text-decoration:none}
+.scroll:hover{color:var(--copper)}
+
+.s-cover{background:radial-gradient(ellipse at 30% 38%,#1e3550 0%,var(--navy) 66%)}
+.s-light{background:var(--ivory);color:#12212f}
+.s-light .lead{color:#5c6672}
+.s-light .h2{color:var(--abyss)}
+.s-light .scroll{color:rgba(11,33,64,.25)}
+.s-linen{background:var(--linen);color:#12212f}
+.s-linen .lead{color:#5c6672}.s-linen .h2{color:var(--abyss)}
+.s-linen .scroll{color:rgba(11,33,64,.28)}
+.s-navy{background:var(--navy2)}
+.s-black{background:var(--black)}
+
+.wordmark{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,9vw,108px);font-weight:300;letter-spacing:.07em;line-height:1;color:var(--cream)}
+.wordmark em{font-style:normal;color:var(--copper)}
+.sub-it{font-size:11px;font-weight:500;letter-spacing:.34em;color:var(--copper);text-transform:uppercase;margin-top:14px}
+
+.stats{display:flex;gap:52px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+.stat-l{font-size:9px;font-weight:600;letter-spacing:.22em;color:var(--copper);text-transform:uppercase;margin-bottom:6px;text-align:center}
+.stat-v{font-size:12px;color:var(--cream);text-align:center}
+
+/* PILARES */
+.pil{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.pil-c{background:#fff;border:1px solid rgba(11,33,64,.09);border-radius:13px;padding:24px 22px;position:relative;overflow:hidden}
+.pil-n{font-size:48px;font-weight:900;color:rgba(11,33,64,.05);position:absolute;top:4px;right:12px;line-height:1}
+.pil-t{font-size:13.5px;font-weight:800;color:var(--abyss);margin-bottom:9px;position:relative}
+.pil-b{font-size:11.5px;line-height:1.7;color:#5c6672;position:relative}
+
+/* PRÓXIMOS PASOS */
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.next-grid .pil-c{padding:22px 20px}
+
+/* PALETA */
+.pal{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px}
+.pal-c{background:#fff;border-radius:13px;overflow:hidden;border:1px solid rgba(11,33,64,.08)}
+.pal-chip{height:112px}
+.pal-b{padding:16px 18px}
+.pal-r{font-size:8.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin-bottom:5px}
+.pal-n{font-size:13.5px;font-weight:700;color:var(--abyss);margin-bottom:3px}
+.pal-h{font-size:11px;font-weight:600;color:var(--abyss)}
+.pal-m{font-size:9.5px;color:#8d97a1;line-height:1.55;margin-top:3px}
+
+/* PALETA — DOS OPCIONES A DECIDIR */
+.pal-block{margin-bottom:40px}
+.pal-block:last-child{margin-bottom:0}
+.pal-block-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.pal-block-n{font-size:15px;font-weight:800;color:var(--abyss)}
+.pal-block-s{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
+.pal-note{margin-top:30px;padding:18px 22px;background:rgba(181,98,42,.07);border:1px solid rgba(181,98,42,.24);border-radius:13px;font-size:12px;line-height:1.85;color:#5c4630}
+.pal-note b{color:var(--abyss)}
+
+/* FINALISTA */
+.fin-head{display:flex;align-items:flex-end;gap:26px;width:100%;margin-bottom:26px;padding-bottom:22px;border-bottom:1px solid rgba(11,33,64,.13)}
+.fin-num{font-size:70px;font-weight:900;line-height:.8;letter-spacing:-.05em;color:rgba(11,33,64,.13)}
+.fin-name{font-size:38px;font-weight:800;letter-spacing:-.025em;color:var(--abyss);line-height:1;margin-bottom:6px}
+.fin-terr{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--copper)}
+.fin-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;width:100%;align-items:start}
+.fin-logo{background:#fff;border:1px solid rgba(11,33,64,.08);border-radius:14px;padding:34px 30px;display:flex;align-items:center;justify-content:center;min-height:230px}
+.fin-logo img{max-width:100%;max-height:200px;display:block}
+.rac-t{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:11px}
+.rac-b{font-size:13px;line-height:1.9;color:#4d5761}
+.rac-b b{color:var(--abyss);font-weight:600}
+.esc{margin-top:20px;padding-top:18px;border-top:1px solid rgba(11,33,64,.1)}
+.esc-t{font-size:8.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8d97a1;margin-bottom:9px}
+.esc-b{font-size:11.5px;line-height:1.8;color:#6b7480}
+.esc-b b{color:var(--abyss);font-weight:600}
+
+/* APLICACIONES */
+.apl{width:100%;margin-top:26px}
+.apl-lbl{font-size:8.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8d97a1;margin-bottom:12px}
+.apl-mood{width:100%;border-radius:14px;border:1px solid rgba(11,33,64,.1);display:block;background:#fff}
+.apl-mood.portrait{width:auto;max-width:380px;margin:0 auto}
+.apl-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.apl-2 img{width:100%;border-radius:14px;border:1px solid rgba(11,33,64,.1);display:block;background:#fff}
+
+/* ISOLOGO — ESPACIO RESERVADO */
+.iso{width:100%;margin-top:26px;padding-top:24px;border-top:1px dashed rgba(11,33,64,.18)}
+.iso-lbl{font-size:8.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--copper);margin-bottom:9px}
+.iso-note{font-size:11.5px;line-height:1.85;color:#6b7480;max-width:640px;margin-bottom:16px}
+.iso-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.iso-slot{border:1.5px dashed rgba(11,33,64,.24);border-radius:13px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#9aa3ac;background:rgba(11,33,64,.02)}
+.iso-slot-ico{font-size:22px;font-weight:300;color:rgba(11,33,64,.3);line-height:1}
+.iso-slot-t{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.iso-slot.img{border:1px solid rgba(11,33,64,.1);background:#fff;padding:24px 20px 16px;color:var(--abyss)}
+.iso-slot.img img{max-width:100%;max-height:120px;display:block;margin-bottom:14px}
+.iso-slot.img .iso-slot-t{color:#6b7480;font-weight:600}
+
+/* COMPARATIVA */
+.cmp{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;margin-top:32px}
+.cmp.two{grid-template-columns:repeat(2,1fr);max-width:560px;margin-left:auto;margin-right:auto}
+.cmp-c{background:#fff;border:1px solid rgba(11,33,64,.09);border-radius:13px;overflow:hidden;text-align:center}
+.cmp-i{padding:26px 16px;display:flex;align-items:center;justify-content:center;min-height:150px;background:var(--ivory)}
+.cmp-i img{max-width:100%;max-height:110px}
+.cmp-b{padding:14px 12px 18px}
+.cmp-n{font-size:13px;font-weight:800;color:var(--abyss);margin-bottom:4px}
+.cmp-t{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
+
+/* ROADMAP */
+.rm{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.rm-c{border:1px solid rgba(242,242,240,.12);border-radius:14px;padding:26px 24px}
+.rm-c.done{background:rgba(181,98,42,.06);border-color:rgba(181,98,42,.3)}
+.rm-st{font-size:8.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:9px}
+.rm-t{font-size:17px;font-weight:800;color:var(--cream);margin-bottom:13px}
+.rm-l{font-size:11.5px;line-height:2;color:var(--tm)}
+
+.quote{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;line-height:1.45;color:var(--cream);max-width:760px;margin:0 auto}
+.quote em{color:var(--copper);font-style:italic}
+.sig{margin-top:36px;font-size:11px;letter-spacing:.08em;color:var(--td)}
+.sig em{color:var(--rose);font-style:italic}
+
+@media(max-width:1000px){
+  .slide{padding:86px 20px 60px}
+  .nav{padding:11px 18px}.nav-label{display:none}
+  .pil,.rm,.fin-grid,.apl-2,.iso-grid,.next-grid{grid-template-columns:1fr}
+  .pal{grid-template-columns:1fr 1fr}
+  .cmp{grid-template-columns:1fr 1fr}
+  .cmp.two{grid-template-columns:1fr;max-width:340px}
+  .fin-head{gap:14px}.fin-num{font-size:44px}.fin-name{font-size:26px}
+  .stats{gap:22px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo"><span class="w1">sombrero</span><span class="w2">rosa</span></div>
+  <div class="nav-dots" id="dots"></div>
+  <div class="nav-label">Fontia · Fase 2</div>
+</nav>
+
+<!-- 0 PORTADA -->
+<section class="slide s-cover center" id="s0">
+  <div class="tag">Agencia Sombrero Rosa · Fase 2 · En decisión</div>
+  <div class="wordmark">F<em>o</em>ntia</div>
+  <div class="sub-it">Del origen a vos</div>
+  <div class="rule"><span></span>◆<span></span></div>
+  <div class="h1" style="font-size:clamp(24px,3.2vw,42px)">Logo <em>final</em></div>
+  <div class="lead center" style="margin-top:18px">De las cinco rutas exploradas, el proceso se concentró en dos caminos y una paleta ya definida. Ahora falta cerrar una sola decisión: con cuál de los dos logos avanzamos.</div>
+  <div class="stats">
+    <div><div class="stat-l">Propuestas</div><div class="stat-v">2 finalistas</div></div>
+    <div><div class="stat-l">Paleta</div><div class="stat-v">Nueva Paleta Cromática</div></div>
+    <div><div class="stat-l">Aplicaciones</div><div class="stat-v">Flota · Bidón · Dispenser · Uniforme</div></div>
+    <div><div class="stat-l">Decisión</div><div class="stat-v">De ustedes</div></div>
+  </div>
+  <a class="scroll" href="#s1">↓ continuar</a>
+</section>
+
+<!-- 1 PUENTE FASE 1 -->
+<section class="slide s-light top" id="s1">
+  <div class="wrap">
+    <div class="tag">De dónde venimos</div>
+    <div class="h2">El nombre eligió el <em>camino</em></div>
+    <div class="lead">En la Fase 1 quedó definido qué es Fontia: una marca que no habla del producto sino de su origen. Las dos propuestas que quedan en carrera sostienen esa misma promesa — cambia el cómo, nunca el qué.</div>
+    <div class="pil">
+      <div class="pil-c"><div class="pil-n">01</div><div class="pil-t">Origen con propósito</div><div class="pil-b">De <i>fonte</i> — manantial en italiano. La marca no distribuye agua: distribuye lo que nace en el origen.</div></div>
+      <div class="pil-c"><div class="pil-n">02</div><div class="pil-t">De lo familiar a lo propio</div><div class="pil-b">Una identidad construida para operar como empresa propia, con embotellamiento propio y expansión a Zona Sur.</div></div>
+      <div class="pil-c"><div class="pil-n">03</div><div class="pil-t">Solidez y presencia</div><div class="pil-b">Legible a 80 km/h en una flota. Reconocible en una góndola, una etiqueta y una firma de mail.</div></div>
+      <div class="pil-c"><div class="pil-n">04</div><div class="pil-t">Versatilidad sistémica</div><div class="pil-b">Fontia Agua. Fontia Hielo. Fontia Helados. Fontia Dispenser. Un apellido para toda la línea.</div></div>
+    </div>
+  </div>
+  <a class="scroll" href="#s2">↓ continuar</a>
+</section>
+
+<!-- 2 PALETA — CONFIRMADA -->
+<section class="slide s-light top" id="s2">
+  <div class="wrap">
+    <div class="tag">Sistema cromático · Confirmado</div>
+    <div class="h2">Nueva Paleta <em>Cromática</em></div>
+    <div class="lead">De las dos alternativas presentadas, queda esta como la paleta oficial de Fontia: azul profundo como principal y rojo como acento. Como plus, este rojo es más cercano al que ya usa CIMES en la flota actual que el coral de la otra opción — la transición en los camiones va a sentirse menos como una marca nueva de cero y más como una evolución natural.</div>
+    <div class="pal">
+      <div class="pal-c"><div class="pal-chip" style="background:#08243D"></div><div class="pal-b"><div class="pal-r">Principal</div><div class="pal-n">Azul Fontia</div><div class="pal-h">#08243D</div><div class="pal-m">RGB 8·36·61</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#C52B3A"></div><div class="pal-b"><div class="pal-r">Acento</div><div class="pal-n">Rojo Fontia</div><div class="pal-h">#C52B3A</div><div class="pal-m">RGB 197·43·58</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,.06)"></div><div class="pal-b"><div class="pal-r">Contraste</div><div class="pal-n">Blanco</div><div class="pal-h">#FFFFFF</div><div class="pal-m">RGB 255·255·255</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#8D9AB8"></div><div class="pal-b"><div class="pal-r">Neutro</div><div class="pal-n">Gris Azulado</div><div class="pal-h">#8D9AB8</div><div class="pal-m">RGB 141·154·184</div></div></div>
+      <div class="pal-c"><div class="pal-chip" style="background:#0F1A26"></div><div class="pal-b"><div class="pal-r">Profundidad</div><div class="pal-n">Azul Grafito</div><div class="pal-h">#0F1A26</div><div class="pal-m">RGB 15·26·38</div></div></div>
+    </div>
+    <div class="pal-note">Los logos, el utilitario y el isologo que siguen ya están montados en esta paleta. El bidón, el dispenser, el uniforme y el camión de reparto todavía muestran la corrida de color anterior — quedan en la lista de <b>próximos pasos</b> para recolorear sobre esta paleta definitiva.</div>
+  </div>
+  <a class="scroll" href="#s3">↓ continuar</a>
+</section>
+
+<!-- 3 FINALISTA · OPCIÓN 1 · CIRCULACIÓN -->
+<section class="slide s-light top" id="s3">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">01</div>
+      <div>
+        <div class="fin-name">Opción 1 · Circulación</div>
+        <div class="fin-terr">Continuidad · Contemporánea</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img3/opcion1-logo.webp" alt="Fontia — Opción 1, logo Circulación"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">La O se abre en un anillo y la N se continúa en la T en un solo trazo, sin cortes. <b>Toda la marca está construida sobre una idea: nada se detiene.</b><br><br>Es la propuesta que más se aleja del registro clásico y la que más lejos mira. No habla de origen sino de servicio continuo — el agua que siempre está, la entrega que nunca falla. Es la más moderna del set y la que mejor va a envejecer en entornos digitales.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">Es la de mejor comportamiento en reducción de todo el proceso: se sostiene entera en tamaños donde la otra empieza a ceder. El sistema contempla una <b>versión de la O como símbolo autónomo</b> para avatar, favicon y aplicaciones cuadradas — el isologo que estamos terminando de dibujar, ver más abajo.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood portrait" src="img3/opcion1-mockup.webp" alt="Mockup Opción 1 — bidón, dispenser, uniforme, utilitario">
+      <div class="apl-2">
+        <img src="img3/opcion1-camion.webp" alt="Camión de reparto CIMES con lockup Fontia — Opción 1">
+        <img src="img3/opcion1-utilitario.webp" alt="Utilitario CIMES con logo Fontia — Opción 1">
+      </div>
+    </div>
+    <div class="iso">
+      <div class="iso-lbl">Isologo · Dos variantes</div>
+      <div class="iso-note">El símbolo solo, para los usos donde el nombre completo no entra: avatar de WhatsApp, favicon, bordado chico de uniforme. Dos variantes sobre la mesa — la diferencia está en cómo se resuelve el cruce entre la F y la A.</div>
+      <div class="iso-grid">
+        <div class="iso-slot img"><img src="img3/isologo1-a.webp" alt="Isologo Fontia Argentina — Versión A"><div class="iso-slot-t">Versión A · trazo continuo</div></div>
+        <div class="iso-slot img"><img src="img3/isologo1-b.webp" alt="Isologo Fontia Argentina — Versión B"><div class="iso-slot-t">Versión B · corte recto</div></div>
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s4">↓ continuar</a>
+</section>
+
+<!-- 4 FINALISTA · OPCIÓN 2 · VERTIENTE -->
+<section class="slide s-linen top" id="s4">
+  <div class="wrap">
+    <div class="fin-head">
+      <div class="fin-num">02</div>
+      <div>
+        <div class="fin-name">Opción 2 · Vertiente</div>
+        <div class="fin-terr">Caída · Naturaleza del agua</div>
+      </div>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-logo"><img src="img3/opcion2-logo.webp" alt="Fontia — Opción 2, logo Vertiente"></div>
+      <div>
+        <div class="rac-t">Racional</div>
+        <div class="rac-b">Un trazo de color nace del brazo de la F y desciende hasta apoyarse en la base. <b>Es el gesto más orgánico del set</b>: sugiere el agua que cae desde el origen sin dibujar ni una gota ni una onda.<br><br>Es también la más cálida de las dos. Donde la otra habla de sistema y continuidad, esta habla de naturaleza — el serif clásico y el movimiento del trazo le dan un registro más humano, más cercano al hogar que a la oficina.</div>
+        <div class="esc">
+          <div class="esc-t">Cómo escala</div>
+          <div class="esc-b">En color y formato grande funciona directo. El sistema incorpora una <b>versión con el trazo calado</b> para monocromo, bordado y vinilo de corte, de modo que la caída siga leyéndose como un elemento propio y no se funda con la letra.</div>
+        </div>
+      </div>
+    </div>
+    <div class="apl">
+      <div class="apl-lbl">Aplicaciones</div>
+      <img class="apl-mood portrait" src="img3/opcion2-mockup.webp" alt="Mockup Opción 2 — bidón, dispenser, uniforme, utilitario">
+      <div class="apl-2">
+        <img src="img3/opcion2-camion.webp" alt="Camión de reparto CIMES con lockup Fontia — Opción 2">
+        <img src="img3/opcion2-utilitario.webp" alt="Utilitario CIMES con logo Fontia — Opción 2">
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s5">↓ continuar</a>
+</section>
+
+<!-- 5 COMPARATIVA -->
+<section class="slide s-light" id="s5">
+  <div class="wrap center">
+    <div class="tag">Las opciones</div>
+    <div class="h2">Una al lado de la <em>otra</em></div>
+    <div class="lead">Dos caminos, ya montados en la paleta definitiva. La elección va a definir cómo los ve el mercado durante los próximos diez años.</div>
+    <div class="cmp two">
+      <div class="cmp-c"><div class="cmp-i"><img src="img3/opcion1-logo.webp" alt="Opción 1 — Circulación"></div><div class="cmp-b"><div class="cmp-n">Opción 1</div><div class="cmp-t">Circulación</div></div></div>
+      <div class="cmp-c"><div class="cmp-i"><img src="img3/opcion2-logo.webp" alt="Opción 2 — Vertiente"></div><div class="cmp-b"><div class="cmp-n">Opción 2</div><div class="cmp-t">Vertiente</div></div></div>
+    </div>
+  </div>
+  <a class="scroll" href="#s6">↓ continuar</a>
+</section>
+
+<!-- 6 PRÓXIMOS PASOS — CONSTRUCCIÓN DEL SISTEMA -->
+<section class="slide s-linen top" id="s6">
+  <div class="wrap">
+    <div class="tag">Una vez elegido el logo</div>
+    <div class="h2">Construcción del <em>sistema</em></div>
+    <div class="lead">Elegir entre las dos opciones no es el final — es lo que habilita construir el manual de uso real. Esto es lo que sigue apenas se cierre la decisión:</div>
+    <div class="next-grid">
+      <div class="pil-c"><div class="pil-t">Armado en alta definición</div><div class="pil-b">Vector final (AI / EPS / SVG) y exportes PNG en alta resolución, listos para imprenta, gigantografía y pantalla.</div></div>
+      <div class="pil-c"><div class="pil-t">Blanco, negro y negativo</div><div class="pil-b">Versión a una tinta para grabado, sellado y fax, y la versión invertida para fondos oscuros o fotográficos.</div></div>
+      <div class="pil-c"><div class="pil-t">Tamaños mínimos y máximos</div><div class="pil-b">El punto en el que el logo deja de leerse bien — bordado, favicon — y las reglas de escalado para flota y cartelería grande.</div></div>
+      <div class="pil-c"><div class="pil-t">Área de resguardo</div><div class="pil-b">El margen mínimo alrededor del logo para que nunca quede pegado a un borde, otro elemento o un bloque de texto.</div></div>
+      <div class="pil-c"><div class="pil-t">Usos incorrectos</div><div class="pil-b">Qué no hacer: deformar, rotar, recolorear fuera de paleta o apoyarlo sobre fondos que no dan suficiente contraste.</div></div>
+      <div class="pil-c"><div class="pil-t">Ícono y avatar</div><div class="pil-b">Recorte del isologo elegido para WhatsApp, redes sociales y favicon, en formato circular y cuadrado.</div></div>
+    </div>
+  </div>
+  <a class="scroll" href="#s7">↓ continuar</a>
+</section>
+
+<!-- 7 ROADMAP -->
+<section class="slide s-navy top" id="s7">
+  <div class="wrap">
+    <div class="tag">El camino por delante</div>
+    <div class="h2" style="color:var(--cream)">Lo que viene después de <em>elegir</em></div>
+    <div class="lead">La paleta ya quedó definida. Falta cerrar una sola decisión — el logo — para que la Fase 2 quede completa y arranque la construcción del sistema.</div>
+    <div class="rm">
+      <div class="rm-c done">
+        <div class="rm-st">✓ Completado</div>
+        <div class="rm-t">Fase 1 · Naming</div>
+        <div class="rm-l">
+          ADN y estrategia de marca<br>
+          Exploración y evaluación de nombres<br>
+          Análisis semiótico y neurocientífico<br>
+          Elección del nombre Fontia<br>
+          Registro de marca — INPI
+        </div>
+      </div>
+      <div class="rm-c" style="border-color:rgba(181,98,42,.45)">
+        <div class="rm-st">En curso — decisión de ustedes</div>
+        <div class="rm-t">Fase 2 · Identidad</div>
+        <div class="rm-l">
+          Exploración de rutas de diseño<br>
+          ✓ Paleta — Nueva Paleta Cromática<br>
+          <b style="color:var(--cream)">Elección del logo — 2 finalistas + isologo</b><br>
+          Sistema de versiones y usos<br>
+          Manual de Marca — Brandbook
+        </div>
+      </div>
+      <div class="rm-c">
+        <div class="rm-st">Por delante</div>
+        <div class="rm-t">Fase 3 · Aplicaciones</div>
+        <div class="rm-l">
+          Branding vehicular — flota completa<br>
+          Etiquetas y packaging<br>
+          Papelería comercial<br>
+          Firma de email corporativa<br>
+          Kit de redes sociales
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#s8">↓ continuar</a>
+</section>
+
+<!-- 8 CIERRE -->
+<section class="slide s-cover center" id="s8">
+  <div class="tag">Cierre de esta ronda</div>
+  <div class="wordmark">F<em>o</em>ntia</div>
+  <div class="sub-it">Del origen a vos</div>
+  <div class="rule"><span></span>◆<span></span></div>
+  <div class="quote">Un logo no es un dibujo lindo. Es la primera cosa que la gente va a ver de ustedes — <em>en un camión, en una oficina, en la puerta de una casa</em> — y la única que va a quedar cuando no haya nadie explicando nada.</div>
+  <div class="lead center" style="margin-top:30px">Las dos propuestas funcionan y están pensadas para durar, ya sobre la paleta definitiva. La decisión que queda no es cuál está mejor hecha: es cuál se parece más a la empresa que quieren ser.</div>
+  <div class="sig">sombrero <em>rosa</em> — naming &amp; branding · Fontia · Fase 2 · 2026</div>
+</section>
+
+<script>
+const ids=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];
+const dotsEl=document.getElementById('dots');
+ids.forEach((id,i)=>{const d=document.createElement('button');d.className='nav-dot'+(i===0?' active':'');d.onclick=()=>document.getElementById(id).scrollIntoView({behavior:'smooth'});dotsEl.appendChild(d);});
+const dots=document.querySelectorAll('.nav-dot');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const i=ids.indexOf(e.target.id);dots.forEach((d,j)=>d.classList.toggle('active',j===i));}});},{threshold:.4});
+ids.forEach(id=>obs.observe(document.getElementById(id)));
+</script>
+</body>
+</html>
